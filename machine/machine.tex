@@ -57,10 +57,10 @@ The machine simulator is known as Experimental String Machine (XSM). It is an in
 \section{Registers}
 
 \subsection{Introduction}
-The XSM architecture maintains 24 string registers.
+The XSM architecture maintains 24 registers (strings).
 
 \subsection{Register Set}
-There are 16 General Purpose Registers (GPR), R0 - R15, of which R0 - R7 are Program Registers and R8 - R15 are Kernel Registers. There are 4 temporary registers T0 - T3 which are reserved for code translation. These registers cannot be used by the system programmer. In addition to these 20 registers there are 4 Special Purpose Registers(SPR) namely BP (Base Pointer), SP (Stack Pointer), PID (Process Identifier) and IP (Instruction Pointer).\\
+There are 16 General Purpose Registers (GPR), R0 - R15, of which R0 - R7 are Program Registers and R8 - R15 are Kernel Registers. There are 4 temporary registers T0 - T3 which are reserved for code translation. These registers cannot be used by the system programmer. In addition to these 20 registers there are 4 Special Purpose Registers(SPR) namely BP (Base Pointer), SP (Stack Pointer), PID (Process Identifier) and IP (Instruction Pointer).
 
 
 \begin{center}
@@ -72,8 +72,8 @@ There are 16 General Purpose Registers (GPR), R0 - R15, of which R0 - R7 are Pro
 \hline Base Pointer & BP \\ 
 \hline Instruction Pointer & IP \\ 
 \hline Stack Pointer & SP \\ 
-\hline Process Identifier & PID \\ 
-\hline 
+\hline Process Identifier & PID \\
+\hline
 \end{tabular} 
 \end{center}
 
@@ -136,11 +136,12 @@ Any particular block in the disk is addressed by the corresponding number in the
 
 \subsection{Introduction}
 
-Every instruction in XSM is 2 strings long. The instructions provided by the XSM architecture can be classified into privileged and unprivileged instructions.
+Every instruction in XSM is 2 strings long. The instructions provided by the XSM architecture can be classified into privileged and unprivileged instructions. 
 
 \subsection{Classification}
 
 \subsubsection{Unprivileged Instructions}
+
 
 \begin{enumerate}
 \item MOV
@@ -271,15 +272,17 @@ Syntax : \texttt{START}\\
 \item \texttt{END}\\
 Syntax : \texttt{END}\\
 This instruction is marks the end of a program.
+
 \item \texttt{INT}\\
-Syntax : \texttt{INT num}\\
-Generates an interrupt to the kernel with \texttt{num} as a parameter. (Read Section \ref{sec:int})
+Syntax : \texttt{INT n}\\
+Generates an interrupt to the kernel with \texttt{n} (1 to 6) as a parameter. (Read Section \ref{sec:int})
 \end{enumerate}
 
 
 \subsubsection{Privileged Instructions}
 There are four privileged instructions. They are:
 \begin{enumerate}
+
 \item \texttt{IRET}\\
 Syntax : \texttt{IRET}\\
 
@@ -299,47 +302,72 @@ This instruction causes the simulator to halt immediately.
 \end{enumerate}
 
 \subsection{Processor Modes}
-The XSM architecture is interrupt driven and uses a single processor. There are two modes of operation, the user mode and the kernel mode.
-\begin{itemize}
-\item User mode : Only unprivileged instructions can be executed in this mode.
-\item Kernel mode : Both privileged and unprivileged instructions can be executed in this mode. The processor comes to know about the mode in which the system is running by looking at the value in the \texttt{IP} register.
-\end{itemize}
+The XSM architecture is interrupt driven and uses a single processor. There are two privilege modes of execution, the user mode and the kernel mode. The privilege mode of execution is determined by the value of IP, i.e. the area in memory where the currently executing code executes. 
 
+
+\begin{itemize}
+\item User mode : Only unprivileged instructions can be executed in this mode. The value of IP cannot be changed in unprivileged mode.
+
+\item Kernel mode : Both privileged and unprivileged instructions can be executed in this mode. 
+
+\begin{center}
+\begin{tabular}{|c|c|c|}
+\hline Page Number & Privilege Space \\ 
+\hline 0 & ROM Code \\ 
+\hline 1 - 7 & Kernel Space \\ 
+\hline 8 - 55 & User Space \\ 
+\hline 56 - 63 &  Kernel Space (INT 0 - 7)  \\ 
+\hline
+\end{tabular} 
+\end{center}
+
+\end{itemize}
 
 \section{Interrupts}
 \label{sec:int}
 
 \subsection{Introduction}
 Interrupts are mechanisms by which the user code interrupts the execution of the processor and passes control to the kernel to accomplish low level functionalities like disk access, arithmetic exception handling etc.\\
-\textbf{Interrupt Service Routine(ISR)} : The kernel provides routines to accomplish the functionality for which an interrupt has been generated. These routines are known as Interrupt Service Routines.\\
-Note: Every ISR should end with an \texttt{IRET} instruction.
-
 \subsection{The \texttt{INT} instruction}
 The instruction used to generate an interrupt is \texttt{INT}.\\
 Syntax : \texttt{INT n}\\
 The \texttt{INT} instruction passes control to the Interrupt Service Routine (ISR) for this interrupt located at the physical address computed using the value n.
-Address computation is done as follows. The physical address of the ISR corresponding to interrupt number n is given by:
-Physical Address = (56 + n) × Page Size
-Note that the interrupts are disabled once this instruction is executed, since we do not allow interrupts to occur in kernel mode.
+
+Address computation is done as follows. The physical address of the ISR corresponding to interrupt number n is given by: 
+\begin{verbatim}
+Physical Address = (56 + n) x Page Size
+\end{verbatim}
+Note that the interrupts are disabled once this instruction is executed as interrupts cannot be executed in kernel mode.
 
 \subsection{Types of Interrupts}
 There are 8 interrupts (numbered from 0 to 7) supported by the XSM architecture. The interrupts 0 and 7 are hardware interrupts and the remaining interrupts (1 to 6) are software interrupts.\\
-Details of hardware interrupts are as follows.
+
+\textbf{Hardware Interrupts }
+
+These interrupts cannot be called from user/kernel mode.
 \begin{itemize}
-\item \texttt{INT 0} : This is the timer interrupt which interrupts the processor forcing a context switch. It contains the code for the scheduler of the operating system, which schedules the CPU time among the various active processes. Note that this interrupt cannot be called from the user/kernel mode.
-\item \texttt{INT 7} : It is generated when the following exceptions1 occur:
+\item \texttt{Interrupt 0} \\
+It transfers control of execution, i.e. changes the value of IP to \textit{page number} 56 (address = 28672). This is the timer interrupt which interrupts the processor forcing a context switch. It contains the code for the scheduler of the operating system, which schedules the CPU time among the various active processes.
+
+\item \texttt{Interrupt 7} : It transfers control of execution to \textit{page number} 63 (address = 32256). It is generated when the following exceptions occur:
 \begin{enumerate}
 
-%CHECK THE ADDRESSES
-
-\item Illegal memory access : occurs when any address generated by the process does not lie in the range [0, 959].
+\item Illegal memory access : occurs when any address generated by the process \textbf{does not} lie in the range \textbf{[0, 2047]}.
 \item Arithmetic exception : occurs when divisor is 0.
 \item Illegal instruction : occurs when an attempt is made to execute an instruction not belonging to the instruction set and also when the operands to the instruction is not legal. Eg: \texttt{MOV 4 R0}, \texttt{MOV IP 4} when executed in user mode. These instructions are considered illegal.
-\item Stack overflow and stack underflow : Stack overflow occurs when the value in the SP register exceeds 959 and stack underflow occurs when the value falls below 768.
+\item Stack overflow and stack underflow : Stack overflow occurs when the value in the \texttt{SP} register exceeds \textbf{2047} and stack underflow occurs when the value falls below \textbf{1536}.
 \end{enumerate}
-\item \texttt{INT 1}, \texttt{INT 2} : These interrupts are used for the various file system calls. 
-\item \texttt{INT 3}, \texttt{INT 4} : These interrupts are used for the various process system calls. 
-\item \texttt{INT 5}, \texttt{INT 6} : These interrupts have been kept reserved for future use.The interrupts 1, 2, 3 and 4 are unprivileged and can be called from user mode.
+\textbf{Software Interrupts } \\
+These interrupts are unprivileged and can be called from user mode.
+
+\item \texttt{INT 1}  \\It transfers control of execution to \textit{page number} 57 (address = 29184)
+\item \texttt{INT 2}  \\It transfers control of execution to \textit{page number} 58 (address = 29696)  
+\item \texttt{INT 3}  \\It transfers control of execution to \textit{page number} 59 (address = 30208)
+\item \texttt{INT 4}  \\It transfers control of execution to \textit{page number}  60 (address = 30720) 
+\item \texttt{INT 5}  \\It transfers control of execution to \textit{page number} 61 (address = 31232)
+\item \texttt{INT 6}  \\It transfers control of execution to \textit{page number} 62 (address = 31744).\
+
+ 
 \end{itemize}
 
 
