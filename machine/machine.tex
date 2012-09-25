@@ -29,7 +29,7 @@ Version 1.0}
 \section{Introduction}
 
 \subsection{Brief Machine Description}
-The machine simulator is known as Experimental String Machine (XSM). It is an interrupt driven uniprocessor machine. The machine handles data as strings. A string is a sequence of characters terminated by '\textbackslash 0'. The length of a string is atmost 16 characters including '\textbackslash 0'. The machine interprets a single character also as a string.
+The machine simulator is known as Experimental String Machine (XSM). It is an interrupt driven uniprocessor machine. The machine handles data as strings. A string is a sequence of characters terminated by '\textbackslash 0'. The length of a string is atmost 16 characters including '\textbackslash 0'. Each of these strings is stored in a \textbf{word}  (Refer Section \ref{sec:mem}). The machine interprets a single character also as a string.
 
 \subsection{Components of the Machine}
 
@@ -42,11 +42,12 @@ The machine simulator is known as Experimental String Machine (XSM). It is an in
 
 
 \begin{itemize}
-\item Disk : It is a non-volatile storage that stores user programs (executables) and data files.
+\item Disk : It is a non-volatile storage that stores user programs (executables) and data files. The Operating System code is also stored in the disk.
+
 \item Memory : It is a volatile storage that stores the programs to be run on the machine as well as the operating system that manages the various programs.
 \item Processor : It is the main computational unit that is used to execute the instructions.
 \item Timer : It is a device that interrupts the processor after a pre-defined specific time interval.
-\item Load/Store : It is a macro that performs the functionalities of DMA (Direct Memory Access) controller.
+\item Load/Store : It is a macro that performs the functionalities of DMA (Direct Memory Access) controller. (Refer Section \ref{sec:inst})
 \end{itemize}
 
 
@@ -57,7 +58,7 @@ The machine simulator is known as Experimental String Machine (XSM). It is an in
 \section{Registers}
 
 \subsection{Introduction}
-The XSM architecture maintains 24 registers (strings).
+The XSM architecture maintains 24 registers (each one \textbf{word}).
 
 \subsection{Register Set}
 There are 16 General Purpose Registers (GPR), R0 - R15, of which R0 - R7 are Program Registers and R8 - R15 are Kernel Registers. There are 4 temporary registers T0 - T3 which are reserved for code translation. These registers cannot be used by the system programmer. In addition to these 20 registers there are 4 Special Purpose Registers(SPR) namely BP (Base Pointer), SP (Stack Pointer), PID (Process Identifier) and IP (Instruction Pointer).
@@ -79,6 +80,7 @@ There are 16 General Purpose Registers (GPR), R0 - R15, of which R0 - R7 are Pro
 
 
 \section{Memory}
+\label{sec:mem}
 
 \subsection{Introduction}
 
@@ -133,7 +135,7 @@ Any particular block in the disk is addressed by the corresponding number in the
 
 
  \section{Instructions}
-
+\label{sec:inst}
 \subsection{Introduction}
 
 Every instruction in XSM is 2 strings long. The instructions provided by the XSM architecture can be classified into privileged and unprivileged instructions. 
