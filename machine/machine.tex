@@ -42,12 +42,12 @@ The machine simulator is known as Experimental String Machine (XSM). It is an in
 
 
 \begin{itemize}
-\item Disk : It is a non-volatile storage that stores user programs (executables) and data files. The Operating System code is also stored in the disk.
+\item \textbf{Disk} : It is a non-volatile storage that stores user programs (executables) and data files. The Operating System code is also stored in the disk.
 
-\item Memory : It is a volatile storage that stores the programs to be run on the machine as well as the operating system that manages the various programs.
-\item Processor : It is the main computational unit that is used to execute the instructions.
-\item Timer : It is a device that interrupts the processor after a pre-defined specific time interval.
-\item Load/Store : It is a macro that performs the functionalities of DMA (Direct Memory Access) controller. (Refer Section \ref{sec:inst})
+\item \textbf{Memory} : It is a volatile storage that stores the programs to be run on the machine as well as the operating system that manages the various programs.
+\item \textbf{Processor} : It is the main computational unit that is used to execute the instructions.
+\item \textbf{Timer} : It is a device that interrupts the processor after a pre-defined specific time interval.
+\item \textbf{Load/Store} : It is a macro that performs the functionalities of DMA (Direct Memory Access) controller. (Refer Section \ref{sec:inst})
 \end{itemize}
 
 
@@ -58,10 +58,10 @@ The machine simulator is known as Experimental String Machine (XSM). It is an in
 \section{Registers}
 
 \subsection{Introduction}
-The XSM architecture maintains 24 registers (each one \textbf{word}).
+The XSM architecture maintains 26 registers (each one \textbf{word}).
 
 \subsection{Register Set}
-There are 16 General Purpose Registers (GPR), R0 - R15, of which R0 - R7 are Program Registers and R8 - R15 are Kernel Registers. There are 4 temporary registers T0 - T3 which are reserved for code translation. These registers are not intended to be used by the system programmer. In addition to these 20 registers there are 4 Special Purpose Registers(SPR) namely BP (Base Pointer), SP (Stack Pointer), PID (Process Identifier) and IP (Instruction Pointer).
+There are 16 General Purpose Registers (GPR), \texttt{R0 - R15}, of which \texttt{R0 - R7} are Program Registers and \texttt{R8 - R15} are Kernel Registers. There are 4 temporary registers \texttt{T0 - T3} which are reserved for code translation. The registers \texttt{T0 - T3} are not intended to be used by the system programmer. In addition to these 20 registers there are 6 Special Purpose Registers(SPR) namely \texttt{BP} (Base Pointer), \texttt{SP} (Stack Pointer), \texttt{PID} (Process Identifier), \texttt{IP} (Instruction Pointer), \texttt{PTBR} (Page Table Base Register) and \texttt{PTLR} (Page Table Length Register).
 
 
 \begin{center}
@@ -74,6 +74,8 @@ There are 16 General Purpose Registers (GPR), R0 - R15, of which R0 - R7 are Pro
 \hline Instruction Pointer & IP \\ 
 \hline Stack Pointer & SP \\ 
 \hline Process Identifier & PID \\
+\hline Page Table Base Register & PTBR \\
+\hline Page Table Length Register & PTLR \\
 \hline
 \end{tabular} 
 \end{center}
@@ -96,7 +98,7 @@ There are 16 General Purpose Registers (GPR), R0 - R15, of which R0 - R7 are Pro
 \item The machine memory can be thought of as a linear sequence of \textbf{words}.
 \item A collection of 512 contiguous \textbf{words} is known as a \textbf{page}.
 \item The total size of the memory is 64 \textbf{pages} or 32768 (512 $\times$ 64) \textbf{words}.
-\item Each \textbf{word} in the memory is identified by the \textit{word address} in the range 0 to 32767 (512 $\times$ 64 - 1). Similarly, each \textbf{page} in the memory is identified by the \textit{page number} in the range 0 to 63.
+\item Each \textbf{word} in the memory is identified by the \textit{word address} in the range 0 to 32767. Similarly, each \textbf{page} in the memory is identified by the \textit{page number} in the range 0 to 63.
 \end{itemize}
 
 \textbf{Example:} The $512^{th}$ word of the memory has a word address 511 and belongs to page 0. In general, the $n^{th}$ word has the word address $(n-1)$, where  $1 \le n \le 32768$ and belongs to the page $\lfloor \frac{n-1}{512} \rfloor$. 
@@ -127,7 +129,7 @@ There are 16 General Purpose Registers (GPR), R0 - R15, of which R0 - R7 are Pro
 
 \subsection{Address Translation}
 
-There are two kinds of memory addresses,\\
+There are two kinds of memory addresses,
 
 \begin{itemize}
 \item Logical address : When a process runs, CPU generates address for the data accessed by this process. This address is called the Logical address.
@@ -161,9 +163,9 @@ Address translation is the process of obtaining the physical address from the lo
 
 \textbf{Block} : It is the basic unit of storage in the disk.\\
 
-The disk can be thought of as consisting of a linear sequence of 512  blocks. The size of each block is equal to that of a page in the memory (512 words). The total disk capacity is 512 $\times$ 512 = 262144 words.\\
+The disk can be thought of as consisting of a linear sequence of 512  \textbf{blocks}. The size of each \textbf{block} is equal to that of a page in the memory (512 words). The total disk capacity is 512 $\times$ 512 = 262144 \textbf{words}.\\
 
-Any particular block in the disk is addressed by the corresponding number in the sequence 0 to 511 known as the \textbf{block number}.
+Any particular \textbf{block} in the disk is addressed by the corresponding number in the sequence 0 to 511 known as the \textit{block number}.
 
 \begin{figure}[htp!] \small
 	\centering
@@ -181,11 +183,20 @@ Any particular block in the disk is addressed by the corresponding number in the
 	\label{fig:mem_struct}
 \end{figure}
 
+
+\section{Supported Datatypes}
+
+XSM supports 2 different datatypes and their operations, namely \textbf{Strings} and \textbf{Integers}. However in the lowest level data is stored as strings.
+
+\subsection{Strings} Strings are sequence of characters which may include alphabets, numerals and special characters. Every string is terminated with a \textit{null character} ('\textbackslash 0'). Operations that can be performed on strings include lexicographic comparisons.
+
+\subsection{Integers} Integers in XSM can vary from -99999999999999 to +99999999999999. The first character within the word is reserved for the sign. However the integer 0 (zero) would have its sign character as 0 itself. The operations that can be performed on integers include arithmetic operations and comparison operations. A jump can also performed by checking if a register has 0 in it.
+
  \section{Instructions}
 \label{sec:inst}
 \subsection{Introduction}
 
-Every instruction in XSM is 2 strings long. The instructions provided by the XSM architecture can be classified into privileged and unprivileged instructions. 
+Every instruction in XSM is 2 words long. The instructions provided by the XSM architecture can be classified into privileged and unprivileged instructions. 
 
 \subsection{Classification}
 
@@ -193,73 +204,89 @@ Every instruction in XSM is 2 strings long. The instructions provided by the XSM
 
 
 \begin{enumerate}
-\item MOV
+\item \texttt{MOV}
 \begin{itemize}
-\item Immediate Addressing:\\
-\textit{Syntax :} \texttt{MOV Ri, NUM/STRING}
-
-Copies the \texttt{NUM/STRING} to the register \texttt{Ri}.
 
 \item Register Addressing:\\
 \textit{Syntax :} \texttt{MOV Ri, Rj}\\
 Copies the contents of the register \texttt{Rj} to \texttt{Ri}.
+
+\item Immediate Addressing:\\
+\textit{Syntax :} \texttt{MOV Ri, INTEGER/STRING}
+Copies the \texttt{INTEGER/STRING} to the register \texttt{Ri}.
+
 
 \item Register Indirect Addressing:\\
 \textit{Syntax }: \texttt{MOV Ri, [Rj]}\\
 Copy contents of memory location pointed by \texttt{Rj} to register \texttt{Ri}.\\
 \textit{Syntax :}\texttt{ MOV [Ri], Rj} \\
 Copy contents of \texttt{Rj} to the location whose address is in \texttt{Ri}.
+
+
 \item Direct Addressing:\\
 \textit{Syntax :}\texttt{ MOV [LOC], Rj}\\
 Copy contents of \texttt{Rj}  to the memory address \texttt{LOC}.\\
 \textit{Syntax :} \texttt{MOV Rj, [LOC]}\\
 Copy contents of the memory location \texttt{LOC} to the register \texttt{Rj}.
+
+\item Direct Indexed Addressing: \\
+\textit{Syntax :}\texttt{ MOV [LOC] Rj, Ri}\\
+Copy contents of \texttt{Ri} to the memory address \texttt{LOC} + (value in \texttt{Rj}) \\
+\textit{Syntax :}\texttt{ MOV [LOC] Index, Rj}\\
+Copy contents of \texttt{Ri} to the memory address \texttt{LOC} + \texttt{Index}. \texttt{Index} must be an integer value. \\
+\textit{Syntax :}\texttt{ MOV Ri, [LOC] Rj}\\
+Copy contents in the memory address \texttt{LOC} + (value in \texttt{Rj}) to the register \texttt{Ri}\\
+\textit{Syntax :}\texttt{ MOV Ri, [LOC] Index}\\
+Copy contents of the memory address \texttt{LOC} + \texttt{Index} to the register \texttt{Ri}. \texttt{Index} must be an integer value. \\
 \end{itemize}
 
 
-\item Arithmetic Instructions
-
+\item\textbf{ Arithmetic Instructions}
+\\
+Arithmetic Instructions perform arithmetic operations on registers containing integers. If the register contains a non-integer value, an excpetion is raised (Refer Section \ref{excpetion})
 \begin{itemize}
 \item \texttt{ADD}, \texttt{SUB}, \texttt{MUL}, \texttt{DIV} and \texttt{MOD}.\\
 \textit{General Syntax :} \texttt{OP Ri, Rj}\\
-The result of \texttt{Ri} op \texttt{Rj} is stored in \texttt{Ri}. \texttt{Ri} and \texttt{Rj} should represent integers. Otherwise no operation is performed on the registers.
+The result of \texttt{Ri} op \texttt{Rj} is stored in \texttt{Ri}. 
 
 \item \texttt{INR\\}
 \textit{Syntax :}\texttt{ INR Ri}\\
-Increments the value of register \texttt{Ri} by 1.  \texttt{Ri} should represent an integer. Otherwise no operation is performed on \texttt{Ri}.
+Increments the value of register \texttt{Ri} by 1.  
 
 \item  \texttt{DCR}\\
 \textit{Syntax :} \texttt{DCR Ri}\\
-Decrements the value of register \texttt{Ri} by 1. \texttt{Ri} should represent an integer. Otherwise no operation is performed on \texttt{Ri}.
+Decrements the value of register \texttt{Ri} by 1. 
 
 \end{itemize}
 
 
-\item Logical Instructions
+\item \textbf{Logical Instructions} \\
+Logical instructions are used for comparing values in registers. Strings can also be compared according to the lexicographic ordering of ASCII.
 \begin{itemize}
+
 \item \texttt{LT}\\
 Syntax :\texttt{ LT Ri, Rj}\\
-Stores 1 in \texttt{Ri} if the value stored in \texttt{Ri} is less than that in \texttt{Rj}. \texttt{Ri} is set to 0 otherwise. Strings can also be compared using \texttt{LT}
+Stores 1 in \texttt{Ri} if the value stored in \texttt{Ri} is less than that in \texttt{Rj}. \texttt{Ri} is set to 0 otherwise. 
 
 \item \texttt{GT}\\
 Syntax : \texttt{GT Ri, Rj}\\
-Stores 1 in \texttt{Ri} if the value stored in \texttt{Ri} is greater than that in \texttt{Rj}. \texttt{Ri} set to 0 otherwise. Strings can also be compared using \texttt{GT}
+Stores 1 in \texttt{Ri} if the value stored in \texttt{Ri} is greater than that in \texttt{Rj}. \texttt{Ri} set to 0 otherwise. 
 
 \item \texttt{EQ}\\
 Syntax : \texttt{EQ Ri, Rj}\\
-Stores 1 in \texttt{Ri} if the value stored in \texttt{Ri} is equal to that in \texttt{Rj}. Set to 0 otherwise. Strings can also be compared using \texttt{EQ}
+Stores 1 in \texttt{Ri} if the value stored in \texttt{Ri} is equal to that in \texttt{Rj}. Set to 0 otherwise. 
 
 \item \texttt{NE}\\
 Syntax : \texttt{NE Ri, Rj}\\
-Stores 1 in \texttt{Ri} if the value stored in \texttt{Ri} is not equal to that in \texttt{Rj}. Set to 0 otherwise. Strings can also be compared using \texttt{NE}
+Stores 1 in \texttt{Ri} if the value stored in \texttt{Ri} is not equal to that in \texttt{Rj}. Set to 0 otherwise. 
 
 \item \texttt{GE} \\
 Syntax : \texttt{GE Ri, Rj} \\
-Stores 1 in \texttt{Ri} if the value stored in \texttt{Ri} is greater than or equal to that in \texttt{Rj}. Set to 0 otherwise. Strings can also be compared using \texttt{GE}
+Stores 1 in \texttt{Ri} if the value stored in \texttt{Ri} is greater than or equal to that in \texttt{Rj}. Set to 0 otherwise. 
 
 \item \texttt{LE}\\
 Syntax : \texttt{LE Ri, Rj}\\
-Stores 1 in \texttt{Ri} if the value stored in \texttt{Ri} is less than or equal to that in \texttt{Rj}. Set to 0 otherwise. Strings can also be compared using \texttt{LE} \\
+Stores 1 in \texttt{Ri} if the value stored in \texttt{Ri} is less than or equal to that in \texttt{Rj}. Set to 0 otherwise. 
 \end{itemize}
 
 \item Labels \\
@@ -295,11 +322,11 @@ For both these instructions \texttt{Ri} may be any register except \texttt{IP}.
 \end{itemize}
 
 \item Subroutine Instructions\\
-The \texttt{CALL} instruction copies the address of the next instruction to be fetched (\texttt{IP} + 2) on to location \texttt{SP} + 1, increments \texttt{SP} by one and transfers control to the \texttt{labelname} specified. The \texttt{RET} instruction restores the \texttt{IP} value stored at location pointed by \texttt{SP}, decrements \texttt{SP} by one and continues execution fetching the next instruction pointed to by \texttt{IP}. The subroutine instructions provide a neat mechanism for procedure evocations.
+The \texttt{CALL} instruction copies the address of the next instruction to be fetched on to location \texttt{SP} + 1. It also increments \texttt{SP} by one and transfers control to the \texttt{labelname} specified. The address of the instruction to be fetched is in \texttt{IP + 2} (each instruction is 2 memory words). The \texttt{RET} instruction restores the \texttt{IP} value stored at location pointed by \texttt{SP}, decrements \texttt{SP} by one and continues execution fetching the next instruction pointed to by \texttt{IP}. The subroutine instructions provide a neat mechanism for procedure evocations.
 \begin{itemize}
 \item \texttt{CALL}\\
 Syntax : \texttt{CALL labelname}\\
-Increment \texttt{SP} by 1, transfers \texttt{IP}+1 to location pointed to by \texttt{SP} and jumps to \texttt{LABEL}
+Increments \texttt{SP} by 1, transfers \texttt{IP}+2 to location pointed to by \texttt{SP} and jumps to \texttt{LABEL}
 \item \texttt{RET}\\
 Syntax : \texttt{RET}\\
 Sets \texttt{IP} to the value pointed to by \texttt{SP} and decrements \texttt{SP}.
@@ -315,21 +342,18 @@ Syntax : \texttt{OUT Ri}\\
 Transfers the contents of \texttt{Ri} to the standard output.\\
 \end{itemize}
 
-\item \texttt{START}\\
-Syntax : \texttt{START}\\
-\texttt{IP} will be initialised to this instruction automatically when a program is taken for execution.
 \item \texttt{END}\\
 Syntax : \texttt{END}\\
 This instruction is marks the end of a program.
 
 \item \texttt{INT}\\
 Syntax : \texttt{INT n}\\
-Generates an interrupt to the kernel with \texttt{n} (1 to 6) as a parameter. (Read Section \ref{sec:int})
+Generates an interrupt to the kernel with \texttt{n} (1 to 6) as a parameter. It also disables the interrupts. (Read Section \ref{sec:int})
 \end{enumerate}
 
 
 \subsubsection{Privileged Instructions}
-There are four privileged instructions. They are:
+There are four privileged instructions. They can only be executed in kernel mode (Refer to \ref{sec:priv_modes}).  These instructions are:
 \begin{enumerate}
 
 \item \texttt{IRET}\\
@@ -339,23 +363,24 @@ Set \texttt{IP} to the value pointed by \texttt{SP} and decrements \texttt{SP} b
 
 \item \texttt{LOAD}\\
 Syntax : \texttt{LOAD \textit{pagenum} \textit{blocknum}}\\
-This instruction loads the block specified by the \texttt{\textit{blocknum}}, from the disk, to the page specified by the \texttt{\textit{pagenum}} in the memory. \texttt{\textit{blocknum}} and \texttt{\textit{pagenum}} should be numbers or registers containing numbers. Otherwise no action is performed.
+This instruction loads the block specified by the \texttt{\textit{blocknum}}, from the disk, to the page specified by the \texttt{\textit{pagenum}} in the memory. \texttt{\textit{blocknum}} and \texttt{\textit{pagenum}} should be numbers or registers containing numbers. An excpetion is raised (Refer Section \ref{excpetion}) for invalid arguments or illegal memory access.
 
 \item \texttt{STORE}\\
 Syntax : \texttt{STORE \textit{blocknum} \textit{pagenum} }\\ 
-This instruction stores the page specified by the \texttt{\textit{pagenum}}, from the memory, to the block specified by the \texttt{\textit{blocknum}}in the disk. \texttt{\textit{blocknum}} and \texttt{\textit{pagenum}} should be numbers or registers containing numbers. Otherwise no action is performed.
+This instruction stores the page specified by the \texttt{\textit{pagenum}}, from the memory, to the block specified by the \texttt{\textit{blocknum}}in the disk. \texttt{\textit{blocknum}} and \texttt{\textit{pagenum}} should be numbers or registers containing numbers. An excpetion is raised (Refer Section \ref{excpetion}) for invalid arguments or illegal memory access.
 
 \item \texttt{HALT}\\
 Syntax : \texttt{HALT}\\
-This instruction causes the simulator to halt immediately.
+This instruction causes the machine to halt immediately.
 \end{enumerate}
 
-\subsection{Processor Modes}
+\subsection{Privilege Modes}
+\label{sec:priv_modes}
 The XSM architecture is interrupt driven and uses a single processor. There are two privilege modes of execution, the user mode and the kernel mode. The privilege mode of execution is determined by the value of IP, i.e. the area in memory where the currently executing code executes. 
 
 
 \begin{itemize}
-\item User mode : Only unprivileged instructions can be executed in this mode. The value of IP cannot be changed in unprivileged mode.
+\item User mode : Only unprivileged instructions can be executed in this mode. The value of IP cannot be changed in user mode.
 
 \item Kernel mode : Both privileged and unprivileged instructions can be executed in this mode. 
 
@@ -376,9 +401,20 @@ The XSM architecture is interrupt driven and uses a single processor. There are 
 \label{sec:int}
 
 \subsection{Introduction}
-Interrupts are mechanisms by which the user code interrupts the execution of the processor and passes control to the kernel to accomplish low level functionalities like disk access, arithmetic exception handling etc.\\
-\subsection{The \texttt{INT} instruction}
-The instruction used to generate an interrupt is \texttt{INT}.\\
+Interrupts are mechanisms by which the user code interrupts the execution of the processor and passes control to the kernel to accomplish low level functionalities like disk access, multiprogramming etc. There are 8 interrupts (numbered from 0 to 7) supported by the XSM architecture. The interrupt 0 is for hardware interrupts, the interrupts (1 to 7) are software interrupts.\\
+
+
+
+\subsection{Hardware Interrupts }
+Hardware Interrupts are generated by the machine, usually at set timer intervals. These interrupts cannot be invoked from the user/kernel mode.\\
+
+\textbf{Interrupt 0:} \\
+It transfers control of execution, i.e. changes the value of IP to \textit{page number} 56 (address = 28672). This is the timer interrupt which interrupts the processor. Generally it is supposed to contain the code for the scheduler of the operating system, which schedules the CPU time among the various active processes.
+
+\subsection{Software Interrupts }
+Software Interrupts interrupts are unprivileged and can be called from user mode.
+\subsubsection{The \texttt{INT} instruction}
+The instruction used to generate a software interrupt is \texttt{INT}.\\
 Syntax : \texttt{INT n}\\
 The \texttt{INT} instruction passes control to the Interrupt Service Routine (ISR) for this interrupt located at the physical address computed using the value n.
 
@@ -388,36 +424,29 @@ Physical Address = (56 + n) x Page Size
 \end{verbatim}
 Note that the interrupts are disabled once this instruction is executed as interrupts cannot be executed in kernel mode.
 
-\subsection{Types of Interrupts}
-There are 8 interrupts (numbered from 0 to 7) supported by the XSM architecture. The interrupts 0 and 7 are hardware interrupts and the remaining interrupts (1 to 6) are software interrupts.\\
-
-\textbf{Hardware Interrupts }
-
-These interrupts cannot be called from user/kernel mode.
 \begin{itemize}
-\item \texttt{Interrupt 0} \\
-It transfers control of execution, i.e. changes the value of IP to \textit{page number} 56 (address = 28672). This is the timer interrupt which interrupts the processor forcing a context switch. It contains the code for the scheduler of the operating system, which schedules the CPU time among the various active processes.
-
-\item \texttt{Interrupt 7} : It transfers control of execution to \textit{page number} 63 (address = 32256). It is generated when the following exceptions occur:
-\begin{enumerate}
-
-\item Illegal memory access : occurs when any address generated by the process \textbf{does not} lie in the range \textbf{[0, 2047]}.
-\item Arithmetic exception : occurs when divisor is 0.
-\item Illegal instruction : occurs when an attempt is made to execute an instruction not belonging to the instruction set and also when the operands to the instruction is not legal. Eg: \texttt{MOV 4 R0}, \texttt{MOV IP 4} when executed in user mode. These instructions are considered illegal.
-\item Stack overflow and stack underflow : Stack overflow occurs when the value in the \texttt{SP} register exceeds \textbf{2047} and stack underflow occurs when the value falls below \textbf{1536}.
-\end{enumerate}
-\textbf{Software Interrupts } \\
-These interrupts are unprivileged and can be called from user mode.
 
 \item \texttt{INT 1}  \\It transfers control of execution to \textit{page number} 57 (address = 29184)
 \item \texttt{INT 2}  \\It transfers control of execution to \textit{page number} 58 (address = 29696)  
 \item \texttt{INT 3}  \\It transfers control of execution to \textit{page number} 59 (address = 30208)
 \item \texttt{INT 4}  \\It transfers control of execution to \textit{page number}  60 (address = 30720) 
 \item \texttt{INT 5}  \\It transfers control of execution to \textit{page number} 61 (address = 31232)
-\item \texttt{INT 6}  \\It transfers control of execution to \textit{page number} 62 (address = 31744).\
-
+\item \texttt{INT 6}  \\It transfers control of execution to \textit{page number} 62 (address = 31744)
+\item \texttt{INT 7}  \\It transfers control of execution to \textit{page number} 63 (address = 32256).\
  
 \end{itemize}
+
+\section{Exceptions}
+\label{excpetion}
+Exceptions are anomalous situations which changes the normal flow of execution. Exceptions usually requires special processing. It is generated when the following events occur:
+
+\begin{enumerate}
+\item Illegal memory access : occurs when any address generated by the process \textbf{does not} lie in the range \textbf{[0, 2047]}.
+\item Arithmetic exception : occurs when divisor is 0.
+\item Illegal operands : occurs when operands contain invalid data corresponding to the instruction. 
+\item Illegal instruction : occurs when an attempt is made to execute an instruction not belonging to the instruction set and also when the operands to the instruction is not legal. Eg: \texttt{MOV 4 R0}, \texttt{MOV IP 4} when executed in user mode. These instructions are considered illegal.
+\item Stack overflow and stack underflow : Stack overflow occurs when the value in the \texttt{SP} register exceeds \textbf{2047} and stack underflow occurs when the value falls below \textbf{1536}.
+\end{enumerate}
 
 
 \end{document}
