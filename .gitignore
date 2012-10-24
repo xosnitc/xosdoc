@@ -4,3 +4,10 @@ machine/machine.log
 machine/machine.out
 machine/machine.synctex.gz
 machine/machine.toc
+
+os/os.aux
+os/os.dvi
+os/os.log
+os/os.out
+os/os.synctex.gz
+os/os.toc
