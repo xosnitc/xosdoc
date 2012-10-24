@@ -1,5 +1,5 @@
 
-\documentclass[11pt]{article}
+\documentclass[11pt]{report}
 
 
 \usepackage[pdftex]{graphicx}
@@ -26,12 +26,12 @@ Version 1.0}
 \pagebreak
 
 
-\section{Introduction}
+\chapter{Introduction}
 
-\subsection{Brief Machine Description}
+\section{Brief Machine Description}
 The machine simulator is known as Experimental String Machine (XSM). It is an interrupt driven uniprocessor machine. The machine handles data as strings. A string is a sequence of characters terminated by '\textbackslash 0'. The length of a string is atmost 16 characters including '\textbackslash 0'. Each of these strings is stored in a \textbf{word}  (Refer Section \ref{sec:mem}). The machine interprets a single character also as a string.
 
-\subsection{Components of the Machine}
+\section{Components of the Machine}
 
 \begin{figure}[hbtp]
 \begin{center}
@@ -39,7 +39,6 @@ The machine simulator is known as Experimental String Machine (XSM). It is an in
 \end{center}
 \caption{Components of the Machine}
 \end{figure}
-
 
 \begin{itemize}
 \item \textbf{Disk} : It is a non-volatile storage that stores user programs (executables) and data files. The Operating System code is also stored in the disk.
@@ -51,16 +50,22 @@ The machine simulator is known as Experimental String Machine (XSM). It is an in
 \end{itemize}
 
 
+\section{Supported Datatypes}
+
+XSM supports 2 different datatypes and their operations, namely \textbf{Strings} and \textbf{Integers}. However in the lowest level data is stored as strings.
+
+\subsection{Strings} Strings are sequence of characters which may include alphabets, numerals and special characters. Every string is terminated with a \textit{null character} ('\textbackslash 0'). Operations that can be performed on strings include lexicographic comparisons.
+
+\subsection{Integers} Apart from strings, XSM supports integers and its operations. The operations that can be performed on integers include arithmetic operations and comparison operations. A jump can also performed by checking if a register has 0 in it.
 
 
 
+\chapter{Registers}
 
-\section{Registers}
-
-\subsection{Introduction}
+\section{Introduction}
 The XSM architecture maintains 26 registers (each one \textbf{word}).
 
-\subsection{Register Set}
+\section{Register Set}
 There are 16 General Purpose Registers (GPR), \texttt{R0 - R15}, of which \texttt{R0 - R7} are Program Registers and \texttt{R8 - R15} are Kernel Registers. There are 4 temporary registers \texttt{T0 - T3} which are reserved for code translation. The registers \texttt{T0 - T3} are not intended to be used by the system programmer. In addition to these 20 registers there are 6 Special Purpose Registers(SPR) namely \texttt{BP} (Base Pointer), \texttt{SP} (Stack Pointer), \texttt{PID} (Process Identifier), \texttt{IP} (Instruction Pointer), \texttt{PTBR} (Page Table Base Register) and \texttt{PTLR} (Page Table Length Register).
 
 
@@ -81,10 +86,10 @@ There are 16 General Purpose Registers (GPR), \texttt{R0 - R15}, of which \textt
 \end{center}
 
 
-\section{Memory}
+\chapter{Memory}
 \label{sec:mem}
 
-\subsection{Introduction}
+\section{Introduction}
 
 %\begin{figure}[hbtp]
 %\begin{center}
@@ -107,7 +112,7 @@ There are 16 General Purpose Registers (GPR), \texttt{R0 - R15}, of which \textt
 
 
 
-\subsection{Address Translation}
+\section{Address Translation}
 
 There are two kinds of memory addresses,
 
@@ -145,7 +150,7 @@ The example below shows the address translation correspoding to the logical addr
 
 
 
-\section{Disk Storage}
+\chapter{Disk Storage}
 
 
 \textbf{Block} : It is the basic unit of storage in the disk.\\
@@ -171,21 +176,15 @@ Any particular \textbf{block} in the disk is addressed by the corresponding numb
 \end{figure}
 
 
-\section{Supported Datatypes}
 
-XSM supports 2 different datatypes and their operations, namely \textbf{Strings} and \textbf{Integers}. However in the lowest level data is stored as strings.
 
-\subsection{Strings} Strings are sequence of characters which may include alphabets, numerals and special characters. Every string is terminated with a \textit{null character} ('\textbackslash 0'). Operations that can be performed on strings include lexicographic comparisons.
-
-\subsection{Integers} Apart from strings, XSM supports integers and its operations. The operations that can be performed on integers include arithmetic operations and comparison operations. A jump can also performed by checking if a register has 0 in it.
-
- \section{Instructions}
+ \chapter{Instructions}
 \label{sec:inst}
-\subsection{Introduction}
+\section{Introduction}
 
 Every instruction in XSM is 2 words long. The instructions provided by the XSM architecture can be classified into privileged and unprivileged instructions. 
 
-\subsection{Classification}
+\section{Classification}
 
 \subsubsection{Unprivileged Instructions}
 
@@ -361,7 +360,7 @@ Syntax : \texttt{HALT}\\
 This instruction causes the machine to halt immediately.
 \end{enumerate}
 
-\subsection{Privilege Modes}
+\section{Privilege Modes}
 \label{sec:priv_modes}
 The XSM architecture is interrupt driven and uses a single processor. There are two privilege modes of execution, the user mode and the kernel mode. The privilege mode of execution is determined by the value of IP, i.e. the area in memory where the currently executing code executes. 
 
@@ -384,7 +383,7 @@ The XSM architecture is interrupt driven and uses a single processor. There are 
 
 \end{itemize}
 
-\section{Interrupts}
+\chapter{Interrupts}
 \label{sec:int}
 
 Interrupts are mechanisms by which the machine interrupts the execution of the processor and passes control to the kernel to execute interrupt (or exception) handler code. Interrupts might indicate errors, such as a memory access violation (page fault), a timer interrupt or the OS needs to perform an operation to support a running program, such as a software interrupt. \\
@@ -392,7 +391,7 @@ Interrupts are mechanisms by which the machine interrupts the execution of the p
 The process saves its current state before starting execution of the handler, and then resumes the state once the handler finishes its execution. Interrupts are disabled when the interrupt handler code is execuing. 
 
 
-\subsection{Exceptions}
+\section{Exceptions}
 \label{excpetion}
 Exceptions are anomalous situations which changes the normal flow of execution. It is generated when the following events occur:
 
@@ -406,12 +405,12 @@ Exceptions are anomalous situations which changes the normal flow of execution. 
 \end{enumerate}
 All exceptions other than page fault exception results in termination the machine. 
 
-\subsection{Timer Interrupt }
+\section{Timer Interrupt }
 Timer Interrupt is generated by the machine, usually at set timer intervals. This interrupt cannot be invoked from the user/kernel mode.\\
 
 It transfers control of execution, i.e. changes the value of IP to \textit{page number} 8 (address = 4096). This is the timer interrupt which interrupts the processor. Generally it is supposed to contain the code for the scheduler of the operating system, which schedules the CPU time among the various active processes.
 
-\subsection{Software Interrupts }
+\section{Software Interrupts }
 Software Interrupts interrupts are unprivileged and can be called from user mode. 7 Interrupt instructions are provided by the machine which causes the execution of ISR (Interrupt Service Routines) in 7 different pages in the memory. 
 
 \subsubsection{The \texttt{INT} instruction}
