@@ -1,0 +1,197 @@
+\documentclass[11pt]{article}
+
+\usepackage[pdftex]{graphicx}
+\usepackage{url} 
+\usepackage[dvips, bookmarks, colorlinks=false, pdfborder={0 0 0}, pdftitle={<pdf title here>}, pdfauthor={<author's name here>}, pdfsubject={<subject here>}, pdfkeywords={<keywords here>}]{hyperref} 
+\usepackage[final]{pdfpages}
+\usepackage{multirow}
+\usepackage[table]{xcolor} 
+\usepackage{subfigure}
+\usepackage{booktabs}
+
+\newtheorem{example}{Example}[section]
+
+\title{XFS \\ eXperimental File System \\
+Version 1.0}
+\author{Dr. K. Muralikrishnan  \\ \texttt{kmurali@nitc.ac.in} \\ {NIT Calicut} }
+
+
+\begin{document}
+
+\maketitle
+\pagebreak
+
+%......................Table of Contents............................%
+\thispagestyle{plain}
+
+\tableofcontents
+\pagebreak
+
+
+
+
+\section{Introduction}
+
+XFS or Experimental File System is a file system architecture designed for XOS (Experimental Operating System). XFS is a simple filesystem which has no directory structure. \\
+
+XFS spans the entire disk in XSM (Experimental String Machine). The disk consists of a linear sequence of 512 blocks. The basic unit of disk in XSM is a \textbf{\textit{block}}. The size of the block is equal to that of page in memory (512 words). The total capacity of the disk is 512 $\times$ 512  = \textbf{262144} words. \\
+
+ Any particular block in the disk is addressed by the corresponding number in the sequence 0 to 511 known as the \emph{block number}. 
+
+
+\section{Disk Organization}
+\index{DiskStructure}
+The disk is organized by the file system as shown below. 
+
+\begin{figure}[htp!] \small
+	\centering
+	\begin{tabular}{|c|c|}
+	\toprule
+		\textbf{Block No} & \textbf{Contents} \\ \hline
+	\toprule
+		0 & OS Startup Code \\ \hline
+		1 & Page Fault Handler \\ \hline
+		2 & Timer Interrupt Handler \\ \hline
+		3 & Interrupt 1 Handler\\ 
+		\vdots & \vdots \\ 
+		9 & Interrupt 7 Handler\\ \hline
+		10 & File Allocation Table (FAT) \\ \hline
+		11 & Disk Free List \\ \hline
+		12 & Unallocated  \\ \hline
+		13 -- 15 & INIT Code  \\ \hline
+		16 -- 447 & User Blocks  \\ \hline
+		448 -- 511 & Swap Area  \\ \hline					
+	\end{tabular}
+	\caption{Structure of the disk}
+	\label{fig:disk}
+\end{figure}
+
+\begin{itemize}
+\item \textbf{OS Startup Code}: Block 0 is the location of operating system code required during machine boot. (Refer ...)
+\item \textbf{Exception and Interrupt Handler}: Blocks from 1 - 9 is intended for ISR (Interrupt Service Routines) for interrupt and exception handling which is done by the Operating System.  (Refer ...)
+\item \textbf{FAT} or File Allocation table contains details about the files stored on the disk. (Refer ...)
+\item \textbf{Disk Free List} has 512 entries, one entry for each block in the disk, indicating whether it is used or unused. (Refer ...)
+\item \textbf{INIT Code} It has the code for INIT process, which is the first user program run by the OS after startup. (Refer ...) 
+\item \textbf{User Blocks}. Blocks from 16 to 447 are used to store user data files and user programs. (Refer ...)
+\item \textbf{Swap Area} The file system also provides a swap area for the operating system to implement demand paging. Users cannot directly store data and programs in the swap area.
+
+\end{itemize}
+
+
+
+\section{File}
+A file \index{File} is a collection of blocks identified by a name. Every file in the disk has a \textit{Basic Block} and several \textit{Data Blocks}. They are defined as follows:
+\begin{itemize}
+	\item \textbf{Data Blocks :}  These blocks contain the actual data of a file. \index{File!Data Block}
+	\item \textbf{Basic Block :}  It consists of information about the data in a file. \index{File!Basic Block}
+% 	 	the location of the data blocks of the file in the disk etc.  	
+	\begin{itemize}
+		 \index{File!Basic Block Structure}
+		\begin{figure}[h]
+			\centering
+			\begin{tabular}{|c|c|c|}
+				\hline
+				\textbf{Index} & 0--255 & 256--511\\
+				\hline
+				\textbf{Content} & Block List & Header\\
+				\hline
+			\end{tabular}
+			\caption{Structure of the basic block of a file}
+			\label{fig:basic block}
+		\end{figure}
+		\item \textbf{Block List :} It contains block addresses of all data blocks in the file.
+		\begin{itemize}
+			\item The block list consists of 256 entries.
+			\item Each entry is of size one word.
+			\item The value contained in an entry of the block list gives the block number of the corresponding data block in the disk. All invalid entries are marked with 0.
+		\end{itemize}
+		\item \textbf{Header :} The header contains the meta information relating to the file.
+The header fields is 256 words long. It can be used to store details like permissions, ownership etc related to a file, similar to inode in Linux and UNIX operating systems. However XOS doesn't use the header field.
+
+	\end{itemize}
+\end{itemize}
+
+\begin{example}
+	\begin{figure}[h!]
+	\centering
+	\includegraphics[scale=0.50]{pics/basic_block_example}
+	\caption{Example illustrating the basic block of a file}
+	\label{basic block example}
+	\end{figure}
+
+	Consider the example illustrated by figure~\ref{basic block example}.
+	From the figure, we infer the following. 
+	\begin{itemize}
+		\item  The zeroth data block of the file resides in the disk in block number 240. 
+		\item  The first data block of the file resides in the disk in block number 420.
+		\item  The second data block of the file resides in the disk in block number 101 
+		\item  The third data block of the file resides in the disk in block number 315
+		\item Rest of entries are empty and are marked as 0
+	\end{itemize}
+\end{example}
+
+\subsection{File Types} 
+\index{File!Types}
+There are two types of files in the XSM architecture. They are:
+\subsubsection{Data files} These files contain data or information that is used by the programs. They can occupy a maximum of 257 blocks (1 basic block + maximum 256 data blocks). Data files have an extension \texttt{.dat} in the filename.
+	
+\subsubsection{Executable files}  These contain programs that the user wishes to run on the machine. They occupy 4 blocks (1 basic block + 3 data blocks) of the disk. Executable files have an extension \texttt{.xsm} in the filename.
+
+
+\section{File Allocation Table (FAT)}
+\index{File Allocation Table}
+\label{sec:fat}
+\label{lbl:fat}
+\emph{File allocation table} (FAT) is a table that has an entry for each file present in the disk.
+
+\begin{itemize}
+	\item FAT of the filesystem consists of 64 entries. Thus there can be a maximum of 64 files. 
+	\item Each entry is of size 8 words.
+	\item Total size of the FAT is thus 512 words, which occupies 1 block.
+	\item It is a disk data structure and occupies block number 10 on the disk.
+
+\subsection{Structure of FAT}
+	\index{File Allocation Table!Location in disk}
+\end{itemize}
+
+The structure of a FAT entry is shown below 
+
+\begin{figure}[htp!] \small
+	\centering
+	\begin{tabular}{|c|c|c|c|}
+		\hline
+		0 & 1 & 2 & 3 -- 7 \\
+		\hline
+		File Name & File Size & Block no: of basic block & \dots{} Free \dots \\
+		\hline
+	\end{tabular}
+	\caption{Structure of a FAT entry}
+	\label{fig:fat_entry}
+\end{figure}
+
+The FAT entry consists of the
+\index{File Allocation Table!FAT Entry}
+\begin{enumerate}
+	\item \textbf{File Name :} It is an identification of a file. It can be of maximum 15 characters (and thus requires 1 word). Typical file names are \texttt{student.dat}, \texttt{calc.xsm}.
+	\item \textbf{File size :} It indicates the number of words occupied by a file. A file will contain minimum of 1 block (basic block), and a number of data blocks. Thus, the size of the file can vary from 512 words to 512 x (256 + 1) words. It occupies one word in the FAT entry.
+	\item \textbf{Block number of basic block :} It contains the block number where the basic block of a file resides in the disk. It occupies one word in the FAT entry.
+\end{enumerate}
+
+
+
+\section{Disk Free List}
+\index{Disk Free List}
+\label{lbl:disklst}
+The Disk Free List is a data structure used for keeping tracking of unused blocks in the disk. 
+
+
+\begin{itemize}
+	\item  The Free List of the disk consists of 512 entries. Each entry is of size one word.
+	\item  The size of the free list is thus 1 block or 512 words.
+	\item  It is present in blocks 11 of the disk. Refer figure~\ref{fig:disk}. \index{Disk!Free List Location}
+	\item  For each block in the disk there is an entry in the Disk Free List which contains a value of either 0 or 1 indicating whether the corresponding block in the disk is free or used respectively. Each entry in the Disk Free List is of size one word.  
+	\item Blocks 0 to 12 are system reserved and are marked as 1 in the Disk Free List so that they cannot be used for saving user files. The file system also ensures that user files are not stored on the Swap Area.
+\end{itemize}
+
+
+\end{document}
