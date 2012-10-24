@@ -11,3 +11,11 @@ os/os.log
 os/os.out
 os/os.synctex.gz
 os/os.toc
+
+filesystem/filesystem.aux
+filesystem/filesystem.dvi
+filesystem/filesystem.log
+filesystem/filesystem.out
+filesystem/filesystem.synctex.gz
+filesystem/filesystem.toc
+
