@@ -20,7 +20,7 @@
 
 \newcommand\counter[1]{\arabic{#1} \stepcounter{#1}}
 \newcounter{syscall}
-\title{XSM \\ eXperimental String Machine \\
+\title{XOS \\ eXperimental Operating System \\
 Version 1.0}
 \author{Dr. K. Muralikrishnan  \\ \texttt{kmurali@nitc.ac.in} \\ {NIT Calicut} }
 
@@ -38,136 +38,308 @@ Version 1.0}
 
 \chapter{Introduction}
 \label{chp:osintro}
-%The OS provides an interface to the user to interact with the hardware. Users write programs that make use of various resources like disk, memory, processor etc. These programs are run as processes on the machine.
-%
-%The system programmers use the language SP-SIL for writing the Operating System. User programs to test the various functionalities of the Operating System can be written in AP-SIL. Refer the documents ~\cite{spsil} and ~\cite{apsil} for the complete documentation of these tools.
-%
-%A detailed operating system specification was done in the works of ~\cite{group1} and ~\cite{group2}. This documentation was critically reviewed and modifications were done in many places to comply with our new design.
-%The major modifications done are the following:
-%\begin{itemize}
-%\item Introduction of INIT process (refer section \ref{lbl:INITprocess})
-%\item Introduction of Halt() system call (refer chapter \ref{chp:halt_system_calls})
-%\item Exception handler interrupt has been excluded due to some limitations in the design.
-%\item The distribution of system calls were changed. This was due to the limitations in interrupt code size.
-%\end{itemize}
 
-\section{Operating System Functionality}
-There are various functionalities associated with the operating system which are essential for the user programs to run and make use of the system resources. The functionalities and their details are explained below.
+XOS (Experimental Operating System) is an experimental operating system  which is designed to be run on the  XSM  (Experimental String Machine) architecture which is a simulated machine hardware. XOS is intended as an instructional tool to help students learn essential concepts of an operating system. 
+\vspace{0.1in} \\
+XOS is programmed using a custom language, SPL (System Programmer's Language) which compiles to XSM compatible code. (Refer ... ) Application programs for XSM are written in APL (Applicaiton Programmer's Language). (Refer ... ) 
+\vspace{0.1in} \\
+The programs, data and operating system code is stored on a disk which has an XFS (Experimental File System) in it. (Refer ...)\\
 
-\subsection{Process Management}
-Any program that the user wishes to execute is loaded into the memory (A program in memory is known as a process). For creating a new process,
+The various functionalities of XOS include
+\begin{itemize}
+\item \textbf{Process Management}, includes scheduling and dispatching processes to the CPU. XOS is capable of \textit{multiprogramming} (the ability to run more than one process.  simultaneously). Refer ...
+\item \textbf{Memory Management}, involves allocating memory for processes, demand paging (loading memory pages from the disk as and when required). Refer ...
+\item \textbf{System Calls}. XOS provides various system calls for the user processes to execute certain kernel level operations. Refer ...
+\end{itemize} 
 
 
-\subsection{Multiprogramming}
-The operating system allows multiple processes to be run on the machine and manages the system resources among these processes. 
-This process of simultaneous execution of multiple processes is known as \emph{multiprogramming}. Refer chapter~\ref{chp:multiprog} to know more about multiprogramming.
+\chapter{Memory Organization}
+\label{chp:memoryorg}
+\index{Memory Organization}
 
-\subsection{System Calls}
-A process needs resources like disk, memory etc while executing. The OS caters to these needs of the process by providing an interface  known as the \emph{system call interface}. Refer chapter~\ref{chp:file_system_calls} and chapter~\ref{chp:process_system_calls} to know more about system calls.
-
-%\section{Exception Handling}
-%Whenever the machine deviates from its normal execution, an exception occurs. To handle this exception, machine generates the 
-%interrupt corresponding to exception handling (\texttt{INT 7}). The exception handler restores the machine back to its normal state
-%and continues the execution of the other processes. Refer chapter~\ref{chp:exception} to know more about exception handling.
-
-
-\chapter{Memory}
-\label{chp:memory}
-\index{Memory}
-
-\section{Introduction} 
-\index{Memory!Structure}
-
+The operating system organizes memory as given below:
 \begin{figure}[htp!] \small
 	\centering
-	\begin{tabular}{|c|c|c|}
-		\textbf{Page no} & \textbf{Contents} & \textbf{Word addr} \\
-		0   & \hyperref[lbl:romcode]{ROM code} 		& 0 -- 255 \\ \hline 
-		1   & \hyperref[lbl:oscode]{OS Startup code} 	& 256 -- 511  \\ \hline 
+	\begin{tabular}{|c|c|c|c|}
+	\toprule
+		\textbf{Page No.} & \textbf{Contents} & \textbf{Word Address} & \textbf{$\#$ of words}\\
+	\toprule
+		0   & \hyperref[lbl:romcode]{ROM Code} 		& 0 -- 511 & 512\\ \hline 
+		1   & \hyperref[lbl:oscode]{OS Startup code} 	& 512 -- 1023 & 512 \\ \hline 
 		\multirow{5}{*}{2} 
-			& \hyperref[lbl:pgtbl]{Static Page Tables}   & 512 -- 559 \\ \cline{2-3} 
-			& \hyperref[lbl:memlst]{Memory Free List}  & 560 -- 623  \\ \cline{2-3}
-			& \hyperref[lbl:gft]{Global File Table}  & 624 -- 719 \\ \cline{2-3}
-			& \hyperref[lbl:rdylst]{Ready List} & 720 -- 731 \\ \cline{2-3}
-			& Unallocated & 732 -- 767 \\ \hline 
-		\multirow{2}{*}{3}
-			& \hyperref[lbl:proctbl]{Process Table} & 768 -- 959 \\ \cline{2-3}
-			& Unallocated & 960 -- 1023 \\ \hline 
-		4 & \multirow{2}{*}
-			{\hyperref[lbl:fat]{File Allocation Table}} & \multirow{2}{*}{1024 -- 1535} \\ \cline{1-1} 
-		5 & 				 &  \\ \hline 
-		6 & \multirow{2}{*}
-			{\hyperref[lbl:disklst]{Disk Free List}} & \multirow{2}{*}{1536 -- 2047}\\ \cline{1-1} 
-		7 & 				& \\ \hline 
-		8 & \multirow{3}{*}
-			{\hyperref[lbl:INITprocess]{INIT process}} & \multirow{3}{*}{2048 -- 2815} \\ \cline{1-1} 
-		9 & 				 &  \\ \cline{1-1} 
-		10 & 				 &  \\ \hline 
-		\multirow{3}{*}{11 -- 55}
-			&  \vdots & \\   
-			&  User Programs & 2816 -- 14335 \\  
-			& \vdots & \\ \hline 
-		56 & \hyperref[lbl:int]{INT 0} & 14336 -- 14591 \\ \hline 
-		57 & \hyperref[lbl:int]{INT 1} & 14592 -- 14848 \\ \hline 
-		\vdots & \vdots & \vdots \\ \hline 
-		63 & \hyperref[lbl:int]{INT 7} & 16128 -- 16383 \\  
-
+			& \hyperref[lbl:pgtbl]{Per-Process Page Tables}   & 1024 -- 1279 & 256\\ \cline{2-4} 
+			& \hyperref[lbl:memlst]{Memory Free List}  & 1280 -- 1343 & 64  \\ \cline{2-4}
+			& \hyperref[lbl:gft]{System-wide Open File Table}  & 1344 -- 1471 & 128 \\ \cline{2-4} 
+			& Unallocated & 1472 -- 1535 & 64\\ \hline 
+		3 & \multirow{2}{*}
+			{\hyperref[lbl:disklst]{Ready List of PCBs}} & \multirow{2}{*}{1536 -- 2559} & \multirow{2}{*}
+			{1024}\\ \cline{1-1} 
+		4 & 				&  & \\ \hline 
+		5 & \hyperref[lbl:fat]{File Allocation Table} & 2560 -- 3071 &  512 \\ 
+		\hline
+		6 & \hyperref[lbl:fat]{Disk Free List} & 3072 -- 3583 &  512 \\ 
+		\hline
+		7 & \hyperref[lbl:fat]{Page Fault Handler} & 3584 -- 4095 &  512 \\ 
+		\hline
+		8 & \hyperref[lbl:fat]{Timer Interrupt Routine} & 4096 -- 4607 &  512 \\ 
+		\hline
+		9 & \hyperref[lbl:fat]{Interrupt 1 Routine} & 4608 -- 5119 &  512 \\ 
+		\hline
+		10 & \hyperref[lbl:fat]{Interrupt 2 Routine} & 5120 -- 5631 &  512 \\ 
+		\hline
+		11 & \hyperref[lbl:fat]{Interrupt 3 Routine} & 5632 -- 6143 &  512 \\ 
+		\hline
+		12 & \hyperref[lbl:fat]{Interrupt 4 Routine} & 6144 -- 6655 &  512 \\ 
+		\hline
+		13 & \hyperref[lbl:fat]{Interrupt 5 Routine} & 6656 -- 7167 &  512 \\ 
+		\hline
+		14 & \hyperref[lbl:fat]{Interrupt 6 Routine} & 7168 -- 7679 &  512 \\ 
+		\hline
+		15 & \hyperref[lbl:fat]{Interrupt 7 Routine} & 7680 -- 8191 &  512 \\ 
+		\hline
+		16 &  &  &  512 $\times$ 48\\ 
+		\vdots & INIT and User Programs & 8192 -- 32767 &    = 24576 \\
+		63 &  &  & \\  
+		\hline
 	\end{tabular}
 	\caption{Outline of the main memory}
-	\label{1}
-	\index{Memory!Structure}
+	\index{Memory!Organization}
 \end{figure}
-
 \begin{itemize}
-	\item The basic unit of memory in the \ESIM architecture is a word. \index{Memory!Word}
-	\item The machine memory can be thought of as a linear sequence of words.
-	\item A collection of 256 contiguous words is known as a \emph{page}. \index{Memory!Page}
-	\item The total size of the memory is 64 pages or 16384 ($256 \times 64$) words.
-	\item Each word in the memory is identified by the \emph{word address} in the range 0 to $16383(256 \times 64 - 1)$. Similarly, each page in the memory is identified by the \emph{page number} \index{Memory!Page number} in the range 0 to 63.
+	\item \textbf{ROM Code}, Read Only Memory is hard coded assembly code which loads the opearting system startup code from the disk. Refer  ... 
+	\item \textbf{OS Startup code}, loads the INIT process to memory, data structures like FAT and Disk Free List, and Interrupt Routines from the disk. Refer ...
+	\item \textbf{Per-Process Page Tables}, used for address translation of logical addresses to physical address. Refer ...
+	\item \textbf{Memory Free List}, is a list of free memory locations in the memory. Refer ...
+	\item \textbf{System-wide Open File Table}, contains a details of files which are opened by the processes. Refer ...
+	\item \textbf{Ready List of PCBs}, is a list of Process Control Blocks (Refer ...), which indicates the ready and terminated processes. Refer ...
+	\item \textbf{File Allocation Table}, contains details about files stored on the disk, Refer ...
+	\item \textbf{Disk Free List}, contains details about used and used blocks in the disk, Refer ...
+	\item \textbf{Page Fault Handler}, contains the kernel code to be executed during a page fault exception
+	\item \textbf{Timer Interrupt Routine}, contains the kernel code to be executed during a timer interrupt. Refer ... 
+	
+	\item \textbf{Interrupt Routines}, contains kernel code to be executed during interrupts (1 to 7). Refer ...
+	\item \textbf{INIT and User Programs}, is the memory space allocated for user programs in execution.
 \end{itemize}
 
-\begin{example}
-	The $256^{th}$ word of the memory has a word address 255 and belongs to page 0. In general, the $n^{th}$ word has the word address $(n-1)$, where  $1 \le n \le 16384$ and belongs to the page $\lfloor \frac{n-1}{256} \rfloor$. Refer figure~\ref{fig:mem_struct}. 
-\end{example}
+\chapter{OS Startup}
+\label{chp:osstartup}
 
-\begin{figure}[htp!] \small
+
+
+\section{ROM Code}
+\label{lbl:romcode}
+It is a hard coded assembly level code present in page 0 of the memory. It is known as the ROM (Read Only Memory) code because in an actual machine it is burnt in the hardware. When the machine boots up, this code is executed. This code has the basic functionality of loading block 0 of the disk (containing the OS startup code) into page 1 of the memory and to set the \texttt{IP} register value to 512 and start execution.
+
+
+\section{\texttt{INIT} Process}
+\index{\texttt{INIT} Process}
+\label{lbl:INITprocess}
+The Operating System starts execution with only a single user program - the \texttt{INIT} process. The \texttt{INIT} process code resides in the disk blocks 13 -- 15 . During execution of the \texttt{INIT} process, 3 pages will be used for the code, and the 4th page of the logical address space will be used as the stack. The OS Startup Code is responsible for loading the \texttt{INIT} process into memory and starting its execution.
+
+
+\section{OS Startup Code}
+\index{OS Startup Code}
+\label{lbl:oscode}
+When the machine boots up, the \textit{ROM} code loads the \textit{OS startup code} into the  memory. The OS startup code (instructions in page 1 of the memory) starts execution in the \textit{Kernel mode}. It performs the following functions.
+\begin{itemize}
+	\item It loads the Page Fault Exception Handler and Interrupt Service Routines from the blocks 1--9 of the disk into pages 7--15 of the memory.
+	\item It loads the FAT from the block 10 of the disk into page 5 of the memory.
+	\item It loads the Disk Free List from the block 11 of the disk into page 6 of the memory.
+	\item It generates the Memory Free List and stores it in words 256--319 of page 2 of the memory.
+	\item It loads the \texttt{INIT} process code from the hard disk into the memory by performing the following steps:
+	\begin{itemize}
+		\item Sets the page table of the \texttt{INIT} process with disk address pointing to the code of the \texttt{INIT} process. (Refer ...)		
+		\item Update the ready list and \texttt{PID} register.
+		\item Set the required page table entries.
+		\item Set the values of SP, BP and \texttt{IP} with values 1536 , 1536 and 0 respectively.
+	\end{itemize}
+	\item Switch from \textit{Kernel mode} to \textit{User mode}.\footnote{This can be achieved by  \texttt{IRET} instruction.}
+\end{itemize}
+
+\textbf{Note}: All addresses are absolute addresses in Kernel mode. 
+
+Once the OS Startup is completed, the page in which the OS Startup Code resides in memory (Page 1) is used for loading files from the disk.
+
+
+\chapter{Process Management}
+\label{chp:process}
+\index{Process}
+
+\section{Introduction}
+Any program in its execution is called a \textbf{process}. Processes will be loaded into memory before they start their execution. Each process occupies \textbf{atmost 4 pages} of the memory. The processor generates logical addresses with respect to a process during execution, which is translated to the physical address. This translation is done by the machine using page tables, Refer ... \\ 
+
+The XSM architecture supports demand paging doesn't fix the number of processes that can be run on it. However XOS has limited the number of process running simultaneously to 32, due to limitiations in number of PCBs in the Ready List (Refer ...) and the number of Per-Process Page Tables (Refer ...)\\
+
+
+
+
+\section{Process Structure}
+\index{Process!Structure}
+A process in the memory has the following structure.
+\begin{itemize}
+	\item \textbf{Code Area :} \index{Process!Code Area} These are pages of the memory that contain the executable code loaded from the disk. 
+	\item \textbf{Stack :} This is the user stack used for program execution. The variables and data used during execution of program is stored in the stack. It grows in the direction of increasing word address.
+\end{itemize}
+
+Figure~\ref{fig:process structure} shows the process structure. \\
+
+\begin{figure}[htp!] 
 	\centering
-	\begin{tabular}{c|c|c|} 
-		\multicolumn{3}{c}{} \\
-		\textbf{Word address} &  & \textbf{Page no.} \\ \cline{2-3}
-		0 & $1^{st}$ word & \multirow{4}{*}{$0$} \\ \cline{2-2}
-		1 & $2^{nd}$ word &  \\ \cline{2-2}
-		\vdots & \vdots & \\ \cline{2-2}
-		255 & $256^{th}$ word &  \\ \cline{2-3}
-	
-		\vdots & \vdots & \multirow{2}{*}{$\lfloor \frac{i}{256} \rfloor $} \\ \cline{2-2}
-		$i$ & $(i+1)^{th} $ word &  \\ \cline{2-2}
-		\vdots &\vdots &  \\ \cline{2-3}
-	
-		\vdots & \vdots & \multirow{2}{*}{$63$} \\ \cline{2-2}
-		\vdots &\vdots &  \\ \cline{2-2}
-		$256 \times 64 - 1$ & $(256 \times 64)^{th} $ word &  \\ \cline{2-3}
+	\begin{tabular}{|c|} 
+		\textbf{Contents}    \\ \cline{1-1}
+		\multirow{2}{*}{Code} \\
+				       \\ \cline{1-1}
+		\noalign{\smash{\llap{\lower2pt\hbox{\tt BP$\longrightarrow$}}}}
+		 \\
+	  \\
+		\noalign{\smash{\llap{\raise2pt\hbox{\tt $\bigg \downarrow$ }}}}
+		Stack  \\ \cline{1-1}
+		\noalign{\smash{\llap{\lower2pt\hbox{\tt SP$\longrightarrow$}}}}
 	\end{tabular}
-	\caption{Illustration of memory addressing}
-	\label{fig:mem_struct}
+	\caption{Logical Address Space of a Process}
+	\label{fig:process structure}
 \end{figure}
+
+
+
+
+\section{Process Control Block (PCB)}
+\label{sec:pcb}
+\index{Process Data Structures!Process Control Block}
+It contains data pertaining to the current state of the process. The size of the PCB is \textbf{32 words}. Refer figure~\ref{fig:PCB}.\\
+
+
+	\begin{figure}[htp!]
+		\centering
+		\begin{tabular}{|c|c|c|c|c|c|c|c|c|c|}
+			\hline
+			0 & 1 & 2 & 3 & 4 & 5 & 6 & 7 -- 14 & 15 - 30 &  31 \\
+			\hline
+			STATE & PID & BP & SP & IP & PTBR & PTLR & R0 -- R7 & Per-Process & Free\\ & & & & & & & & Open File Table &   \\
+			\hline
+		\end{tabular}
+		\caption{Structure of Process Control Block}
+		
+	\end{figure}
+
+
+	 \subsection{Process State} 
+	 The process state corresponding to a process, indicated by \texttt{STATE} in the PCB stores the state of that process in the memory. A process can be in one of the following states. 
+	\begin{itemize}
+		\item \textbf{0} for \textit{terminated}, i.e. process has completed execution
+		\item \textbf{1} for \textit{ready}, i.e. process is waiting for the CPU to start execution.
+		\item \textbf{2} for \textit{running}, i.e. the process is currently running in the CPU
+	\end{itemize}
+	
+	  \subsection{Registers} (\texttt{PID}, \texttt{SP}, \texttt{BP}, \texttt{IP}, \texttt{PTBR}, \texttt{PTLR}, \texttt{R0} -- \texttt{R7}) \\ 
+\begin{itemize}
+	\item Every process is allotted a unique integer identifier 0 -- 32, known as the PID (Process Identifier) which is stored in the PID register. This register can be used as an operand in any instruction only when executing in the kernel mode. (Refer section~\ref{sec:modes})
+	
+	\index{Registers!PID}
+	\item The word address of the currently executing instruction is stored in the IP (Instruction Pointer) register. This register can be used as an operand in any instruction only when executing in the kernel mode.
+	\index{Registers!IP}
+	\item The base address of the user stack is stored in the BP (Base Pointer) register. \index{Registers!BP}
+	\item The address of the stack top is stored in the SP (Stack Pointer) register. \index{Registers!SP}
+	\item The physical address of the Per-Process Page Table of the process is stored in the PTBR (Page Table Base Register). Refer ...\index{Registers!PTBR}
+	\item The length of the Per-Process Page Table (No. of entries) is stored in the PTLR (Page Table Length Register). It is fixed as \textbf{4} for every process in XOS. Refer ... \index{Registers!PTLR}
+	
+\end{itemize}
+Each process has its own set of values for the various registers. Words  1 -- 6 in the PCB stores the values of the registers associated with the process .
+	
+\subsection{Per-Process Open File Table} 
+	 
+	  The Per-Process Open File Table contains details of files opened by the corresponding process. Every entry in this table occupies 2 words. A maximum of 8 files can be opened by a process at a time, i.e. upto 8 entries in the PCB. It is stored in the PCB from words 15 to 31. Its structure is given below
+
+
+		\begin{figure}[htp!]
+		\centering
+		\begin{tabular}{|c|c|}
+			\textit{1 word} & \textit{1 word} \\
+			\hline
+			Pointer to system-wide & \texttt{LSEEK} position\\ open file table entry &  \\
+			\hline
+		\end{tabular}
+		\caption{Structure of Process Control Block}
+	\end{figure}
+\begin{itemize}
+\item
+The OS maintains a system wide open file table which contains details of all the files that are opened by processes (Refer ...). The entry in the Per-Process File Table points to the System-wide Open File Table entry corresponding to the file. 
+\item It also stores the \texttt{LSEEK} position for the file, which indicates the word in the file to which the process currently points to for read/write opeartions. 
+\end{itemize}
+
+
+
+
+\section{Ready List}
+\index{Process!Ready List}
+\label{lbl:rdylst}
+
+The list of PCBs stored in the memory is used as a Ready List by the operating system to schedule processes to CPU. The \texttt{STATE} in the PCB indicates whether a process is ready for execution or not.  A new process in memory is scheduled for execution by circularly traversing through the list of PCBs stored in memory and selecting the first Ready process after the PCB of the currently running process in the list.\\
+
+A maximum of 32 PCBs can be stored in the memory, and hence the maximum number of processes that can be run simultaneously is limited to 32. The PCB list is stored in pages 3 and 4 in the memory (words 1536 -- 2559)
+
+\section{The Per-Process Page Tables}
+\label{lbl:pgtbl}
+\index{Process!Page Table}
+Every process in XOS has a Per-Process Page Table. A total of 32 PCBs and 32 Page Tables in total are available, which limits the number of processes that can be run to 32. \\
+
+The Per-Process Page Table stores the physical page number corresponding to the logical page number of a process. The logical page number can vary from 0 to 4 for each process.  Therefore, each process has 4 entries in the page table. Per-Process Page Tables are stored in Page 2, words 1024 -- 1279 in the memory (256 words = 32 processes $\times$ 4 pages )\\
+
+When a process is loaded only the disk addresses of the program are stored, and by demand paging (Refer ...) pages are loaded/allocated for the process.	 Once all pages are loaded, each entry contains the page number where the data specified by the logical address resides in the memory and auxilary information which includes \textit{valid/invalid bit}, \textit{dirty bit} etc. Refer ....
+
+		\begin{figure}[htp!]
+		\centering
+		\begin{tabular}{|c|c|}
+		\hline
+		  	 	& 			\\ 
+		 	Physical Address & Auxiliary Information  \\
+			 	& 			\\  \hline
+		\end{tabular}
+		\caption{Structure of Page Table Entry}
+	\end{figure}
+
+\section{Running a process}
+
+Any program that the user wishes to execute is loaded into the memory in the following way. \texttt{INIT} process will return a filename to the OS corresponding to the program to be executed.
+
+\begin{itemize}
+	\item The OS searches the memory copy of \texttt{FAT} for the address of the basic block. The basic block is loaded into Page 1 of the memory ( earlier used for OS Startup)
+	\item A Per-Process Page Table and  PCB is initialized for the process with the first available PID by searching through the ready list for a PCB with \texttt{STATE} 0, i.e. \textit{terminated} process. \texttt{PTBR} is loaded with the physical address of Per-Process Page Table and \texttt{PLTR} is set to 4.
+	\item The Per-Process Page Table of the process is loaded with the disk addresses of the data blocks and the \textit{valid/invalid} bit is set to 0(invalid). The remaining entries are loaded with value 0, and \textit{valid/invalid} bit is set to 0(invalid). 
+	\item The index, \textit{i} of first 0 entry in the Per-Process Page Table is used to calculate \texttt{BP} and \texttt{SP} as \textit{i} $\times$ 512\textit{IP} is set to 0. 
+	\item The Per-Process Open File table in the PCB is filled with 0 entries initially.
+	\item The process begins execution and pages are loaded as and when necessary upon page fault. (Refer ...)
+	\item Once a process finishes its execution, the entry corresponding to its \texttt{STATE} in its PCB is set to 0.
+
+\end{itemize}
+
+\section{Multiprogramming}
+	
+The operating system allows multiple processes to be run on the machine and manages the system resources among these processes. This process of simultaneous execution of multiple processes is known as \emph{multiprogramming}.  \\
+
+To support multiprogramming in the system, the kernel makes use of the \emph{scheduler} which is present in the Timer Interrupt Service Routine in Page 8 of the memory.
+
+\subsection{Scheduler}
+\label{chp:scheduler}
+\index{Scheduler}
+Whenever a timer interrupt occurs, the kernel temporarily halts the execution of the currently executing process and invokes the Timer Interrupt Service Routine.
+
+Following are functionalities of the scheduler:
+\begin{itemize}
+	\item The process switches from \textit{User mode} to \textit{Kernel mode} when an interrupt occurs.
+	\item If a process is currently running, the scheduler saves the values of all the registers into the corresponding fields in the PCB of that process.
+	\item The Ready List of PCBs is traversed from the current process' PCB in a circular fashion to get a (other than the INIT process' PCB \footnote{This can be accomplished by setting the PID of INIT process as 0 and searching  the Ready List only from word 32 in page 3}) with \texttt{STATE} value 1 (\textit{ready}). The \texttt{STATE} is set to 2 (\textit{running}) and the \textit{PID} of the process is returned.
+	\item If one such process is found, the \texttt{PID} is updated with the \texttt{PID} of this entry in the PCB. If no such process is found, then the \texttt{PID} is set 0 (\texttt{PID} of \texttt{INIT} process). Then all the registers of the machine are initialised with their corresponding values obtained from the \texttt{PCB} of the process specified by this PID.
+	
+	\item The process switches from \textit{Kernel mode} to \textit{User mode}.
+\end{itemize}
+
+\chapter{Memory Management}
+\section{Introduction}
 
 \section{Page Table}
 \index{Page Table}
 
-Before explaining the page table, we explain two well known terms:
-\begin{itemize}
-	\item \textbf{Logical address :} It is the CPU generated address of the data. 
-	\item \textbf{Physical address :} It is the exact location of the data in the main memory.
-\end{itemize}
-
-\begin{figure}[h!]
-	\centering
-	\includegraphics[scale=0.55]{pics/paging}
-	\caption{Paging model of the \ESIM architecture}
-	\label{fig:paging}
-	\index{Page Table!Paging Model}
-\end{figure}
 
 Refer ``Memory management strategies" in the book \cite{galvin} to know more about paging. 
 
@@ -248,254 +420,14 @@ The entire structure of memory is outlined in figure~\ref{fig:main memory}.
 \end{itemize}
 
 
-\chapter{Process}
-\label{chp:process}
-\index{Process}
 
-\section{Introduction}
-\begin{defn}
-	\textbf{Process :} Any program written by the user is run as a process by the kernel. 
-\end{defn}
-\begin{itemize}
-	\item The {\ESIM} architecture supports a maximum of 12 processes to be run at a time.
-	\item Each process occupies 4 pages of the memory.
-\end{itemize}
 
-\section{Process Structure}
-\index{Process!Structure}
-A process in the memory has the following structure.
-\begin{itemize}
-	\item \textbf{Code Area :} \index{Process!Code Area} These are pages of the memory that contain the actual code to be run on the machine. It occupies 2 pages of the memory. 
-	\item \textbf{Data Area :} \index{Process!Data Area} This section consists of string data that is used in the code which cannot be stored in a register. It occupies 1 page of the memory.
-	\item \textbf{Stack :} This is the user stack used in program execution. It is used to pass arguments during function calls, storing activation record of a function etc.  It occupies 1 page of the memory and grows in the direction of increasing word address.
-\end{itemize}
+%\section{Exception Handling}
+%Whenever the machine deviates from its normal execution, an exception occurs. To handle this exception, machine generates the 
+%interrupt corresponding to exception handling (\texttt{INT 7}). The exception handler restores the machine back to its normal state
+%and continues the execution of the other processes. Refer chapter~\ref{chp:exception} to know more about exception handling.
 
-Figure~\ref{fig:process structure} shows the process structure. \\
 
-\begin{figure}[htp!] 
-	\centering
-	\begin{tabular}{|c|c} 
-		\textbf{Contents}     & \textbf{Pg no:} \\ \cline{1-1}
-		\multirow{2}{*}{Code} & $0$ \\
-				      & $1$ \\ \cline{1-1}
-		Data & 2 \\ \cline{1-1}
-		\noalign{\smash{\llap{\lower2pt\hbox{\tt BP$\longrightarrow$}}}}
-		&  \\
-		&  \\
-		\noalign{\smash{\llap{\raise2pt\hbox{\tt $\bigg \downarrow$ }}}}
-		Stack & 3 \\ \cline{1-1}
-		\noalign{\smash{\llap{\lower2pt\hbox{\tt SP$\longrightarrow$}}}}
-	\end{tabular}
-	\caption{Process Structure in memory. Arrow shows the direction of stack growth}
-	\label{fig:process structure}
-\end{figure}
-
-\section{Registers Associated with a Process}
-\label{register details}
-\begin{itemize}
-	\item Every process is allotted a unique integer identifier in the range 0 to 11, known as the PID (Process Identifier) which is stored in the PID register. This register can be used as an operand in any instruction only when executing in the kernel mode. (Refer section~\ref{sec:modes} to know about the modes of operation)
-	\index{Registers!PID}
-	\item The word address of the currently executing instruction is stored in the IP (Instruction Pointer) register. This register can be used as an operand in any instruction only when executing in the kernel mode.
-	\index{Registers!IP}
-	\item The base address of the user stack is stored in the BP (Base Pointer) register. \index{Registers!BP}
-	\item The address of the stack top is stored in the SP (Stack Pointer) register. \index{Registers!SP}
-\end{itemize}
-Each process has its own set of values for the various registers.
-
-\section{Data Structures Associated with a Process}
-\index{Process Data Structures}
-
-The following are the various data structures associated with a process. They are explained in the following subsections.
-
-\subsection{Ready List}
-\index{Process!Ready List}
-\label{lbl:rdylst}
-The \textit{ready list :} is the data structure that maintains a circular list of all the active processes. Each entry of the ready list contains a value of either 1 or 0 indicating whether the corresponding process in the memory is present in the list or not.
-
-\subsection{Process Control Block (PCB)}
-\label{sec:pcb}
-\index{Process Data Structures!Process Control Block}
-It contains data pertaining to the current state of the process. Refer figure~\ref{fig:PCB}.\\
-
-\newcommand{\pcb}[1]{
-	\begin{figure}[htp!]
-		\centering
-		\begin{tabular}{|c|c|c|c|c|c|}
-			\hline
-			0 & 1 & 2 & 3 & 4--11 & 12--15 \\
-			\hline
-			PID & BP & SP & IP & R0 -- R7 & Local File Table \\
-			\hline
-		\end{tabular}
-		\caption{Structure of Process Control Block}
-		\label{#1}
-	\end{figure}
-	}
-
-\pcb{fig:PCB}
-
-Note that the size of each PCB (Process Control Block) is 16 words. 
-
-\subsection{The Page Table}
-\label{lbl:pgtbl}
-\index{Process!Page Table}
-The \emph{page table} stores the exact location in the memory of the data related to a process.
-\begin{itemize}
-	\item Each process has 4 entries in the page table.
-	\begin{itemize}
-		\item The zeroth entry corresponds to the first page of code area.
-		\item The first entry corresponds to the second page of code area.
-		\item The third entry corresponds to the data area.
-		\item The fourth entry corresponds to the stack.
-	\end{itemize}
-	\item Each entry contains the page number where the data specified by the logical address resides in the memory. Refer figure~\ref{fig:paging}.
-\end{itemize}
-
-\section{Storage Details of the Data Structures}
-	The data structures used by the processes are stored statically in the memory. Their storage details are as follows.\\
-
-\begin{figure}[htp!]
-	\centering
-	\subfigure[Main Memory]{
-	\renewcommand{\arraystretch}{1.2}
-	\scalebox{0.85}{
-	\begin{tabular}{r|c|} \small
-		\textbf{Pg no.} & \textbf{Contents} \\ \cline{2-2}
-		0   &  \\ \cline{2-2}
-		1   &  \\ \cmidrule{2-2}
-		\multirow{4}{*}{2}
-			& \cellcolor{gray!70} Static Page Tables   \\ \cline{2-2}
-			& Memory Free List     \\ \cline{2-2}
-			& Global File Table    \\ \cmidrule{2-2}
-			& \cellcolor{cyan!70} Ready List  \\ \cline{2-2}
-		3   & \cellcolor{orange!70} Process Table  \\ \cline{2-2}
-		    & \vdots \\ \cline{2-2}
-		7  &  \\ \cline{2-2}
-		\multirow{3}{*}{8 -- 55}
-			&  \vdots  \\
-			&  User Programs \\
-			& \vdots  \\ \cline{2-2}
-			&  \\ \cline{2-2}
-		56 -- 63 & INT 0 -- 7  \\ \cline{2-2}
-		& \vdots   \\ \cline{2-2}
-	\end{tabular}}} \\
-
-	\subfigure[Structure of Page Table]{
-	\renewcommand{\arraystretch}{1.2}
-	\scalebox{0.7}{
-	\begin{tabular}{|>{\columncolor[gray]{.8}}c|m{1cm}} \small
-		Word Address & Process  \\
-		0 & \multirow{4}{*}{$0$}  \\
-		1 &  \\
-		2 &  \\
-		3 &  \\ \cmidrule{1-1}
-		\vdots &  \\ \cmidrule{1-1}
-		$4i$ & \multirow{4}{*}{$i$}  \\ \cline{1-1}
-		$4i+1$ &  \\
-		$4i+2$ &  \\
-		$4i+3$ &  \\ \cmidrule{1-1}
-		\vdots &  \\ \cmidrule{1-1}
-		$44$ & \multirow{4}{*}{$11$}  \\
-		$45$ &  \\
-		$46$ &  \\
-		$47$ &  \\
-	\end{tabular}}} \qquad \qquad
-	\subfigure[Structure of Ready List]{
-	\renewcommand{\arraystretch}{1.2}
-	\scalebox{0.7}{
-	\begin{tabular}{|>{\columncolor{cyan}}c|m{1cm}} \small
-		Word Address & Process  \\
-		0 & $0$ \\
-		1 & $1$ \\
-		2 & $2$ \\
-		\vdots &  \\
-		10 & $10$ \\
-		11 & $11$ \\
-	\end{tabular}}} \qquad \qquad
-	\subfigure[Structure of Process Table]{
-	\renewcommand{\arraystretch}{1.2}
-	\scalebox{0.7}{
-	\begin{tabular}{|>{\columncolor[rgb]{1,0.5,.1}}c|m{1cm}} \small
-		Word Address & Process  \\
-		0 & \multirow{4}{*}{$0$}  \\
-		1 &  \\
-		\vdots &  \\
-		15 &  \\ \cmidrule{1-1}
-		\vdots &  \\ \cmidrule{1-1}
-		$16i$ & \multirow{4}{*}{$i$}  \\
-		$16i+1$ &  \\
-		$16i+2$ &  \\
-		\vdots & \\
-		$16i+15$ &  \\ \cmidrule{1-1}
-		\vdots &  \\ \cmidrule{1-1}
-		$176$ & \multirow{4}{*}{$11$}  \\
-		$177$ &  \\
-		\vdots &  \\
-		$191$ &  \\
-	\end{tabular}}} \\
-	\caption{Data Structures associated with a process}
-	\label{fig:ds with process}
-\end{figure}
-
-\subsection{Ready List}
-\begin{itemize}
-	\item The ready list is located in words 209--220 of page 2 of the memory (refer fig~\ref{fig:main memory}).
-	\item The size of each ready list entry is one word.
-	\item There are a total of 12 processes, thus accounting for the 12 words (12 $\times$ 1 word).
-	\item All active processes have an entry 1 in the ready list corresponding to the location indexed by their respective PIDs.
-\end{itemize}
-
-\subsection{Page Tables}
-\begin{itemize}
-	\item The page tables of the 12 processes are stored in the first 48 words of page 2 of the memory. Refer figure~\ref{fig:main memory}.
-	\item The size of each page table is 4 words ( 4(= no. of entries) $\times$ 1(= size of an entry)= 4 words).
-	\item There are a total of 12 processes, thus accounting for the 48 words( 12 $\times$ 4 words).
-	\item The page tables are indexed by multiplying the PID of a process by the size of a page table to get the starting word address of the page table of that process.  The indexing mechanism is illustrated in figure~\ref{fig:ds with process}.
-\end{itemize}
-
-\subsection{Process Table}
-\index{Process!Process Table}
-\label{lbl:proctbl}
-\begin{itemize}
-	\item The page 3 of the memory contains the process table. Refer figure~\ref{fig:main memory}.
-	\item The process table contains the PCB of each of the 12 processes (Each entry occupies 16 words).
-	\item There are a total of 12 processes, thus accounting for the 192 words (12 $\times$ 16 words).
-	\item The process table is indexed by multiplying the PID of a process by the size of a PCB to get the starting word address of the PCB of that process. The indexing mechanism is illustrated in figure~\ref{fig:ds with process}.
-\end{itemize}
-
-\chapter{OS Startup}
-\label{chp:osstartup}
-
-\section{ROM Code}
-\label{lbl:romcode}
-It is a hard coded assembly level code present in page 0 of the memory. Refer figure~\ref{fig:main memory}.
-It is also known as the ROM (Read Only Memory) code since in an actual machine it is burnt in the hardware. When the machine boots up, this code is executed. This code has the basic functionality of loading block 0 of the disk (containing the OS startup code) into page 1 of the memory and to set the IP register value to 256 and start execution.
-
-\section{OS Startup Code Specification}
-\index{OS Startup Code}
-\label{lbl:oscode}
-When the machine boots up, the \textit{Bootloader} code loads the \textit{OS startup code} into the main memory. The OS startup code (instructions in page 1, see fig~\ref{fig:main memory}) starts execution in the \textit{Kernel mode}. It performs the following functions.
-\begin{itemize}
-	\item It loads the Interrupt Service Routines from the blocks 1--8 of the hard disk into pages 56--63 of the memory.
-	\item It loads the FAT from blocks 11 and 12 of the hard disk into pages 4 and 5 of the memory.
-	\item It loads the disk free list from Blocks 9 and 10 into pages 6 and 7 of the memory.
-	\item It generates the memory free list and stores it in words 48--111 of page 2 of the memory.
-	\item It loads the INIT process from the hard disk into the memory by performing the following steps:
-	\begin{itemize}
-		\item Load the INIT process from blocks 14--16 of the hard disk to pages 8--10 of memory. Page 11 is allocated as the user stack.
-		\item Update the memory free list.
-		\item Update the ready list and PID register.
-		\item Set the required page table entries.
-		\item Set the values of SP, BP and IP with values 768, 768 and 0 respectively.
-	\end{itemize}
-	\item Switch from \textit{Kernel mode} to \textit{User mode}.\footnote{This can be achieved by calling IRET.}
-\end{itemize}
-
-Note: All addresses are absolute addresses in Kernel mode. 
-\section{INIT Process}
-\index{INIT Process}
-\label{lbl:INITprocess}
-The Operating System currently supports execution of only a single user program - the INIT process. Testing of the OS startup code can be done by loading the required user program as the INIT process. Modification to INIT will be done later.
 
 \chapter{Halt System Call}
 \label{chp:halt_system_calls}
