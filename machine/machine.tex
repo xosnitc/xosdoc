@@ -131,7 +131,8 @@ Address translation is the process of obtaining the physical address from the lo
 ). The number of entries in the page table is stored in \textbf{PTLR} (Page Table Length Register). Each entry of the page table is two words long.
 \begin{itemize}
  \item[--] First word contains physical page number corresponding to a logical page number.
- \item[--] The second word indicates if the entry is valid or invalid. A string starting with \textbf{1} indicates a valid page table entry. 
+ \item[--] The second word can be used as flags. The first two positions in this word is used as \textit{valid/invalid bit} (if the entry is a valid physical memory location or not) and \textit{reference bit} (its set to 1 every time a page is accessed) respectively.
+ 	
 \end{itemize}
 The logical page number is used to index the page table to get the corresponding physical page number.
 

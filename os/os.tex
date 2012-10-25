@@ -1,5 +1,5 @@
 
-\documentclass[11pt]{report}
+\documentclass[10pt]{report}
 
 
 \usepackage[pdftex]{graphicx}
@@ -283,20 +283,22 @@ A maximum of 32 PCBs can be stored in the memory, and hence the maximum number o
 \index{Process!Page Table}
 Every process in XOS has a Per-Process Page Table. A total of 32 PCBs and 32 Page Tables in total are available, which limits the number of processes that can be run to 32. \\
 
-The Per-Process Page Table stores the physical page number corresponding to the logical page number of a process. The logical page number can vary from 0 to 4 for each process.  Therefore, each process has 4 entries in the page table. Per-Process Page Tables are stored in Page 2, words 1024 -- 1279 in the memory (256 words = 32 processes $\times$ 4 pages )\\
-
-When a process is loaded only the disk addresses of the program are stored, and by demand paging (Refer ...) pages are loaded/allocated for the process.	 Once all pages are loaded, each entry contains the page number where the data specified by the logical address resides in the memory and auxilary information which includes \textit{valid/invalid bit}, \textit{dirty bit} etc. Refer ....
-
 		\begin{figure}[htp!]
 		\centering
 		\begin{tabular}{|c|c|}
 		\hline
 		  	 	& 			\\ 
-		 	Physical Address & Auxiliary Information  \\
+		 	Physical Page Number & Auxiliary Information  \\
 			 	& 			\\  \hline
 		\end{tabular}
-		\caption{Structure of Page Table Entry}
+		\caption{Structure of a valid Page Table Entry}
 	\end{figure}
+
+
+The Per-Process Page Table stores the physical page number corresponding to the logical page number of a process. The logical page number can vary from 0 to 4 for each process.  Therefore, each process has 4 entries in the page table. Per-Process Page Tables are stored in Page 2, words 1024 -- 1279 in the memory (256 words = 32 processes $\times$ 4 pages )\\
+
+When a process is loaded only the disk addresses of the program are stored, and by demand paging (Refer ...) pages are loaded/allocated for the process.	 Once all pages are loaded, each entry contains the page number where the data specified by the logical address resides in the memory and auxilary information which includes \textit{valid/invalid bit}, \textit{reference bit} etc. Refer ....
+
 
 \section{Running a process}
 
@@ -305,8 +307,8 @@ Any program that the user wishes to execute is loaded into the memory in the fol
 \begin{itemize}
 	\item The OS searches the memory copy of \texttt{FAT} for the address of the basic block. The basic block is loaded into Page 1 of the memory ( earlier used for OS Startup)
 	\item A Per-Process Page Table and  PCB is initialized for the process with the first available PID by searching through the ready list for a PCB with \texttt{STATE} 0, i.e. \textit{terminated} process. \texttt{PTBR} is loaded with the physical address of Per-Process Page Table and \texttt{PLTR} is set to 4.
-	\item The Per-Process Page Table of the process is loaded with the disk addresses of the data blocks and the \textit{valid/invalid} bit is set to 0(invalid). The remaining entries are loaded with value 0, and \textit{valid/invalid} bit is set to 0(invalid). 
-	\item The index, \textit{i} of first 0 entry in the Per-Process Page Table is used to calculate \texttt{BP} and \texttt{SP} as \textit{i} $\times$ 512\textit{IP} is set to 0. 
+	\item The Per-Process Page Table of the process is loaded with the disk addresses of the data blocks and the auxilary information is set as `00'  (invalid and not referenced). The remaining entries are loaded with value 0, and auxilary information is set as `00'. 
+	\item The index, \textit{i} of first 0 entry in the Per-Process Page Table is used to calculate \texttt{BP} and \texttt{SP} as \textit{i} $\times$ 512. \texttt{IP} is set to 0. 
 	\item The Per-Process Open File table in the PCB is filled with 0 entries initially.
 	\item The process begins execution and pages are loaded as and when necessary upon page fault. (Refer ...)
 	\item Once a process finishes its execution, the entry corresponding to its \texttt{STATE} in its PCB is set to 0.
@@ -337,88 +339,96 @@ Following are functionalities of the scheduler:
 \chapter{Memory Management}
 \section{Introduction}
 
-\section{Page Table}
-\index{Page Table}
+XSM uses a paging mechanism for address translation (Refer ...). XOS supports virtual memory, i.e. it supports execution of processes that are not completely in memory. It follows pure demand paging strategy for memory management. Pages are allocated as and when required during execution. 
 
+\section{Paging}
+\index{Page }
 
-Refer ``Memory management strategies" in the book \cite{galvin} to know more about paging. 
+Paging is the memory management scheme that permits the physical address space of a process to be non-contiguous. Each process has its own page table (Refer ...), which is used for paging. 
 
-The page table contains information relating to the actual location in the memory, i.e., the physical address, of the data specified by the logical address. Each entry of a page table contains the page number in the memory where the data specified by the logical address resides. Refer figure~\ref{fig:paging}.
+ The Per-Process Page Table contains information relating to the actual location in the memory. Each valid entry of a page table contains the page number in the memory where the data specified by the logical address resides. The address of Page Table of the currently executing process is stored in \texttt{PTBR} and length of the page table is set to 4 in \texttt{PTLR} of the machine. The structure of an entry in the page table is given below.
 
+		\begin{figure}[htp!]
+		\centering
+		\begin{tabular}{|c|c|}
+		\hline
+		  	 	& 			\\ 
+		 	Physical Page Number & Auxiliary Information  \\
+			 	& 			\\  \hline
+		\end{tabular}
+		\caption{Structure of Page Table Entry}
+	\end{figure}
 
-\section{Address Translation} 
-\index{Address Translation}
-It is the process of obtaining the physical address from the logical address. It is done by the machine in the following way. Refer book~\cite{Bach} for more details.
+\begin{itemize}
+	\item \textit{Physical Page Number}: The logical page numbers generated by the CPU for a process can be in the range 0 to 3. The actual location of these logical pages are given by the physical page number. Address translation is done by the machine (Refer ...)
+	
+	\item \textit{Auxilary Information}: The 2nd word for the entry contains auxilary information, which are a sequence of flags. The strucure of auxilary information is given below
+			\begin{figure}[htp!]
+		\centering
+		\begin{tabular}{|c|c|c|c|c|}
+		0 & 1 & 2 & \ldots & 15 \\
+		\hline
+		\texttt{VI} & \texttt{R} & \textbackslash 0 & \ldots &  \textbackslash 0 \\
+		\hline
+		\end{tabular}
+		\end{figure}
+	
+		\begin{itemize}
+			\item \textit{Valid/Invalid Bit} (\texttt{VI}): is a value 1 or 0 for valid and invalid respectively. It is valid if and only if the entry is a physical memory location. It is invalid if either the entry points to location on the disk or if its not in the logical address space of the process.
+			\item \textit{Reference Bit} (\texttt{R}): This bit is set to 1 by the machine every time a page is accesed. This bit is used for page replacement (Refer ...) by the OS. 
+		\end{itemize}
 
-\begin{enumerate}
-	\item The logical address generated by the CPU is divided by the page size (256) to get the \emph{logical page number}.
-	\item The remainder got after performing the above division gives the \emph{offset} within that page.
-	\item The \emph{logical page number} is then used to index the page table to get the corresponding \emph{physical page number} in the memory.
-	\item The \emph{offset} got in step 2 is then used to refer to the word in the physical page containing the data.\\
-\end{enumerate}
-
-\begin{figure}[h!]
-	\centering
-	\includegraphics[scale=0.55]{pics/paging_example}
-	\caption{Diagram illustrating address translation}
-	\label{fig:paging_example}
-\end{figure}
-
-\begin{example}
-	Consider the scenario in figure~\ref{fig:paging_example}. Here the logical address generated is 570, so the page number is $ \lfloor 570/265 \rfloor = 2$ and word address is $570\mbox{ mod }256 = 58$. The looked up value from the page table is $48$. Thus the resultant physical address is $48 \times 256+58$.
-\end{example}
+\end{itemize}
 	
 \section{Memory Free List}
 \label{lbl:memlst}
 \index{Memory!Free list}
 
 \begin{itemize}
-	\item The free list of the memory consists of 64 entries. Each entry is of size one word.
-	\item The total size of the free list is thus 64 words (64 (= no. of entries) $\times$ 1 (= size of one entry) = 64 words).
-	\item It is present in the second 64 words of page 2 of the memory. Refer figure~\ref{fig:main memory}.
+	\item The free list of the memory consists of 64 entries. Each entry is of size one word. Thus, the total size of the free list is thus 64 words.
+	\item It is present in words 1280 to 1343 in memory. (words 256 to 319 of Page )
+	of the memory. Refer Chapter~\ref{chp:memoryorg}.
 	\item Each entry of the free list contains a value of either 0 or 1 indicating whether the corresponding page in the memory is free or not respectively.
 \end{itemize}
 
-\begin{example} 
-	Figure~\ref{fig:mem_free_list} indicates that pages 0, 1 and 63 of the memory are not free while pages 2 and 48 are free.
-\end{example}
+\section{Virtual Memory}
 
-\begin{figure}[htp!] \small
-	\centering
-	\begin{tabular}{c|c|}
-%		\multicolumn{2}{c}{} \\ 
-		\textbf{Pg no.} & \textbf{Contents} \\ \cline{2-2}
-		$0$ & $1$ \\ \cline{2-2}
-		$1$ & $1$ \\ \cline{2-2}
-		$2$ & $0$ \\ \cline{2-2}
-		\vdots & \vdots \\ \cline{2-2}
-		$48$ & $0$ \\ \cline{2-2}
-		$\vdots$ & \vdots \\ \cline{2-2}
-		$63$ & $1$ \\ \cline{2-2}
-	\end{tabular}
-	\caption{A sample free list of the memory}
-	\label{fig:mem_free_list}
-\end{figure}
+XOS allows virtual memory management, i.e. running processes without having all the pages in memory. It makes use of a backing store or \textbf{\textit{swap}} in the disk to replace pages from the memory and allocate the emptied memory to another process. Thus increasing the total number of processes that can be run simultaneously on the OS. The stratgy used by XOS is pure demand paging.
 
-The entire structure of memory is outlined in figure~\ref{fig:main memory}.
+\subsection{Pure Demand Paging}
+XOS starts executing a process with no pages of that process in memory. Pages are loaded into the memory from the disk only when it is required by the CPU.
+
+ The page table is loaded with the disk address of the data blocks corresponding to the process and all entries are set as invalid and not referenced initially (`00' as auxilary information). Page Fault Exceptions occur when a required page is not currently loaded into the memory. The Page Fault Handler is responsible for loading the memory form the disk.
 
 
+\subsection{Page Fault Exception Handler}
 
+A Page Fault Exception is caused by the hardware whenever it translates the logical address to an invalid entry in the page table (indicated by the \textit{valid/invalid} bit). XOS stores the disk addresses of the data blocks corresponding to the process in its page table initially. 
 
+The Page Fault Exception Handler takes the following actions dduring a page fault,
+\begin{enumerate}
+\item Check if a page is free in the memory free list. If no free page is found, using the page replacement technique described (Refer ...) a page is allocated in the memory.
+\item If the Page Number field is a valid disk block number(non zero entry), the corresponding block from the disk is loaded into the allocated page. Otherwise the process is requesting for user stack space. The allocated page will be used as the user stack.
+\item The page table is updated with allocated page's physical page number and the auxillary information is set as `10' ( valid and not referenced). The reference bit will be automatically upddated by the machine.
+\end{enumerate}
 
-\begin{itemize}
-	\item The ready list is searched for an entry with value 0. The corresponding entry found is set to 1 and the index of this entry is returned as the PID of the process. If no free entry is found, an appropriate error code is returned.
-	\item The page table for the process is initialized as follows :
+\subsection{Page Replacement}
+
+The page replacement technique used in XOS is a \textit{second chance algorithm}(Refer ...) which uses the \textit{reference bits} in the auxilary information. The steps are as follows
+
+\begin{enumerate}
+\item It scans the valid entries in the  Per-Process Page Tables of all processes in a circluar fashion and checks for a page with reference bit '0'.
+\item The scanning starts from the current page table entry which issued a page fault.
+\item Whenever a page with reference bit '1' is encountered it is set to '0' and goes to the next page, giving a referenced page a second chance.
+\item When a page with reference bit '0' is encountered it is selected as the victim page. Then
 	\begin{enumerate}
-		\item The $1^{st}$ entry of the page table contains the page number of the memory where the first code block of the program has been loaded.
-		\item The $2^{nd}$ entry of the page table contains the page number of the memory where the second code block of the program has been loaded.
-		\item The $3^{rd}$ entry of the page table contains the page number of the memory where the data block of the program has been loaded.
-		\item The $4^{th}$ entry of the page table contains the page number of the memory reserved for the stack.
-	\end{enumerate}
-	\item Set the values of BP, SP and IP in the PCB as 768, 768 and 0 respectively.
-	\item Once a process finishes its execution, the entry corresponding to it in the ready list is set to 0.
-\end{itemize}
+		\item Memory copy of Disk Free List is scanned for a free block in the swap area (blocks 448 - 511).
+		\item If a free block is found, the victim page is stored on that block and memory copy of Disk Free List is updated 	
+		\item If no free block is found an error  
+		
+	\end{enumerate}	   
 
+\end{enumerate}
 
 
 
