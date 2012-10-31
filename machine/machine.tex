@@ -52,7 +52,7 @@ The machine simulator is known as Experimental String Machine (XSM). It is an in
 
 \section{Supported Datatypes}
 
-XSM supports 2 different datatypes and their operations, namely \textbf{Strings} and \textbf{Integers}. However in the lowest level data is stored as strings.
+XSM supports 2 different datatypes and their operations, namely \textbf{Strings} and \textbf{Integers}. However in the lowest level both integers and strings are internally stored as strings.
 
 \subsection{Strings} Strings are sequence of characters which may include alphabets, numerals and special characters. Every string is terminated with a \textit{null character} ('\textbackslash 0'). Operations that can be performed on strings include lexicographic comparisons.
 
@@ -63,10 +63,10 @@ XSM supports 2 different datatypes and their operations, namely \textbf{Strings}
 \chapter{Registers}
 
 \section{Introduction}
-The XSM architecture maintains 26 registers (each one \textbf{word}).
+The XSM architecture maintains 25 registers (each one \textbf{word}).
 
 \section{Register Set}
-There are 16 General Purpose Registers (GPR), \texttt{R0 - R15}, of which \texttt{R0 - R7} are Program Registers and \texttt{R8 - R15} are Kernel Registers. There are 4 temporary registers \texttt{T0 - T3} which are reserved for code translation. The registers \texttt{T0 - T3} are not intended to be used by the system programmer. In addition to these 20 registers there are 6 Special Purpose Registers(SPR) namely \texttt{BP} (Base Pointer), \texttt{SP} (Stack Pointer), \texttt{PID} (Process Identifier), \texttt{IP} (Instruction Pointer), \texttt{PTBR} (Page Table Base Register) and \texttt{PTLR} (Page Table Length Register).
+There are 16 General Purpose Registers (GPR), \texttt{R0 - R15}, of which \texttt{R0 - R7} are Program Registers and \texttt{R8 - R15} are Kernel Registers. There are 4 temporary registers \texttt{T0 - T3} which are reserved for code translation. The registers \texttt{T0 - T3} are intended for use by code translators like compilers and not to be used by other system programs. In addition to these 20 registers there are 5 Special Purpose Registers(SPR) namely \texttt{BP} (Base Pointer), \texttt{SP} (Stack Pointer), \texttt{IP} (Instruction Pointer), \texttt{PTBR} (Page Table Base Register) and \texttt{PTLR} (Page Table Length Register).
 
 
 \begin{center}
@@ -78,7 +78,6 @@ There are 16 General Purpose Registers (GPR), \texttt{R0 - R15}, of which \textt
 \hline Base Pointer & BP \\ 
 \hline Instruction Pointer & IP \\ 
 \hline Stack Pointer & SP \\ 
-\hline Process Identifier & PID \\
 \hline Page Table Base Register & PTBR \\
 \hline Page Table Length Register & PTLR \\
 \hline
@@ -104,7 +103,7 @@ There are 16 General Purpose Registers (GPR), \texttt{R0 - R15}, of which \textt
 \item A collection of 512 contiguous \textbf{words} is known as a \textbf{page}.
 \item The total size of the memory is 64 \textbf{pages} or 32768 (512 $\times$ 64) \textbf{words}.
 \item Each \textbf{word} in the memory is identified by the \textit{word address} in the range 0 to 32767. Similarly, each \textbf{page} in the memory is identified by the \textit{page number} in the range 0 to 63.
-\item The \textit{page number} corresponding to a word is obatained by the formula,
+\item The \textit{page number} corresponding to a word is obtained by the formula,
 \begin{center}
  \textit{ page number }= $\lfloor \frac{word\ address}{512} \rfloor$
 \end{center}
@@ -335,7 +334,7 @@ This instruction is marks the end of a program.
 
 \item \texttt{INT}\\
 Syntax : \texttt{INT n}\\
-Generates an interrupt to the kernel with \texttt{n} (1 to 6) as a parameter. It also disables the interrupts. (Read Section \ref{sec:int})
+Generates an interrupt to the kernel with \texttt{n} (1 to 7) as a parameter. It also disables the interrupts. (Read Section \ref{sec:int})
 \end{enumerate}
 
 
@@ -354,11 +353,18 @@ This instruction loads the block specified by the \texttt{\textit{blocknum}}, fr
 
 \item \texttt{STORE}\\
 Syntax : \texttt{STORE \textit{blocknum} \textit{pagenum} }\\ 
-This instruction stores the page specified by the \texttt{\textit{pagenum}}, from the memory, to the block specified by the \texttt{\textit{blocknum}}in the disk. \texttt{\textit{blocknum}} and \texttt{\textit{pagenum}} should be numbers or registers containing numbers. An excpetion is raised (Refer Section \ref{excpetion}) for invalid arguments or illegal memory access.
+This instruction stores the page specified by the \texttt{\textit{pagenum}}, from the memory, to the block specified by the \texttt{\textit{blocknum}}in the disk. \texttt{\textit{blocknum}} and \texttt{\textit{pagenum}} should be numbers or registers containing numbers. An excpetion is raised (Refer Section \ref{excpetion}) for invalid arguments or illegal memory access.\\
+
+The below example will store the 31st page in memory to the 64th block in the disk. It will then load it to the 15th page in memory.
+\begin{verbatim}
+MOV R1, 64
+STORE R1, 31
+LOAD 15, R1	
+\end{verbatim}	
 
 \item \texttt{HALT}\\
 Syntax : \texttt{HALT}\\
-This instruction causes the machine to halt immediately.
+This instruction causes the machine to halt immediately. 
 \end{enumerate}
 
 \section{Privilege Modes}
@@ -387,7 +393,7 @@ The XSM architecture is interrupt driven and uses a single processor. There are 
 \chapter{Interrupts}
 \label{sec:int}
 
-Interrupts are mechanisms by which the machine interrupts the execution of the processor and passes control to the kernel to execute interrupt (or exception) handler code. Interrupts might indicate errors, such as a memory access violation (page fault), a timer interrupt or the OS needs to perform an operation to support a running program, such as a software interrupt. \\
+Interrupts are mechanisms by which the machine interrupts the execution of the processor and passes control to the kernel to execute interrupt (or exception) handler code. Interrupts might indicate errors, such as a memory access violation (page fault), a timer interrupt or a software interrupt invocation from a running program. \\
 
 The process saves its current state before starting execution of the handler, and then resumes the state once the handler finishes its execution. Interrupts are disabled when the interrupt handler code is execuing. 
 
@@ -399,7 +405,12 @@ Exceptions are anomalous situations which changes the normal flow of execution. 
 \begin{enumerate}
 \item Illegal memory access : occurs when any address generated by the process lies outside its logical address space. The logical page number generated should be between 0 and the value of \texttt{PTLR}.
 \item Arithmetic exception : occurs when divisor is 0.
-\item Illegal operands : occurs when operands contain invalid data corresponding to the instruction. 
+\item Illegal operands : occurs when operands contain invalid data corresponding to the instruction.
+
+In the example given below, a string value is added to Ra
+ \begin{verbatim}
+ADD R1, string
+\end{verbatim}
 \item Illegal instruction : occurs when an attempt is made to execute an instruction not belonging to the instruction set and also when the operands to the instruction is not legal. Eg: \texttt{MOV 4 R0}, \texttt{MOV IP 4} when executed in user mode. These instructions are considered illegal.
 \item Page Fault : occurs when the page table entry corresponding to the logical address is invalid. Page fault exception interrupts the execution of the CPU and causes a page fault handler routine to be executed by the kernel, which resides in  \textit{page number} 7 (address = 3584)
 
