@@ -148,6 +148,10 @@ The example below shows the address translation correspoding to the logical addr
 \end{figure}
 
 
+\section{ROM Code}
+\label{lbl:romcode}
+It is a hard coded assembly level code present in page 0 of the memory. It is known as the ROM (Read Only Memory) code because in an actual machine it is burnt in the hardware. When the machine boots up, this code is executed. This code has the basic functionality of loading block 0 of the disk (which generally contains the OS startup code) into page 1 of the memory and to set the \texttt{IP} register value to 512.
+
 
 
 \chapter{Disk Storage}
