@@ -29,7 +29,7 @@ Version 1.0}
 \chapter{Introduction}
 
 \section{Brief Machine Description}
-The machine simulator is known as Experimental String Machine (XSM). It is an interrupt driven uniprocessor machine. The machine handles data as strings. A string is a sequence of characters terminated by '\textbackslash 0'. The length of a string is atmost 16 characters including '\textbackslash 0'. Each of these strings is stored in a \textbf{word}  (Refer Section \ref{sec:mem}). The machine interprets a single character also as a string.
+The machine simulator is known as Experimental String Machine (XSM). It is an interrupt driven uniprocessor machine. The machine handles data as strings. A string is a sequence of characters terminated by '\textbackslash 0'. The length of a string is at most 16 characters including '\textbackslash 0'. Each of these strings is stored in a \textbf{word}  (Refer Section \ref{sec:mem}). The machine interprets a single character also as a string.
 
 \section{Components of the Machine}
 
@@ -139,7 +139,7 @@ The logical page number is used to index the page table to get the corresponding
 \end{enumerate} 
 \vspace{0.3in}
 
-The example below shows the address translation correspoding to the logical address  13532.
+The example below shows the address translation corresponding to the logical address  13532.
 \begin{figure}[ht]
 	\centering
 	\includegraphics[scale=0.35]{address_translation.png}
@@ -233,7 +233,7 @@ Copy contents of the memory address \texttt{LOC} + \texttt{Index} to the registe
 
 \item\textbf{ Arithmetic Instructions}
 \\
-Arithmetic Instructions perform arithmetic operations on registers containing integers. If the register contains a non-integer value, an excpetion is raised (Refer Section \ref{excpetion})
+Arithmetic Instructions perform arithmetic operations on registers containing integers. If the register contains a non-integer value, an exception is raised (Refer Section \ref{exception})
 \begin{itemize}
 \item \texttt{ADD}, \texttt{SUB}, \texttt{MUL}, \texttt{DIV} and \texttt{MOD}.\\
 \textit{General Syntax :} \texttt{OP Ri, Rj}\\
@@ -353,11 +353,11 @@ Set \texttt{IP} to the value pointed by \texttt{SP} and decrements \texttt{SP} b
 
 \item \texttt{LOAD}\\
 Syntax : \texttt{LOAD \textit{pagenum} \textit{blocknum}}\\
-This instruction loads the block specified by the \texttt{\textit{blocknum}}, from the disk, to the page specified by the \texttt{\textit{pagenum}} in the memory. \texttt{\textit{blocknum}} and \texttt{\textit{pagenum}} should be numbers or registers containing numbers. An excpetion is raised (Refer Section \ref{excpetion}) for invalid arguments or illegal memory access.
+This instruction loads the block specified by the \texttt{\textit{blocknum}}, from the disk, to the page specified by the \texttt{\textit{pagenum}} in the memory. \texttt{\textit{blocknum}} and \texttt{\textit{pagenum}} should be numbers or registers containing numbers. An excpetion is raised (Refer Section \ref{exception}) for invalid arguments or illegal memory access.
 
 \item \texttt{STORE}\\
 Syntax : \texttt{STORE \textit{blocknum} \textit{pagenum} }\\ 
-This instruction stores the page specified by the \texttt{\textit{pagenum}}, from the memory, to the block specified by the \texttt{\textit{blocknum}}in the disk. \texttt{\textit{blocknum}} and \texttt{\textit{pagenum}} should be numbers or registers containing numbers. An excpetion is raised (Refer Section \ref{excpetion}) for invalid arguments or illegal memory access.\\
+This instruction stores the page specified by the \texttt{\textit{pagenum}}, from the memory, to the block specified by the \texttt{\textit{blocknum}}in the disk. \texttt{\textit{blocknum}} and \texttt{\textit{pagenum}} should be numbers or registers containing numbers. An excpetion is raised (Refer Section \ref{exception}) for invalid arguments or illegal memory access.\\
 
 The below example will store the 31st page in memory to the 64th block in the disk. It will then load it to the 15th page in memory.
 \begin{verbatim}
@@ -399,11 +399,11 @@ The XSM architecture is interrupt driven and uses a single processor. There are 
 
 Interrupts are mechanisms by which the machine interrupts the execution of the processor and passes control to the kernel to execute interrupt (or exception) handler code. Interrupts might indicate errors, such as a memory access violation (page fault), a timer interrupt or a software interrupt invocation from a running program. \\
 
-The process saves its current state before starting execution of the handler, and then resumes the state once the handler finishes its execution. Interrupts are disabled when the interrupt handler code is execuing. 
+The process saves its current state before starting execution of the handler, and then resumes the state once the handler finishes its execution. Interrupts are disabled when the interrupt handler code is executing. 
 
 
 \section{Exceptions}
-\label{excpetion}
+\label{exception}
 Exceptions are anomalous situations which changes the normal flow of execution. It is generated when the following events occur:
 
 \begin{enumerate}

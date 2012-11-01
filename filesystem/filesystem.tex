@@ -67,12 +67,12 @@ The disk is organized by the file system as shown below.
 \end{figure}
 
 \begin{itemize}
-\item \textbf{OS Startup Code}: Block 0 is the location of operating system code required during machine boot. (Refer ...)
-\item \textbf{Exception and Interrupt Handler}: Blocks from 1 - 9 is intended for ISR (Interrupt Service Routines) for interrupt and exception handling which is done by the Operating System.  (Refer ...)
-\item \textbf{FAT} or File Allocation table contains details about the files stored on the disk. (Refer ...)
-\item \textbf{Disk Free List} has 512 entries, one entry for each block in the disk, indicating whether it is used or unused. (Refer ...)
-\item \textbf{INIT Code} It has the code for INIT process, which is the first user program run by the OS after startup. (Refer ...) 
-\item \textbf{User Blocks}. Blocks from 16 to 447 are used to store user data files and user programs. (Refer ...)
+\item \textbf{OS Startup Code}: Block 0 is the location of operating system code required during machine boot. 
+\item \textbf{Exception and Interrupt Handler}: Blocks from 1 - 9 is intended for ISR (Interrupt Service Routines) for interrupt and exception handling which is done by the Operating System.  
+\item \textbf{FAT} or File Allocation table contains details about the files stored on the disk. 
+\item \textbf{Disk Free List} has 512 entries, one entry for each block in the disk, indicating whether it is used or unused. 
+\item \textbf{INIT Code} It has the code for INIT process, which is the first user program run by the OS after startup. 
+\item \textbf{User Blocks}. Blocks from 16 to 447 are used to store user data files and user programs. 
 \item \textbf{Swap Area} The file system also provides a swap area for the operating system to implement demand paging. Swap Area is reserved exclusively for use by the operating system.
 
 \end{itemize}
@@ -106,7 +106,7 @@ A file \index{File} is a collection of blocks identified by a name. Every file i
 			\item The value contained in an entry of the block list gives the block number of the corresponding data block in the disk. All invalid entries are marked with 0.
 		\end{itemize}
 		\item \textbf{Header :} The header contains the meta information relating to the file.
-The header fields is 256 words long. It can be used to store details like permissions, ownership etc related to a file, similar to inode in Linux and UNIX operating systems. However XOS doesn't use the header field.
+The header fields is 256 words long. It can be used to store details like permissions, ownership etc related to a file, similar to inode in Linux and UNIX operating systems. However XOS does not use the header field.
 
 	\end{itemize}
 \end{itemize}
