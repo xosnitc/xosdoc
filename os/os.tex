@@ -110,7 +110,7 @@ The operating system organizes memory as given below:
 	\item \textbf{Per-Process Page Tables}, used for address translation of logical addresses to physical address. Refer Section~\ref{sec:pagetable}
 	\item \textbf{Memory Free List}, is a list of free memory locations in the memory. Refer Section~\ref{sec:mem free list}
 	\item \textbf{System-wide Open File Table}, contains a details of files which are opened by the processes. Refer Section~\ref{sec:file table}
-	\item \textbf{Ready List of PCBs}, is a list of Process Control Blocks (Refer ...), which indicates the ready and terminated processes. Refer Section~\ref{sec:pcb}
+	\item \textbf{Ready List of PCBs}, is a list of Process Control Blocks, which indicates the ready and terminated processes. Refer Section~\ref{sec:pcb}
 	\item \textbf{File Allocation Table}, contains details about files stored on the disk, Refer Section~\ref{sec:fat}
 	\item \textbf{Disk Free List}, contains details about used and used blocks in the disk, Refer Section~\ref{sec:disk free list}
 	\item \textbf{Page Fault Handler}, contains the kernel code to be executed during a page fault exception, Refer Section~\ref{sec:page fault}
@@ -266,7 +266,7 @@ Every process in XOS has a Per-Process Page Table. A total of 32 PCBs and 32 Pag
 
 The Per-Process Page Table stores the physical page number corresponding to the logical page number of a process. The logical page number can vary from 0 to 3 for each process.  Therefore, each process has 4 entries in the page table. Per-Process Page Tables are stored in Page 2, words 1024 -- 1279 in the memory (256 words = 32 processes $\times$ 4 pages )\\
 
-When a process is loaded only the disk addresses of the program are stored, and by demand paging (Refer ...) pages are loaded/allocated for the process.	 Once all pages are loaded, each entry contains the page number where the data specified by the logical address resides in the memory and auxiliary information which includes \textit{valid/invalid bit}, \textit{reference bit} etc.
+When a process is loaded only the disk addresses of the program are stored, and by demand paging (Refer Section~\ref{sec:paging}) pages are loaded/allocated for the process.	 Once all pages are loaded, each entry contains the page number where the data specified by the logical address resides in the memory and auxiliary information which includes \textit{valid/invalid bit}, \textit{reference bit} etc.
 
 
 \section{Multiprogramming}
@@ -346,7 +346,7 @@ XOS allows virtual memory management, i.e. running processes without having all 
 
 XOS starts executing a process with no pages of that process in memory. Pages are loaded into the memory from the disk only when it is required by the CPU. This strategy is known as pure demand paging. The page table is loaded with the disk address of the data blocks corresponding to the process and all entries are set as invalid and not referenced initially (`00' as auxiliary information).\\
 
-Page Fault Exceptions occur when a required page is not currently loaded into the memory. In this case the Page Fault Handler is responsible for loading the required page to the memory from the disk. If no free memory is available a page replacement technique is used to find a victim page. The page replacement technique used in XOS is a \textit{second chance algorithm}(Refer ...) which uses the \textit{reference bits} in the auxiliary information. The victim page is swapped out to to the disk (swap area) to accommodate the required page.
+Page Fault Exceptions occur when a required page is not currently loaded into the memory. In this case the Page Fault Handler is responsible for loading the required page to the memory from the disk. If no free memory is available a page replacement technique is used to find a victim page. The page replacement technique used in XOS is a \textit{second chance algorithm}(Refer Silberschatz, Galvin, Gagne: Operating System Concepts) which uses the \textit{reference bits} in the auxiliary information. The victim page is swapped out to to the disk (swap area) to accommodate the required page.
 
 
 
