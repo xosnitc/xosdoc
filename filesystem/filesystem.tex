@@ -67,13 +67,13 @@ The disk is organized by the file system as shown below.
 \end{figure}
 
 \begin{itemize}
-\item \textbf{OS Startup Code}: Block 0 is the location of operating system code required during machine boot. (Refer ...)
-\item \textbf{Exception and Interrupt Handler}: Blocks from 1 - 9 is intended for ISR (Interrupt Service Routines) for interrupt and exception handling which is done by the Operating System.  (Refer ...)
-\item \textbf{FAT} or File Allocation table contains details about the files stored on the disk. (Refer ...)
-\item \textbf{Disk Free List} has 512 entries, one entry for each block in the disk, indicating whether it is used or unused. (Refer ...)
-\item \textbf{INIT Code} It has the code for INIT process, which is the first user program run by the OS after startup. (Refer ...) 
-\item \textbf{User Blocks}. Blocks from 16 to 447 are used to store user data files and user programs. (Refer ...)
-\item \textbf{Swap Area} The file system also provides a swap area for the operating system to implement demand paging. Users cannot directly store data and programs in the swap area.
+\item \textbf{OS Startup Code}: Block 0 is the location of operating system code required during machine boot. 
+\item \textbf{Exception and Interrupt Handler}: Blocks from 1 - 9 is intended for ISR (Interrupt Service Routines) for interrupt and exception handling which is done by the Operating System.  
+\item \textbf{FAT} or File Allocation table contains details about the files stored on the disk. 
+\item \textbf{Disk Free List} has 512 entries, one entry for each block in the disk, indicating whether it is used or unused. 
+\item \textbf{INIT Code} It has the code for INIT process, which is the first user program run by the OS after startup. 
+\item \textbf{User Blocks}. Blocks from 16 to 447 are used to store user data files and user programs. 
+\item \textbf{Swap Area} The file system also provides a swap area for the operating system to implement demand paging. Swap Area is reserved exclusively for use by the operating system.
 
 \end{itemize}
 
@@ -106,7 +106,7 @@ A file \index{File} is a collection of blocks identified by a name. Every file i
 			\item The value contained in an entry of the block list gives the block number of the corresponding data block in the disk. All invalid entries are marked with 0.
 		\end{itemize}
 		\item \textbf{Header :} The header contains the meta information relating to the file.
-The header fields is 256 words long. It can be used to store details like permissions, ownership etc related to a file, similar to inode in Linux and UNIX operating systems. However XOS doesn't use the header field.
+The header fields is 256 words long. It can be used to store details like permissions, ownership etc related to a file, similar to inode in Linux and UNIX operating systems. However XOS does not use the header field.
 
 	\end{itemize}
 \end{itemize}
@@ -114,7 +114,7 @@ The header fields is 256 words long. It can be used to store details like permis
 \begin{example}
 	\begin{figure}[h!]
 	\centering
-	\includegraphics[scale=0.50]{pics/basic_block_example}
+	\includegraphics[scale=0.50]{basic_block_example.png}
 	\caption{Example illustrating the basic block of a file}
 	\label{basic block example}
 	\end{figure}
@@ -126,7 +126,7 @@ The header fields is 256 words long. It can be used to store details like permis
 		\item  The first data block of the file resides in the disk in block number 420.
 		\item  The second data block of the file resides in the disk in block number 101 
 		\item  The third data block of the file resides in the disk in block number 315
-		\item Rest of entries are empty and are marked as 0
+		\item  There are no more data blocks for the file. So rest of the entries of the basic block are marked as 0
 	\end{itemize}
 \end{example}
 
@@ -173,7 +173,7 @@ The FAT entry consists of the
 \index{File Allocation Table!FAT Entry}
 \begin{enumerate}
 	\item \textbf{File Name :} It is an identification of a file. It can be of maximum 15 characters (and thus requires 1 word). Typical file names are \texttt{student.dat}, \texttt{calc.xsm}.
-	\item \textbf{File size :} It indicates the number of words occupied by a file. A file will contain minimum of 1 block (basic block), and a number of data blocks. Thus, the size of the file can vary from 512 words to 512 x (256 + 1) words. It occupies one word in the FAT entry.
+	\item \textbf{File size :} It indicates the number of words required for the data blocks of the file. The number of data blocks of the file can vary from 0 to 256, and so the maximum file size is 131072 words (256 $\times$ 512). It occupies one word in the FAT entry.
 	\item \textbf{Block number of basic block :} It contains the block number where the basic block of a file resides in the disk. It occupies one word in the FAT entry.
 \end{enumerate}
 
