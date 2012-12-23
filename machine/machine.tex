@@ -330,6 +330,12 @@ Syntax : \texttt{OUT Ri}\\
 Transfers the contents of \texttt{Ri} to the standard output.\\
 \end{itemize}
 
+
+\item Debug Instruction\\
+Syntax : \texttt{BRKP}\\
+Displays contents of all registers and memory locations at the time when the instruction is invoked. This instruction can be used for debugging system code.
+
+
 \item \texttt{END}\\
 Syntax : \texttt{END}\\
 This instruction is marks the end of a program.
@@ -337,6 +343,9 @@ This instruction is marks the end of a program.
 \item \texttt{INT}\\
 Syntax : \texttt{INT n}\\
 Generates an interrupt to the kernel with \texttt{n} (1 to 6) as a parameter. It also disables the interrupts. (Read Section \ref{sec:int})
+
+
+
 \end{enumerate}
 
 
