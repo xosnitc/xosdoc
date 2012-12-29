@@ -113,7 +113,7 @@ The operating system organizes memory as given below:
 	\item \textbf{Ready List of PCBs}, is a list of Process Control Blocks, which indicates the ready and terminated processes. Refer Section~\ref{sec:pcb}
 	\item \textbf{File Allocation Table}, contains details about files stored on the disk, Refer Section~\ref{sec:fat}
 	\item \textbf{Disk Free List}, contains details about used and used blocks in the disk, Refer Section~\ref{sec:disk free list}
-	\item \textbf{Page Fault Handler}, contains the kernel code to be executed during a page fault exception, Refer Section~\ref{sec:page fault}
+	\item \textbf{Exception Handler}, contains the kernel code to be executed during a page fault exception, Refer Section~\ref{sec:ex_handler}
 	\item \textbf{Timer Interrupt Routine}, contains the kernel code to be executed during a timer interrupt. Refer Section~\ref{sec:timer}
 	
 	\item \textbf{Interrupt Routines}, contains kernel code to be executed during interrupts (1 to 7). Refer Section~\ref{sec:interrupt}
@@ -201,7 +201,7 @@ It contains data pertaining to the current state of the process. The size of the
 	  \subsection{Registers}
 	  \label{sec:registers} 
 \begin{itemize}
-	\item \textbf{IP}: The word address of the currently executing instruction is stored in the \texttt{IP} (Instruction Pointer) register. The value of this instruction cannot be changed explicitly by any instruction. 
+	\item \textbf{IP}: The word address of the currently executing instruction is stored in the \texttt{IP} (Instruction Pointer) register. The value of this register cannot be changed explicitly by any instruction. 
 	
 	\index{Registers!IP}
 	\item \textbf{BP}:   The base address of the user stack is stored in the \texttt{BP} (Base Pointer) register. \index{Registers!BP}
@@ -269,7 +269,24 @@ The Per-Process Page Table stores the physical page number corresponding to each
 
 When a process is loaded only the disk addresses of the program are stored, and by demand paging (Refer Section~\ref{sec:paging}) pages are loaded/allocated for the process.	 Once all pages are loaded, each entry contains the page number where the data specified by the logical address resides in the memory and auxiliary information which includes \textit{valid/invalid bit}, \textit{reference bit} etc.
 
-
+		\begin{figure}[htp!]
+		\centering
+		\begin{tabular}{|c|c|c}
+			\textit{Physical Page Number} & \textit{Auxiliary Information (Valid Bit)} \\
+			\cline{0-1}
+			36 & 1  & \footnotesize \textit{ {Valid page in memory}}\\
+			\cline{0-1}
+			311 & 0 & \footnotesize \textit{ {Disk Block No. is stored }}\\
+			\cline{0-1}
+			54 &  1 & \footnotesize \textit{ {Valid page in memory}}\\
+			\cline{0-1}
+			490 & 0 & \footnotesize \textit{ {Page in swap area in disk}}\\
+			\cline{0-1}
+		\end{tabular}
+		\caption{Structure of Per-Process Page Table}
+		\label{fig:processfile table}
+	\end{figure}
+	
 \section{Multiprogramming}
 \label{sec:multiprogramming}
 	
@@ -347,7 +364,7 @@ XOS allows virtual memory management, i.e. running processes without having all 
 
 XOS starts executing a process with no pages of that process in memory. Pages are loaded into the memory from the disk only when it is required by the CPU. This strategy is known as pure demand paging. The page table is loaded with the disk address of the data blocks corresponding to the process and all entries are set as invalid and not referenced initially (`00' as auxiliary information).\\
 
-Page Fault Exceptions occur when a required page is not currently loaded into the memory. In this case the Page Fault Handler is responsible for loading the required page to the memory from the disk. If no free memory is available a page replacement technique is used to find a victim page. The page replacement technique used in XOS is a \textit{second chance algorithm}(Refer Silberschatz, Galvin, Gagne: Operating System Concepts) which uses the \textit{reference bits} in the auxiliary information. The victim page is swapped out to to the disk (swap area) to accommodate the required page.
+Page Fault Exceptions occur when a required page is not currently loaded into the memory. In this case the Exception Handler Routine is responsible for loading the required page to the memory from the disk. If no free memory is available a page replacement technique is used to find a victim page. The page replacement technique used in XOS is a \textit{second chance algorithm}(Refer Silberschatz, Galvin, Gagne: Operating System Concepts) which uses the \textit{reference bits} in the auxiliary information. The victim page is swapped out to to the disk (swap area) to accommodate the required page.
 
 
 
@@ -386,7 +403,7 @@ The structure of a FAT entry is shown below
 \section{Disk Free List}
 \index{Disk Free List}
 \label{sec:disk free list}
-The Disk Free List is a data structure used for keeping track of unused blocks in the disk. The Disk Free List is stored in the page number 6 of the memory. 
+The Disk Free List is a data structure used for keeping track of unused blocks in the disk. The memory copy of Disk Free List is stored in the \textit{page number} 6. It is stored in \textit{block number} 11 in the disk. 
 
 
 \section{System Wide Open File Table}
@@ -420,7 +437,7 @@ The Per-Process Open File Table in the PCB of each process stores information ab
 \index{Scratchpad}
 There is a specific page of the memory which is reserved to store temporary data. This page is known as the \textit{Scratchpad}. The scratchpad is required since any block of the disk cannot be accessed directly  by a process. It has to be present in the memory for access. Hence, any disk block that has to be read or written into is first brought into the scratchpad. It is then read or modified and written back into the disk. \\
 
-The page 1 of the memory (\ref{chp:memoryorg}) is used as the scratchpad. Once the OS has booted up there is no need for the OS startup code. So this page can be reused as the scratchpad.
+The \textit{page number} 1 of the memory (Refer Chapter \ref{chp:memoryorg}) is used as the scratchpad. Once the OS has booted up there is no need for the OS startup code. So this page can be reused as the scratchpad.
 
 
 \chapter{System Calls}
@@ -435,7 +452,7 @@ All the arguments to the system call are pushed into the user stack of the proce
 
 \section{Machine System Calls}
 
-\subsection{Halt()}
+\subsection{Halt}
 \label{sec:haltsyscall}
 \index{File System Calls!Halt}
 
@@ -449,7 +466,7 @@ The Halt system call is used to halt the machine. Halt system call calls the int
 \label{sec:fssyscall}
 \textit{File system calls} are used by a process when it has to create, delete or manipulate \textit{Data files} that reside on the disk(file system). There are seven file system calls. An interrupt is associated with each system call. All the necessary arguments for a system call are available in the user stack with the system call number as the last argument.\\
 
-\subsection{Create()}
+\subsection{Create}
 \label{sec:create()}
 
 APL Syntax : \texttt{int Create(fileName)} \\
@@ -457,7 +474,7 @@ System Call No. : \counter{syscall} \\
 
 This system call is used to create a new file in the file system whose name is specified in the argument. The return value of the \texttt{Create()} system call is 0 if it is a success, and an error code otherwise. It calls Interrupt 1 Routine.\\
 
-\subsection{Delete()}
+\subsection{Delete}
 \label{sec:delete()}
 
 APL Syntax : \texttt{int Delete(fileDescriptor)} \\
@@ -465,7 +482,7 @@ System Call No. : \counter{syscall} \\
 
 This system call is used to delete the file from the file system whose name is specified in the argument. The return value of the \texttt{Delete()} system call is 0 if it is a success, and an error code otherwise. It calls Interrupt 1 Routine. \\
 
-\subsection{Open()}
+\subsection{Open}
 \label{sec:open()}
 
 APL Syntax : \texttt{int Open(fileName)} \\
@@ -474,7 +491,7 @@ System Call No. : \counter{syscall} \\
 This system call is used to open an existing file whose name is specified in the argument.  It calls Interrupt 2 Routine. The return value of the \texttt{Create()} system call is an integer value called \texttt{FileDescriptor}, which is the index of the corresponding file's entry in the Per-Process Open File Table.\\
 
 
-\subsection{Close()}
+\subsection{Close}
 \label{sec:close()}
 
 APL Syntax : \texttt{int Close(fileName)} \\
@@ -483,7 +500,7 @@ System Call No. : \counter{syscall} \\
 This system call is used to close an open file. The file can only be closed by the process which opened it. \texttt{FileDescriptor} is an integer value returned by the corresponding \texttt{Open()} system call. The return value of the \texttt{Close()} system call is 0 if it is a success, and an error code otherwise. It calls Interrupt 2 Routine. \\
 
 
-\subsection{Seek()}
+\subsection{Seek}
 \label{sec:seek()}
 
 APL Syntax : \texttt{int Seek(FileDescriptor, lseek)}  \\
@@ -492,7 +509,7 @@ System Call No. : \counter{syscall} \\
 This system call is used to change the current value of the seek position in the global file table entry of a file. The return value of the \texttt{Seek()} system call is 0 if it is a success, and an error code otherwise. It calls Interrupt 3 Routine. \\
 
 
-\subsection{Read()}
+\subsection{Read}
 \label{sec:read()}
 
 APL Syntax : \texttt{int Read(fileDescriptor, mem\_loc, numWords)}  \\
@@ -500,7 +517,7 @@ System Call No. : \counter{syscall} \\
 
 This system call is used to read data from an open file (identified by \texttt{fileDescriptor}) to the memory (identified by \texttt{memory\_loc}). The return value of the \texttt{Read()} system call is the number of words successfully read from the file or an error code otherwise. It calls Interrupt 3 Routine. \\
 
-\subsection{Write()}
+\subsection{Write}
 \label{sec:write()}
 
 APL Syntax : \texttt{int Write(fileDescriptor, mem\_loc, numWords)}  \\
@@ -516,7 +533,7 @@ the number of words successfully written to the file or an error code otherwise.
 \textit{Process system calls} are used by a process when it has to duplicate itself, execute a new process in its place or when it has to terminate itself. There are three process system calls. An interrupt is associated with each system call. All the necessary arguments for a system call are available in the user stack with the system call number as the last argument.\\
 
 
-\subsection{Fork()}
+\subsection{Fork}
 \label{sec:fork()}
 
 APL Syntax :  \texttt{int Fork()} \\
@@ -525,7 +542,7 @@ System Call No. : \counter{syscall} \\
 This system call is used to replicate the process which invoked this system call in the memory. The new process which is created is known as the \emph{child} and the process which invoked this system call is known as its \emph{parent}. The return value for \texttt{Fork()} system call to the parent process is the PID (\textit{process identifier}) of the child process.  It calls Interrupt 5 Routine. \\
 
 
-\subsection{Exec()}
+\subsection{Exec}
 \label{sec:exec()}
 
 APL Syntax :  \texttt{int Exec(filename)} \\
@@ -533,7 +550,7 @@ System Call No. : \counter{syscall} \\
 
 This system call is used to load the program, whose name is specified in the argument, in the memory space of the current process and start its execution .  The return value for \texttt{Exec()} system call 1 in case of failure and none in case of failure. It calls Interrupt 6 Routine.  \\
 
-\subsection{Exit()}
+\subsection{Exit}
 
 \label{sec:exit()}
 
@@ -555,11 +572,23 @@ The OS Startup Code resides in the page 1 in the memory. When the machine boots 
 \section{Exception Handler}
 \label{sec:ex_handler}
 When the machine encounters an exception it sets EFR (Exception Flag Register) with details corresponding to the exception and calls the exception handler routine (Page No. 7 in memory).
+(Refer 6.1 of XSM Specification)
 
+		\begin{figure}[htp!]
+		\centering
+		\begin{tabular}{|c|c|c|c|}
+		\hline
+		\texttt{Value of IP} & \texttt{BadVAddr} & \texttt{Cause} &  \textbackslash 0 \\
+		\hline
+		\end{tabular}
+		\caption{Structure of EFR }
+		\end{figure}
+		
+XOS handles all  exceptions other than \textit{Page Fault} by killing the process which caused the exception. 
 
-\subsubsection{Page Fault Exception Handler Routine}
+\subsubsection{Page Fault Exceptions}
 \label{sec:page fault}
-Page Fault Exception Handler is responsible for loading the required page to the memory from the disk, if it does not exist. The corresponding entry for the logical page which caused the exception to occur will be invalid in the page table of the process. This will cause the Page Fault Exception Handler Routine to start executing. 
+The \texttt{Cause} field of \texttt{EFR} for Page Fault Exceptions is\textbf{ 0}. Once a page fault occurs, the Exception Handler Routine loads the required page to the memory from the disk, if it does not exist. The corresponding entry for the logical page which caused the exception to occur (indicated by \texttt{BadVAddr} field in \texttt{EFR} ) will be invalid in the page table of the process. 
 
 \section{Timer Interrupt Routine}
 \label{sec:timer}
