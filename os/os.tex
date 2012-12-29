@@ -201,7 +201,8 @@ It contains data pertaining to the current state of the process. The size of the
 	  \subsection{Registers}
 	  \label{sec:registers} 
 \begin{itemize}
-	\item \textbf{IP}: The word address of the currently executing instruction is stored in the \texttt{IP} (Instruction Pointer) register. This register can be used as an operand in any instruction only when executing in the kernel mode.
+	\item \textbf{IP}: The word address of the currently executing instruction is stored in the \texttt{IP} (Instruction Pointer) register. The value of this instruction cannot be changed explicitly by any instruction. 
+	
 	\index{Registers!IP}
 	\item \textbf{BP}:   The base address of the user stack is stored in the \texttt{BP} (Base Pointer) register. \index{Registers!BP}
 	\item \textbf{SP}: The address of the stack top is stored in the \texttt{SP} (Stack Pointer) register. \index{Registers!SP}
@@ -264,7 +265,7 @@ Every process in XOS has a Per-Process Page Table. A total of 32 PCBs and 32 Pag
 	\end{figure}
 
 
-The Per-Process Page Table stores the physical page number corresponding to the logical page number of a process. The logical page number can vary from 0 to 3 for each process.  Therefore, each process has 4 entries in the page table. Per-Process Page Tables are stored in Page 2, words 1024 -- 1279 in the memory (256 words = 32 processes $\times$ 4 pages )\\
+The Per-Process Page Table stores the physical page number corresponding to each logical page associated with the process. The logical page number can vary from 0 to 3 for each process.  Therefore, each process has 4 entries in the page table. Per-Process Page Tables are stored in Page 2, words 1024 -- 1279 in the memory (256 words = 32 processes $\times$ 4 pages )\\
 
 When a process is loaded only the disk addresses of the program are stored, and by demand paging (Refer Section~\ref{sec:paging}) pages are loaded/allocated for the process.	 Once all pages are loaded, each entry contains the page number where the data specified by the logical address resides in the memory and auxiliary information which includes \textit{valid/invalid bit}, \textit{reference bit} etc.
 
@@ -289,7 +290,7 @@ The \texttt{INIT} process is the first user program that is loaded by the OS aft
 \label{chp:memory management}
 \section{Introduction}
 
-XSM uses a paging mechanism for address translation (Refer Section 3.2 of XSM Specification). XOS supports virtual memory, i.e. it supports execution of processes that are not completely in memory. It follows pure demand paging strategy for memory management. Pages are allocated as and when required during execution. 
+XSM uses a paging mechanism for address translation (Refer Section 3.2 of XSM Specification). XOS supports virtual memory, i.e. it supports execution of processes that are not completely in memory. It follows \textit{pure demand paging} strategy for memory management. Pages are allocated as and when required during execution. 
 
 \section{Paging}
 \label{sec:paging}
@@ -350,10 +351,10 @@ Page Fault Exceptions occur when a required page is not currently loaded into th
 
 
 
-\chapter{Files}
+ \chapter{Files}
 \label{chp:files}
 
-The operating system requires accessing the file system (XFS) while loading programs, and reading data from the files. The operating system maintains a memory copy of the file system data structures like FAT(File Allocation Table) and Disk Free List. It is loaded from the disk to the memory during operating system boot. \\
+The operating system requires accessing the file system (XFS) while loading programs, and reading data from the files. The operating system maintains a memory copy of the file system data structures like FAT(File Allocation Table) and Disk Free List (Refer Chapter~\ref{chp:memoryorg}). It is loaded from the disk to the memory during operating system boot. \\
  Apart from the file system data structures XOS maintains details about files opened by all processes in the System-wide Open File Table. XOS uses a \texttt{scratchpad} to access files in the memory which will be explained further in this chapter.
  
 
@@ -373,7 +374,7 @@ The structure of a FAT entry is shown below
 		\hline
 		0 & 1 & 2 & 3 -- 7 \\
 		\hline
-		File Name & File Size & Block no: of basic block & \dots{} Free \dots \\
+		File Name & File Size & Block no: of basic block & \dots{} Unused \dots \\
 		\hline
 	\end{tabular}
 	\caption{Structure of a FAT entry}
@@ -385,7 +386,7 @@ The structure of a FAT entry is shown below
 \section{Disk Free List}
 \index{Disk Free List}
 \label{sec:disk free list}
-The Disk Free List is a data structure used for keeping tracking of unused blocks in the disk. The Disk Free List is stored in the page number 6 of the memory. 
+The Disk Free List is a data structure used for keeping track of unused blocks in the disk. The Disk Free List is stored in the page number 6 of the memory. 
 
 
 \section{System Wide Open File Table}
@@ -409,7 +410,7 @@ Therefore, there can be at most 64 open files in the system at any time. Each en
 	 \begin{itemize}
 		 \item \textbf{FAT index entry :} \index{File Allocation Table!Memory copy} It stores the index of the corresponding file in the FAT.
 
-		 \item \textbf{File Open Count :} File Open Count is the number of processes which has opened the file. When this becomes zero, the entry for the file can be removed from the System Wide Open File Table.
+		 \item \textbf{File Open Count :} File Open Count is the number of open instances of the file. When this becomes zero, the entry for the file can be removed from the System Wide Open File Table.
 	 \end{itemize}
 
 The Per-Process Open File Table in the PCB of each process stores information about files opened by the corresponding process. Each entry in the Per-Process Open File Table has the index to the file's entry  in the  System-wide Open File Table.
@@ -441,7 +442,7 @@ All the arguments to the system call are pushed into the user stack of the proce
 APL Syntax : \texttt{Halt()} \\
 System Call No. : \counter{syscall} \\
 
-The Halt system call is used to halt the machine. Halt system call invokes the interrupt \texttt{INT 5}.
+The Halt system call is used to halt the machine. Halt system call calls the interrupt \texttt{INT 5}.
 
 
 \section{File System Calls}
@@ -454,23 +455,23 @@ The Halt system call is used to halt the machine. Halt system call invokes the i
 APL Syntax : \texttt{int Create(fileName)} \\
 System Call No. : \counter{syscall} \\
 
-This system call is used to create a new file in the file system whose name is specified in the argument. The return value of the \texttt{Create()} system call is 0 if it is a success, and an error code otherwise. It invokes Interrupt 1 Routine.\\
+This system call is used to create a new file in the file system whose name is specified in the argument. The return value of the \texttt{Create()} system call is 0 if it is a success, and an error code otherwise. It calls Interrupt 1 Routine.\\
 
 \subsection{Delete()}
 \label{sec:delete()}
 
-APL Syntax : \texttt{int Open(fileDescriptor)} \\
+APL Syntax : \texttt{int Delete(fileDescriptor)} \\
 System Call No. : \counter{syscall} \\
 
-This system call is used to delete the file from the file system whose name is specified in the argument. The return value of the \texttt{Delete()} system call is 0 if it is a success, and an error code otherwise. It invokes Interrupt 1 Routine. \\
+This system call is used to delete the file from the file system whose name is specified in the argument. The return value of the \texttt{Delete()} system call is 0 if it is a success, and an error code otherwise. It calls Interrupt 1 Routine. \\
 
 \subsection{Open()}
 \label{sec:open()}
 
-APL Syntax : \texttt{int Delete(fileName)} \\
+APL Syntax : \texttt{int Open(fileName)} \\
 System Call No. : \counter{syscall} \\
 
-This system call is used to open an existing file whose name is specified in the argument.  It invokes Interrupt 2 Routine. The return value of the \texttt{Create()} system call is an integer value called \texttt{FileDescriptor}, which is the index of the corresponding file's entry in the Per-Process Open File Table.\\
+This system call is used to open an existing file whose name is specified in the argument.  It calls Interrupt 2 Routine. The return value of the \texttt{Create()} system call is an integer value called \texttt{FileDescriptor}, which is the index of the corresponding file's entry in the Per-Process Open File Table.\\
 
 
 \subsection{Close()}
@@ -479,7 +480,7 @@ This system call is used to open an existing file whose name is specified in the
 APL Syntax : \texttt{int Close(fileName)} \\
 System Call No. : \counter{syscall} \\
 
-This system call is used to close an open file. The file can only be closed by the process which opened it or by its children. \texttt{FileDescriptor} is an integer value returned by the corresponding \texttt{Open()} system call. The return value of the \texttt{Close()} system call is 0 if it is a success, and an error code otherwise. It invokes Interrupt 2 Routine. \\
+This system call is used to close an open file. The file can only be closed by the process which opened it. \texttt{FileDescriptor} is an integer value returned by the corresponding \texttt{Open()} system call. The return value of the \texttt{Close()} system call is 0 if it is a success, and an error code otherwise. It calls Interrupt 2 Routine. \\
 
 
 \subsection{Seek()}
@@ -488,7 +489,7 @@ This system call is used to close an open file. The file can only be closed by t
 APL Syntax : \texttt{int Seek(FileDescriptor, lseek)}  \\
 System Call No. : \counter{syscall} \\
 
-This system call is used to change the current value of the seek position in the global file table entry of a file. The return value of the \texttt{Seek()} system call is 0 if it is a success, and an error code otherwise. It invokes Interrupt 3 Routine. \\
+This system call is used to change the current value of the seek position in the global file table entry of a file. The return value of the \texttt{Seek()} system call is 0 if it is a success, and an error code otherwise. It calls Interrupt 3 Routine. \\
 
 
 \subsection{Read()}
@@ -497,7 +498,7 @@ This system call is used to change the current value of the seek position in the
 APL Syntax : \texttt{int Read(fileDescriptor, mem\_loc, numWords)}  \\
 System Call No. : \counter{syscall} \\
 
-This system call is used to read data from an open file (identified by \texttt{fileDescriptor}) to the memory (identified by \texttt{memory\_loc}). The return value of the \texttt{Read()} system call is the number of words successfully read from the file or an error code otherwise. It invokes Interrupt 3 Routine. \\
+This system call is used to read data from an open file (identified by \texttt{fileDescriptor}) to the memory (identified by \texttt{memory\_loc}). The return value of the \texttt{Read()} system call is the number of words successfully read from the file or an error code otherwise. It calls Interrupt 3 Routine. \\
 
 \subsection{Write()}
 \label{sec:write()}
@@ -506,7 +507,7 @@ APL Syntax : \texttt{int Write(fileDescriptor, mem\_loc, numWords)}  \\
 System Call No. : \counter{syscall} \\
 
 This system call is used to write data into an open file (identified by \texttt{fileDescriptor}) from the memory (identified by \texttt{mem\_loc}). The return value of the \texttt{Write()} system call is 
-the number of words successfully written to the file or an error code otherwise. It invokes Interrupt 4 Routine. \\
+the number of words successfully written to the file or an error code otherwise. It calls Interrupt 4 Routine. \\
 
 	
 \section{Process System Calls}
@@ -521,7 +522,7 @@ the number of words successfully written to the file or an error code otherwise.
 APL Syntax :  \texttt{int Fork()} \\
 System Call No. : \counter{syscall} \\
 
-This system call is used to replicate the process which invoked this system call in the memory. The new process which is created is known as the \emph{child} and the process which invoked this system call is known as its \emph{parent}. The return value for \texttt{Fork()} system call to the parent process is the PID (\textit{process identifier}) of the child process.  It invokes Interrupt 5 Routine. \\
+This system call is used to replicate the process which invoked this system call in the memory. The new process which is created is known as the \emph{child} and the process which invoked this system call is known as its \emph{parent}. The return value for \texttt{Fork()} system call to the parent process is the PID (\textit{process identifier}) of the child process.  It calls Interrupt 5 Routine. \\
 
 
 \subsection{Exec()}
@@ -530,7 +531,7 @@ This system call is used to replicate the process which invoked this system call
 APL Syntax :  \texttt{int Exec(filename)} \\
 System Call No. : \counter{syscall} \\
 
-This system call is used to load the program, whose name is specified in the argument, in the memory space of the current process and start its execution .  The return value for \texttt{Exec()} system call 1 in case of failure and none in case of failure. It invokes Interrupt 6 Routine.  \\
+This system call is used to load the program, whose name is specified in the argument, in the memory space of the current process and start its execution .  The return value for \texttt{Exec()} system call 1 in case of failure and none in case of failure. It calls Interrupt 6 Routine.  \\
 
 \subsection{Exit()}
 
@@ -539,7 +540,7 @@ This system call is used to load the program, whose name is specified in the arg
 APL Syntax :  \texttt{Exit()} \\
 System Call No. : \counter{syscall} \\
 
-This system call is used to terminate the execution of the process which invoked it and removes it from the memory . It loads the next available process. It invokes Interrupt 7 Routine.  \\
+This system call is used to terminate the execution of the process which invoked it and removes it from the memory . It loads the next available process. It calls Interrupt 7 Routine.  \\
 
 \chapter{System Routines}
 
@@ -551,7 +552,12 @@ The Operating System apart from its various data structures and interfaces it pr
 \label{sec:os startup code}
 The OS Startup Code resides in the page 1 in the memory. When the machine boots up the ROM Code (Refer XSM Specification) loads the OS Startup Code from the disk . The OS Startup code initializes all data structures required for the OS, loads the FAT and Disk Free List from file system into the memory and starts execution of the \texttt{INIT} process.
 
-\section{Page Fault Exception Handler Routine}
+\section{Exception Handler}
+\label{sec:ex_handler}
+When the machine encounters an exception it sets EFR (Exception Flag Register) with details corresponding to the exception and calls the exception handler routine (Page No. 7 in memory).
+
+
+\subsubsection{Page Fault Exception Handler Routine}
 \label{sec:page fault}
 Page Fault Exception Handler is responsible for loading the required page to the memory from the disk, if it does not exist. The corresponding entry for the logical page which caused the exception to occur will be invalid in the page table of the process. This will cause the Page Fault Exception Handler Routine to start executing. 
 
