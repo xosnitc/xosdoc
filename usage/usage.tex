@@ -1,0 +1,140 @@
+\documentclass[11pt]{report}
+
+\usepackage[pdftex]{graphicx}
+\usepackage{url} 
+\usepackage[pdftex, bookmarks, colorlinks=false, pdfborder={0 0 0}, pdftitle={<pdf title here>}, pdfauthor={<author's name here>}, pdfsubject={<subject here>}, pdfkeywords={<keywords here>}]{hyperref} 
+\usepackage[final]{pdfpages}
+\usepackage{multirow}
+%\usepackage[table]{xcolor} 
+\usepackage{subfigure}
+\usepackage{booktabs}
+
+\newtheorem{example}{Example}[section]
+
+\title{XOS (eXperimental Operating System) \\ XFS (eXperimental File System) Interface \\
+USAGE DOCUMENTATION \\
+Version 1.0}
+\author{Dr. K. Muralikrishnan  \\ \texttt{kmurali@nitc.ac.in} \\ {NIT Calicut} }
+
+
+\begin{document}
+
+\maketitle
+\pagebreak
+
+%......................Table of Contents............................%
+\thispagestyle{plain}
+
+\tableofcontents
+\pagebreak
+
+
+
+
+\chapter{Introduction}
+
+
+
+\chapter{XFS Interface}
+
+\section{Introduction}
+\textbf{XFS Interface} (eXperimental File System) is an external interface to access the filesystem of the XOS. The filesystem is simulated on a binary file called "\textbf{disk.xfs}". The interface can format the disk, load/remove files, list files and copy blocks to a UNIX file.
+
+\section{Installation}
+\subsection{Prerequisites}
+\begin{itemize}
+	\item GCC (GNU project C and C++ compiler)
+\end{itemize}
+
+\subsection{Download}
+
+The package for XFS Interface can be downloaded from the following link :\\
+http://xosnitc.github.com/files/xfs-interface-master.zip \\ \\
+The package can also be cloned from the git repository : \\
+https://github.com/xosnitc/xfs-interface
+
+\subsection{Compiling and Running}
+Run the following commands to compile and run the interface
+\begin{enumerate}
+		\item \texttt{make}
+		\item \texttt{./fileSystem}
+\end{enumerate}
+
+\section{Commands}
+Type the command \texttt{help} in the interface to display the list of commands.
+
+ 
+\subsection{Format the disk}
+The command \textbf{fdisk} is used to create the disk ("disk.xfs") or to format the disk if already created. \\
+\textit{Syntax} : \texttt{fdisk}
+
+\subsection{Load Files}
+The command \textbf{load} is used to load files to the filesystem from a UNIX file. The types of file that is loaded is specified by the first argument. The second argument $<$pathname$>$ is the path to the UNIX file which is to be loaded to the filesystem.
+\begin{itemize}
+	\item \textit{Syntax} : \texttt{load --exec  $<$pathname$>$}  \\
+	 Loads an executable file to XFS disk 
+	\item \textit{Syntax} : \texttt{load --init  $<$pathname$>$}  \\
+	 Loads INIT code to XFS disk 
+	\item \textit{Syntax} : \texttt{load --data $<$pathname$>$} \\
+	 Loads a data file to XFS disk 
+	\item \textit{Syntax} : \texttt{load --os  $<$pathname$>$} \\
+	 Loads OS startup code to XFS disk 
+	\item \textit{Syntax} : \texttt{load --int=timer $<$pathname$>$}\\
+	 Loads Timer Interrupt routine to XFS disk 
+	\item \textit{Syntax} : \texttt{load --int=[1-7] $<$pathname$>$}\\
+	 Loads the specified Interrupt routine to XFS disk 
+	\item \textit{Syntax} : \texttt{load --exhandler $<$pathname$>$}  \\
+	 Loads exception handler routine to XFS disk 
+	 
+\end{itemize}
+
+\subsection{Remove Files}
+The command \textbf{rm} is used to remove files from the filesystem. The first argument specifies the type of file to be removed. The argument $<$xfs\_filename$>$ specifies the file which is to be removed.
+\begin{itemize}
+	\item \textit{Syntax} : \texttt{rm --exec $<$xfs\_filename$>$} \\
+	 Removes an executable file from XFS disk 
+	\item \textit{Syntax} : \texttt{rm --init  $<$xfs\_filename$>$ }\\
+	 Removes INIT code from XFS disk 
+	\item \textit{Syntax} : \texttt{rm --data	$<$xfs\_filename$>$}\\
+	 Removes a data file from XFS disk 
+	\item \textit{Syntax} : \texttt{rm --os} \\
+	 Removes OS startup code from XFS disk 
+	\item \textit{Syntax} : \texttt{rm --int=timer} \\
+	 Removes the Timer Interrupt routine from XFS disk 
+	\item \textit{Syntax} : \texttt{rm --int=[1-7] }\\
+	 Removes the specified Interrupt routine from XFS disk 
+	\item \textit{Syntax} : \texttt{rm --exhandler}\\
+	 Removes the exception handler routine from XFS disk 
+	
+\end{itemize}
+ 
+ 
+\subsection{List Files}
+The command \textbf{ls} lists all the files which are loaded into the filesystem. The size of the file is also displayed in number of words.\\
+\textit{Syntax} : \texttt{ls}
+
+\subsection{Display Disk Free List}
+The command \textbf{df} displays the disk free list. It also displays the total number of blocks and the number of free blocks.\\
+\textit{Syntax} : \texttt{df}
+
+\subsection{Display File contents}
+The command \textbf{cat} displays the contents of a file in the filesystem with the corresponding word number.\\
+\textit{Syntax} : \texttt{cat <xfs\_filename> }
+
+\subsection{Copy contents of File}
+The command \textbf{copy} copies the contents of specified blocks from a file in the filesystem to an external UNIX file. The arguments $<$start\_block$>$ and $<$end\_block$>$ denotes the range of blocks to be copied (including both). $<$unix\_filename$>$ specifes the destination UNIX file to which the contents are copied to.\\
+\textit{Syntax} : \texttt{copy $<$start\_block$>$ $<$end\_block$>$ $<$unix\_filename$>$}
+
+\subsection{Display help}
+The command \textbf{help} displays the general syntax and function of all the commands. \\
+\textit{Syntax} : \texttt{help}
+
+\subsection{Exit Interface}
+The command \textbf{exit} quits the inteface.\\
+\textit{Syntax} : \texttt{exit}
+
+ 
+ 
+ 
+
+\end{document}
