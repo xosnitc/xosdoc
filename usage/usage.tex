@@ -11,8 +11,7 @@
 
 \newtheorem{example}{Example}[section]
 
-\title{XOS (eXperimental Operating System) \\ XFS (eXperimental File System) Interface \\
-USAGE DOCUMENTATION \\
+\title{Usage Documentation \\
 Version 1.0}
 \author{Dr. K. Muralikrishnan  \\ \texttt{kmurali@nitc.ac.in} \\ {NIT Calicut} }
 
@@ -32,6 +31,63 @@ Version 1.0}
 
 
 \chapter{Introduction}
+This documentation describes the usage instructions for SPL (System Programmer's Language) Compiler, APL (Application Programmer's Language) Compiler, XFS (eXperimental File System) Interface and XSM (eXperimental String Machine) Simulator.
+
+
+\chapter{SPL Compiler}
+
+\section{Introduction}
+SPL (System Programmer's Language) Compiler is used in the implementation of an operating system on XSM (eXperimental String Machine). The compiler compiles the code written in SPL and translates it into machine code which is simulated on the machine.
+
+\section{Installation}
+
+\subsection{Prerequisites}
+\begin{itemize}
+	\item GCC  (GNU project C and C++ compiler)
+	\item Flex / Lex  (Fast Lexical Analyser Generator)
+	\item Bison / Yacc  (GNU Project Parser Generator)
+\end{itemize} 
+
+\subsection{Download}
+The package for SPL Compiler can be downloaded fron the following link :\\
+http://xosnitc.github.com/files/spl-master.zip\\
+The package can also be cloned from the git repository : \\
+https://github.com/xosnitc/spl
+
+\subsection{Compiling and Running}
+Run the following commands to compile and run the SPL compiler
+\begin{enumerate}
+		\item \texttt{make}
+		\item \texttt{./spl $<$path-to-file$>$ }
+\end{enumerate}
+
+
+\chapter{APL Compiler}
+
+\section{Introduction}
+APL (Application Programmer's Language) Compiler is used to write programs which can be run on XOS (eXperimental Operating System). The compiler compiles the program written in APL and translates it into machine code which is simulated on the machine.
+
+\section{Installation}
+
+\subsection{Prerequisites}
+\begin{itemize}
+	\item GCC  (GNU project C and C++ compiler)
+	\item Flex / Lex  (Fast Lexical Analyser Generator)
+	\item Bison / Yacc  (GNU Project Parser Generator)
+\end{itemize} 
+
+\subsection{Download}
+The package for APL Compiler can be downloaded fron the following link :\\
+http://xosnitc.github.com/files/apl-master.zip\\
+The package can also be cloned from the git repository : \\
+https://github.com/xosnitc/apl
+
+\subsection{Compiling and Running}
+Run the following commands to compile and run the APL compiler
+\begin{enumerate}
+		\item \texttt{make}
+		\item \texttt{./apl $<$path-to-file$>$ }
+\end{enumerate}
 
 
 
@@ -65,11 +121,12 @@ Type the command \texttt{help} in the interface to display the list of commands.
 
  
 \subsection{Format the disk}
-The command \textbf{fdisk} is used to create the disk ("disk.xfs") or to format the disk if already created. \\
+The command \textbf{fdisk} is used to create the disk ("disk.xfs") or to format the disk if already created. On a newly created disk or formatted disk the Disk Free List and FAT entries are initialized. Also a FAT entry is created for the file "init.xsm". \\
 \textit{Syntax} : \texttt{fdisk}
 
 \subsection{Load Files}
-The command \textbf{load} is used to load files to the filesystem from a UNIX file. The types of file that is loaded is specified by the first argument. The second argument $<$pathname$>$ is the path to the UNIX file which is to be loaded to the filesystem.
+The command \textbf{load} is used to load files to the filesystem from a UNIX file. The types of file that is loaded is specified by the first argument. The second argument $<$pathname$>$ is the path to the UNIX file which is to be loaded to the filesystem. \\
+The command checks the size of the file (executable or data files) and allocates blocks to it. The corresponding FAT entry is created for the file. For the OS Startup code, Interrupt routines and Exception Handler, the file is loaded to the corresponding location in the disk.
 \begin{itemize}
 	\item \textit{Syntax} : \texttt{load --exec  $<$pathname$>$}  \\
 	 Loads an executable file to XFS disk 
@@ -89,7 +146,8 @@ The command \textbf{load} is used to load files to the filesystem from a UNIX fi
 \end{itemize}
 
 \subsection{Remove Files}
-The command \textbf{rm} is used to remove files from the filesystem. The first argument specifies the type of file to be removed. The argument $<$xfs\_filename$>$ specifies the file which is to be removed.
+The command \textbf{rm} is used to remove files from the filesystem. The first argument specifies the type of file to be removed. The argument $<$xfs\_filename$>$ specifies the file which is to be removed.\\
+The command searches the FAT entries for the file (executable/data file) and clears the blocks corresponding to the file. In the case of OS Startup code, Interrupt routines and Exception Handler the corresponding blocks in the disk are cleared.
 \begin{itemize}
 	\item \textit{Syntax} : \texttt{rm --exec $<$xfs\_filename$>$} \\
 	 Removes an executable file from XFS disk 
@@ -111,6 +169,7 @@ The command \textbf{rm} is used to remove files from the filesystem. The first a
  
 \subsection{List Files}
 The command \textbf{ls} lists all the files which are loaded into the filesystem. The size of the file is also displayed in number of words.\\
+The FAT entries are traversed and all the files and their corresponding sizes are displayed. \\
 \textit{Syntax} : \texttt{ls}
 
 \subsection{Display Disk Free List}
@@ -119,6 +178,8 @@ The command \textbf{df} displays the disk free list. It also displays the total 
 
 \subsection{Display File contents}
 The command \textbf{cat} displays the contents of a file in the filesystem with the corresponding word number.\\
+The FAT entries are searched to get the blocks corresponding to the file. The blocks are displayed.\\
+
 \textit{Syntax} : \texttt{cat <xfs\_filename> }
 
 \subsection{Copy contents of File}
@@ -134,7 +195,32 @@ The command \textbf{exit} quits the inteface.\\
 \textit{Syntax} : \texttt{exit}
 
  
+\chapter{XSM Simulator} 
  
- 
+\section{Introduction}
+The XSM (eXperimental String Machine)  Simulator is used to simulate the XSM hardware
+
+\section{Installation}
+
+\subsection{Prerequisites}
+\begin{itemize}
+	\item GCC  (GNU project C and C++ compiler)
+	\item Flex / Lex  (Fast Lexical Analyser Generator)
+	\item Bison / Yacc  (GNU Project Parser Generator)
+\end{itemize} 
+
+\subsection{Download}
+The package for XSM Simulator can be downloaded fron the following link\\ 
+http://xosnitc.github.com/files/xsm-master.zip\\
+The package can also be cloned from the git repository : \\
+https://github.com/xosnitc/xsm
+
+\subsection{Compiling and Running}
+Run the following commands to compile and run the XSM Simulator
+\begin{enumerate}
+		\item \texttt{make}
+		\item \texttt{./xsm $<$path-to-file$>$ }
+\end{enumerate}
+
 
 \end{document}
