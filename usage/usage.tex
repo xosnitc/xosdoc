@@ -48,11 +48,11 @@ SPL (System Programmer's Language) Compiler is used in the implementation of an 
 	\item Bison / Yacc  (GNU Project Parser Generator)
 \end{itemize} 
 
-\subsection{Download}
-The package for SPL Compiler can be downloaded fron the following link :\\
-http://xosnitc.github.com/files/spl-master.zip\\
-The package can also be cloned from the git repository : \\
-https://github.com/xosnitc/spl
+%\subsection{Download}
+%The package for SPL Compiler can be downloaded fron the following link :\\
+%http://xosnitc.github.com/files/spl-master.zip\\
+%The package can also be cloned from the git repository : \\
+%https://github.com/xosnitc/spl
 
 \subsection{Compiling and Running}
 Run the following commands to compile and run the SPL compiler
@@ -76,11 +76,11 @@ APL (Application Programmer's Language) Compiler is used to write programs which
 	\item Bison / Yacc  (GNU Project Parser Generator)
 \end{itemize} 
 
-\subsection{Download}
-The package for APL Compiler can be downloaded fron the following link :\\
-http://xosnitc.github.com/files/apl-master.zip\\
-The package can also be cloned from the git repository : \\
-https://github.com/xosnitc/apl
+%\subsection{Download}
+%The package for APL Compiler can be downloaded fron the following link :\\
+%http://xosnitc.github.com/files/apl-master.zip\\
+%The package can also be cloned from the git repository : \\
+%https://github.com/xosnitc/apl
 
 \subsection{Compiling and Running}
 Run the following commands to compile and run the APL compiler
@@ -102,12 +102,12 @@ Run the following commands to compile and run the APL compiler
 	\item GCC (GNU project C and C++ compiler)
 \end{itemize}
 
-\subsection{Download}
-
-The package for XFS Interface can be downloaded from the following link :\\
-http://xosnitc.github.com/files/xfs-interface-master.zip \\ \\
-The package can also be cloned from the git repository : \\
-https://github.com/xosnitc/xfs-interface
+%\subsection{Download}
+%
+%The package for XFS Interface can be downloaded from the following link :\\
+%http://xosnitc.github.com/files/xfs-interface-master.zip \\ \\
+%The package can also be cloned from the git repository : \\
+%https://github.com/xosnitc/xfs-interface
 
 \subsection{Compiling and Running}
 Run the following commands to compile and run the interface
@@ -209,18 +209,23 @@ The XSM (eXperimental String Machine)  Simulator is used to simulate the XSM har
 	\item Bison / Yacc  (GNU Project Parser Generator)
 \end{itemize} 
 
-\subsection{Download}
-The package for XSM Simulator can be downloaded fron the following link\\ 
-http://xosnitc.github.com/files/xsm-master.zip\\
-The package can also be cloned from the git repository : \\
-https://github.com/xosnitc/xsm
+%\subsection{Download}
+%The package for XSM Simulator can be downloaded fron the following link\\ 
+%http://xosnitc.github.com/files/xsm-master.zip\\
+%The package can also be cloned from the git repository : \\
+%https://github.com/xosnitc/xsm
 
 \subsection{Compiling and Running}
 Run the following commands to compile and run the XSM Simulator
 \begin{enumerate}
 		\item \texttt{make}
-		\item \texttt{./xsm $<$path-to-file$>$ }
+		\item \texttt{./xsm $<$optional-flags$>$ $<$path-to-file$>$ }
 \end{enumerate}
+The $<$optional-flags$>$ can be :
+\begin{itemize}
+	\item \texttt{--id}  : This flag disables the timer interrupt for the machine
+	\item \texttt{--db}  : This flag sets the machine into DEBUG mode
+\end{itemize}
 
 
 \end{document}
