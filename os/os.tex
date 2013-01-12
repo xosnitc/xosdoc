@@ -265,7 +265,7 @@ Every process in XOS has a Per-Process Page Table. A total of 32 PCBs and 32 Pag
 	\end{figure}
 
 
-The Per-Process Page Table stores the physical page number corresponding to each logical page associated with the process. The logical page number can vary from 0 to 3 for each process.  Therefore, each process has 4 entries in the page table. Per-Process Page Tables are stored in Page 2, words 1024 -- 1279 in the memory (256 words = 32 processes $\times$ 4 pages )\\
+The Per-Process Page Table stores the physical page number corresponding to each logical page associated with the process. The logical page number can vary from 0 to 3 for each process.  Therefore, each process has 4 entries in the page table. Per-Process Page Tables are stored in Page 2, words 1024 -- 1279 in the memory ( 256 words = 32 processes $\times$ 4 entries )\\
 
 When a process is loaded only the disk addresses of the program are stored, and by demand paging (Refer Section~\ref{sec:paging}) pages are loaded/allocated for the process.	 Once all pages are loaded, each entry contains the page number where the data specified by the logical address resides in the memory and auxiliary information which includes \textit{valid/invalid bit}, \textit{reference bit} etc.
 
