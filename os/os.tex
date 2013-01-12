@@ -476,7 +476,7 @@ The Halt system call is used to halt the machine. Halt system call calls the int
 APL Syntax : \texttt{int Create(fileName)} \\
 System Call No. : \counter{syscall} \\
 
-This system call is used to create a new file in the file system whose name is specified in the argument. The return value of the \texttt{Create()} system call is 0 if it is a success, and an error code otherwise. If the file already exists, the system call returns 0 (success). It calls Interrupt 1 Routine.\\
+This system call is used to create a new file in the file system whose name is specified in the argument. The return value of the \texttt{Create()} system call is 0 if it is a success, and -1 otherwise. If the file already exists, the system call returns 0 (success). It calls Interrupt 1 Routine.\\
 
 \subsection{Delete}
 \label{sec:delete()}
@@ -484,7 +484,7 @@ This system call is used to create a new file in the file system whose name is s
 APL Syntax : \texttt{int Delete(fileDescriptor)} \\
 System Call No. : \counter{syscall} \\
 
-This system call is used to delete the file from the file system whose name is specified in the argument. The return value of the \texttt{Delete()} system call is 0 if it is a success, and an error code otherwise. It calls Interrupt 1 Routine. \\
+This system call is used to delete the file from the file system whose name is specified in the argument. The return value of the \texttt{Delete()} system call is 0 if it is a success, and -1 otherwise. It calls Interrupt 1 Routine. \\
 
 \subsection{Open}
 \label{sec:open()}
@@ -501,7 +501,7 @@ This system call is used to open an existing file whose name is specified in the
 APL Syntax : \texttt{int Close(fileName)} \\
 System Call No. : \counter{syscall} \\
 
-This system call is used to close an open file. The file can only be closed by the process which opened it. \texttt{FileDescriptor} is an integer value returned by the corresponding \texttt{Open()} system call. The return value of the \texttt{Close()} system call is 0 if it is a success, and an error code otherwise. It calls Interrupt 2 Routine. \\
+This system call is used to close an open file. The file can only be closed by the process which opened it. \texttt{FileDescriptor} is an integer value returned by the corresponding \texttt{Open()} system call. The return value of the \texttt{Close()} system call is 0 if it is a success, and -1 otherwise. It calls Interrupt 2 Routine. \\
 
 
 \subsection{Seek}
@@ -510,7 +510,7 @@ This system call is used to close an open file. The file can only be closed by t
 APL Syntax : \texttt{int Seek(FileDescriptor, lseek)}  \\
 System Call No. : \counter{syscall} \\
 
-This system call is used to change the current value of the seek position in the global file table entry of a file. The return value of the \texttt{Seek()} system call is 0 if it is a success, and an error code otherwise. It calls Interrupt 3 Routine. \\
+This system call is used to change the current value of the seek position in the global file table entry of a file. The return value of the \texttt{Seek()} system call is 0 if it is a success, and -1 otherwise. It calls Interrupt 3 Routine. \\
 
 
 \subsection{Read}
@@ -519,7 +519,7 @@ This system call is used to change the current value of the seek position in the
 APL Syntax : \texttt{int Read(fileDescriptor, mem\_loc, numWords)}  \\
 System Call No. : \counter{syscall} \\
 
-This system call is used to read data from an open file (identified by \texttt{fileDescriptor}) to the memory (identified by \texttt{memory\_loc}). The return value of the \texttt{Read()} system call is the number of words successfully read from the file or an error code otherwise. It calls Interrupt 3 Routine. \\
+This system call is used to read data from an open file (identified by \texttt{fileDescriptor}) to the memory (identified by \texttt{memory\_loc}). The return value of the \texttt{Read()} system call is the number of words successfully read from the file or -1 otherwise. It calls Interrupt 3 Routine. \\
 
 \subsection{Write}
 \label{sec:write()}
@@ -528,7 +528,7 @@ APL Syntax : \texttt{int Write(fileDescriptor, mem\_loc, numWords)}  \\
 System Call No. : \counter{syscall} \\
 
 This system call is used to write data into an open file (identified by \texttt{fileDescriptor}) from the memory (identified by \texttt{mem\_loc}). The return value of the \texttt{Write()} system call is 
-the number of words successfully written to the file or an error code otherwise. It calls Interrupt 4 Routine. \\
+the number of words successfully written to the file or -1 otherwise. It calls Interrupt 4 Routine. \\
 
 	
 \section{Process System Calls}
