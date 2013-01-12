@@ -58,8 +58,17 @@ SPL (System Programmer's Language) Compiler is used in the implementation of an 
 Run the following commands to compile and run the SPL compiler
 \begin{enumerate}
 		\item \texttt{make}
-		\item \texttt{./spl $<$path-to-file$>$ }
+		\item \texttt{./spl $<$flag$>$ $<$ $<$path-to-file$>$ }
 \end{enumerate}
+
+\subsection{Flags}
+Any one of these flags is required to compile.
+\begin{itemize}
+	\item \texttt{--os} : Compile OS Code
+	\item \texttt{--int=timer} : Compile Timer Interrupt code
+	\item \texttt{--int=[1-7]} : Compile Interrupt routines
+	\item \texttt{--exhandler} : Compile Exception Handler
+\end{itemize}
 
 
 \chapter{APL Compiler}
@@ -86,10 +95,10 @@ APL (Application Programmer's Language) Compiler is used to write programs which
 Run the following commands to compile and run the APL compiler
 \begin{enumerate}
 		\item \texttt{make}
-		\item \texttt{./apl $<$path-to-file$>$ }
+		\item \texttt{./apl $<$ $<$path-to-file$>$ }
 \end{enumerate}
 
-
+The output file is named \textbf{"apcode.xsm"}
 
 \chapter{XFS Interface}
 

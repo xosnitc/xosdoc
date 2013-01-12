@@ -1,0 +1,32 @@
+\BOOKMARK [0][-]{chapter.1}{Introduction}{}
+\BOOKMARK [0][-]{chapter.2}{SPL Compiler}{}
+\BOOKMARK [1][-]{section.2.1}{Introduction}{chapter.2}
+\BOOKMARK [1][-]{section.2.2}{Installation}{chapter.2}
+\BOOKMARK [2][-]{subsection.2.2.1}{Prerequisites}{section.2.2}
+\BOOKMARK [2][-]{subsection.2.2.2}{Compiling and Running}{section.2.2}
+\BOOKMARK [2][-]{subsection.2.2.3}{Flags}{section.2.2}
+\BOOKMARK [0][-]{chapter.3}{APL Compiler}{}
+\BOOKMARK [1][-]{section.3.1}{Introduction}{chapter.3}
+\BOOKMARK [1][-]{section.3.2}{Installation}{chapter.3}
+\BOOKMARK [2][-]{subsection.3.2.1}{Prerequisites}{section.3.2}
+\BOOKMARK [2][-]{subsection.3.2.2}{Compiling and Running}{section.3.2}
+\BOOKMARK [0][-]{chapter.4}{XFS Interface}{}
+\BOOKMARK [1][-]{section.4.1}{Introduction}{chapter.4}
+\BOOKMARK [1][-]{section.4.2}{Installation}{chapter.4}
+\BOOKMARK [2][-]{subsection.4.2.1}{Prerequisites}{section.4.2}
+\BOOKMARK [2][-]{subsection.4.2.2}{Compiling and Running}{section.4.2}
+\BOOKMARK [1][-]{section.4.3}{Commands}{chapter.4}
+\BOOKMARK [2][-]{subsection.4.3.1}{Format the disk}{section.4.3}
+\BOOKMARK [2][-]{subsection.4.3.2}{Load Files}{section.4.3}
+\BOOKMARK [2][-]{subsection.4.3.3}{Remove Files}{section.4.3}
+\BOOKMARK [2][-]{subsection.4.3.4}{List Files}{section.4.3}
+\BOOKMARK [2][-]{subsection.4.3.5}{Display Disk Free List}{section.4.3}
+\BOOKMARK [2][-]{subsection.4.3.6}{Display File contents}{section.4.3}
+\BOOKMARK [2][-]{subsection.4.3.7}{Copy contents of File}{section.4.3}
+\BOOKMARK [2][-]{subsection.4.3.8}{Display help}{section.4.3}
+\BOOKMARK [2][-]{subsection.4.3.9}{Exit Interface}{section.4.3}
+\BOOKMARK [0][-]{chapter.5}{XSM Simulator}{}
+\BOOKMARK [1][-]{section.5.1}{Introduction}{chapter.5}
+\BOOKMARK [1][-]{section.5.2}{Installation}{chapter.5}
+\BOOKMARK [2][-]{subsection.5.2.1}{Prerequisites}{section.5.2}
+\BOOKMARK [2][-]{subsection.5.2.2}{Compiling and Running}{section.5.2}
