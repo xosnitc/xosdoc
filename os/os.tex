@@ -463,7 +463,7 @@ All the arguments to the system call are pushed into the user stack of the proce
 APL Syntax : \texttt{Halt()} \\
 System Call No. : \counter{syscall} \\
 
-The Halt system call is used to halt the machine. Halt system call calls the interrupt \texttt{INT 7}.
+The Halt system call is used to halt the machine. This system call works only when there is one process running. Halt system call calls the interrupt \texttt{INT 7}.
 
 
 \section{File System Calls}
@@ -560,7 +560,7 @@ This system call is used to load the program, whose name is specified in the arg
 APL Syntax :  \texttt{Exit()} \\
 System Call No. : \counter{syscall} \\
 
-This system call is used to terminate the execution of the process which invoked it and removes it from the memory . It loads the next available process. It calls Interrupt 7 Routine.  \\
+This system call is used to terminate the execution of the process which invoked it and removes it from the memory . It loads the next available process. When there is only one process running, it halts the machine. It calls Interrupt 7 Routine.  \\
 
 \chapter{System Routines}
 
