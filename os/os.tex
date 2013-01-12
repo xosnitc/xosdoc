@@ -141,7 +141,7 @@ The XSM architecture supports demand paging and so the machine does not fix the 
 A process in the memory has the following structure.
 \begin{itemize}
 	\item \textbf{Code Area :} \index{Process!Code Area} These are pages of the memory that contain the executable code loaded from the disk. 
-	\item \textbf{Stack :} This is the user stack used for program execution. The variables and data used during execution of program is stored in the stack. It grows in the direction of increasing word address.
+	\item \textbf{Stack :} This is the user stack used for program execution. The variables and data used during execution of program is stored in the stack. It grows in the direction of increasing word address. The location of the stack is fixed at the 4th page of the process.
 \end{itemize}
 
 Figure~\ref{fig:process structure} shows the process structure. \\
