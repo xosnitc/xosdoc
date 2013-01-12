@@ -516,19 +516,18 @@ This system call is used to change the current value of the seek position in the
 \subsection{Read}
 \label{sec:read()}
 
-APL Syntax : \texttt{int Read(fileDescriptor, mem\_loc, numWords)}  \\
+APL Syntax : \texttt{int Read(fileDescriptor, destVariable)}  \\
 System Call No. : \counter{syscall} \\
 
-This system call is used to read data from an open file (identified by \texttt{fileDescriptor}) to the memory (identified by \texttt{memory\_loc}). The return value of the \texttt{Read()} system call is the number of words successfully read from the file or -1 otherwise. It calls Interrupt 3 Routine. \\
+This system call is used to read one word from an open file (identified by \texttt{fileDescriptor}) and store the word to a string/integer variable (identified by \texttt{destVariable}). The return value of the \texttt{Read()} system call is 0 if it is a success or -1 otherwise. It calls Interrupt 3 Routine. \\
 
 \subsection{Write}
 \label{sec:write()}
 
-APL Syntax : \texttt{int Write(fileDescriptor, mem\_loc, numWords)}  \\
+APL Syntax : \texttt{int Write(fileDescriptor, sourceVariable)}  \\
 System Call No. : \counter{syscall} \\
 
-This system call is used to write data into an open file (identified by \texttt{fileDescriptor}) from the memory (identified by \texttt{mem\_loc}). The return value of the \texttt{Write()} system call is 
-the number of words successfully written to the file or -1 otherwise. It calls Interrupt 4 Routine. \\
+This system call is used to write one word into an open file (identified by \texttt{fileDescriptor}) from a string/integer variable (identified by \texttt{sourceVariable}). The return value of the \texttt{Write()} system call is 0 if it is a success or -1 otherwise. It calls Interrupt 4 Routine. \\
 
 	
 \section{Process System Calls}
