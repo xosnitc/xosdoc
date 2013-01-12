@@ -281,24 +281,20 @@ Syntax : \texttt{LE Ri, Rj}\\
 Stores 1 in \texttt{Ri} if the value stored in \texttt{Ri} is less than or equal to that in \texttt{Rj}. Set to 0 otherwise. 
 \end{itemize}
 
-\item Labels \\
-Syntax : \texttt{LABEL \textit{labelname}} \\
-Creates a label with a \texttt{\textit{labelname}}  which is a string. Labels are used in branching instruction to specify memory location of target instructions.
 
-
-\item Branching Instructions\\
-Branching is achieved by changing the value of the \texttt{IP} to the address of a specified \texttt{labelname}. 
+\item Branching Instructions
+Branching is achieved by changing the value of the \texttt{IP} to the word address of the target instruction specified by \texttt{ $<$target\_address$>$ }. 
  
 \begin{itemize}
 \item \texttt{JZ}\\
-Syntax : \texttt{JZ Ri, labelname}\\
-Jumps to \texttt{labelname} if the contents of \texttt{Ri} is zero.
+Syntax : \texttt{JZ Ri, $<$target\_address$>$}\\
+Jumps to \texttt{$<$target\_address$>$} if the contents of \texttt{Ri} is zero.
 \item \texttt{JNZ}\\
-Syntax : \texttt{JNZ Ri, labelname}\\
-Jumps to \texttt{labelname} if the contents of \texttt{Ri} is not zero.
+Syntax : \texttt{JNZ Ri, $<$target\_address$>$}\\
+Jumps to \texttt{$<$target\_address$>$} if the contents of \texttt{Ri} is not zero.
 \item \texttt{JMP}\\
-Syntax : \texttt{JMP labelname}\\
-Unconditional jump to address specified by \texttt{labelname}\\
+Syntax : \texttt{JMP $<$target\_address$>$}\\
+Unconditional jump to \texttt{$<$target\_address$>$}\\
 
 \end{itemize}
 
@@ -314,11 +310,11 @@ For both these instructions \texttt{Ri} may be any register except \texttt{IP}.
 \end{itemize}
 
 \item Subroutine Instructions\\
-The \texttt{CALL} instruction copies the address of the next instruction to be fetched on to location \texttt{SP} + 1. It also increments \texttt{SP} by one and transfers control to the \texttt{labelname} specified. The address of the instruction to be fetched is in \texttt{IP + 2} (each instruction is 2 memory words). The \texttt{RET} instruction restores the \texttt{IP} value stored at location pointed by \texttt{SP}, decrements \texttt{SP} by one and continues execution fetching the next instruction pointed to by \texttt{IP}. The subroutine instructions provide a neat mechanism for procedure evocations.
+The \texttt{CALL} instruction copies the address of the next instruction to be fetched on to location \texttt{SP} + 1. It also increments \texttt{SP} by one and transfers control to the instruction specified by the \texttt{$<$target\_address$>$}. The address of the instruction to be fetched is in \texttt{IP + 2} (each instruction is 2 memory words). The \texttt{RET} instruction restores the \texttt{IP} value stored at location pointed by \texttt{SP}, decrements \texttt{SP} by one and continues execution fetching the next instruction pointed to by \texttt{IP}. The subroutine instructions provide a neat mechanism for procedure evocations.
 \begin{itemize}
 \item \texttt{CALL}\\
-Syntax : \texttt{CALL labelname}\\
-Increments \texttt{SP} by 1, transfers \texttt{IP}+2 to location pointed to by \texttt{SP} and jumps to \texttt{LABEL}
+Syntax : \texttt{CALL $<$target\_address$>$}\\
+Increments \texttt{SP} by 1, transfers \texttt{IP}+2 to location pointed to by \texttt{SP} and jumps to instruction specified by $<$target\_address$>$
 \item \texttt{RET}\\
 Syntax : \texttt{RET}\\
 Sets \texttt{IP} to the value pointed to by \texttt{SP} and decrements \texttt{SP}.
