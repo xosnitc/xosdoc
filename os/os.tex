@@ -230,7 +230,10 @@ Each process has its own set of values for the various registers. Words  2	 -- 6
 		\caption{Structure of Per-Process Open File Table}
 		\label{fig:processfile table}
 	\end{figure}
+	
+	For an invalid entry, the value of pointer to system wide open file table is set to -1 .
 \begin{itemize}
+
 \item
 The OS maintains a system wide open file table which contains details of all the files that are opened by processes (Refer Section~\ref{sec:file table}). The entry in the Per-Process File Table points to the System-wide Open File Table entry corresponding to the file. 
 \item It also stores the \texttt{LSEEK} position for the file, which indicates the word in the file to which the process currently points to for read/write operations. 
