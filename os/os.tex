@@ -338,14 +338,15 @@ Paging is the memory management scheme that permits the physical address space o
 		\begin{tabular}{|c|c|c|c|c|}
 		0 & 1 & 2 & \ldots & 15 \\
 		\hline
-		\texttt{VI} & \texttt{R} & \textbackslash 0 & \ldots &  \textbackslash 0 \\
+		\texttt{R} & \texttt{VI} & \textbackslash 0 & \ldots &  \textbackslash 0 \\
 		\hline
 		\end{tabular}
 		\end{figure}
 	
 		\begin{itemize}
-			\item \textit{Valid/Invalid Bit} (\texttt{VI}): is a value 1 or 0 for valid and invalid respectively. It is valid if and only if the entry is a physical memory location. It is invalid if either the entry points to location on the disk or if its not in the logical address space of the process.
-			\item \textit{Reference Bit} (\texttt{R}): This bit is set to 1 by the machine every time a page is accessed. This bit is used for page replacement (Refer Section~\ref{sec:page fault}) by the OS. 
+			\item \textit{Reference Bit} (\texttt{R}): This bit is set to 1 by the machine every time a page is accessed. This bit is used for page replacement (Refer Section~\ref{sec:page fault}) by the OS.
+			
+			\item \textit{Valid/Invalid Bit} (\texttt{VI}): is a value 1 or 0 for valid and invalid respectively. It is valid if and only if the entry is a physical memory location. It is invalid if either the entry points to location on the disk or if its not in the logical address space of the process. 
 		\end{itemize}
 
 \end{itemize}
