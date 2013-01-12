@@ -355,8 +355,7 @@ There are four privileged instructions. They can only be executed in kernel mode
 
 \item \texttt{IRET}\\
 Syntax : \texttt{IRET}\\
-
-Set \texttt{IP} to the value pointed by \texttt{SP} and decrements \texttt{SP} by one. \texttt{IRET} does the same action as \texttt{RET}, but it tells the processor that the interrupt handler has finished. With the execution of the \texttt{IRET} instruction, interrupts are enabled. (Read Section \ref{sec:int})
+\texttt{IRET} switches the mode from kernel to user mode. It then sets \texttt{IP} to the value pointed by \texttt{SP} and decrements \texttt{SP} by one. With the execution of the \texttt{IRET} instruction, interrupts are enabled. (Read Section \ref{sec:int})
 
 \item \texttt{LOAD}\\
 Syntax : \texttt{LOAD \textit{pagenum} \textit{blocknum}}\\
