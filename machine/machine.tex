@@ -380,26 +380,14 @@ This instruction causes the machine to halt immediately.
 
 \section{Privilege Modes}
 \label{sec:priv_modes}
-The XSM architecture is interrupt driven and uses a single processor. There are two privilege modes of execution, the user mode and the kernel mode. The privilege mode of execution is determined by the value of IP, i.e. the area in memory where the currently executing code executes.
+The XSM architecture is interrupt driven and uses a single processor. There are two privilege modes of execution, the user mode and the kernel mode. The machine is initially in kernel mode. It switches to user mode when it encounters an IRET instruction. It switches back to kernel mode after an interrupt or an exception occurs.
 
 
 \begin{itemize}
-\item User mode : Only unprivileged instructions can be executed in this mode. Only registers \texttt{R0} to \texttt{R7}, \texttt{SP} and \texttt{BP} are allowed to be used in any instruction in this mode.
+\item User mode : Only unprivileged instructions can be executed in this mode. Only registers \texttt{R0} to \texttt{R7}, \texttt{SP} and \texttt{BP} are allowed to be used in any instruction in this mode. Address translation occurs for all addresses in user mode.
 
-\item Kernel mode : Both privileged and unprivileged instructions can be executed in this mode. The value of \texttt{IP} and \texttt{EFR} cannot be explicitly changed by any instruction. Also these registers cannot be used in addressing memory locations. All other registers can be used in Kernel Mode. 
+\item Kernel mode : Both privileged and unprivileged instructions can be executed in this mode. The value of \texttt{IP} and \texttt{EFR} cannot be explicitly changed by any instruction. Also these registers cannot be used in addressing memory locations. All other registers can be used in Kernel Mode. Address translation does not occur in kernel mode. 
 
-
- 
-\begin{center}
-\begin{tabular}{|c|c|c|}
-\hline \textbf{Page Number} & \textbf{Privilege Level} \\ 
-\hline 0 & ROM Code \\ 
-\hline 1 - 15 & Kernel \\ 
-\hline 16 - 63 & User  \\ 
-
-\hline
-\end{tabular} 
-\end{center}
 
 \end{itemize}
 
