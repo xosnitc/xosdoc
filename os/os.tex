@@ -421,7 +421,7 @@ Therefore, there can be at most 64 open files in the system at any time. Each en
 			\begin{tabular}{|c|c|}
 				1 word & 1 word	\\		
 				\hline
-				FAT Index Entry & File Open Count\\
+				FAT Index & File Open Count\\
 				\hline
 			\end{tabular}
 		 \caption{Structure of an entry}
@@ -429,7 +429,7 @@ Therefore, there can be at most 64 open files in the system at any time. Each en
 	 \end{figure}
 
 	 \begin{itemize}
-		 \item \textbf{FAT index entry :} \index{File Allocation Table!Memory copy} It stores the index of the corresponding file in the FAT.
+		 \item \textbf{FAT index :} \index{File Allocation Table!Memory copy} It stores the index of the corresponding file in the FAT. An invalid entry is denoted by -1.
 
 		 \item \textbf{File Open Count :} File Open Count is the number of open instances of the file. When this becomes zero, the entry for the file can be removed from the System Wide Open File Table.
 	 \end{itemize}
