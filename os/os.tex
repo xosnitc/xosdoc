@@ -274,21 +274,30 @@ When a process is loaded only the disk addresses of the program are stored, and 
 
 		\begin{figure}[htp!]
 		\centering
-		\begin{tabular}{|c|c|c}
+		\begin{tabular}{|c|c|}
 			\textit{Physical Page Number} & \textit{Auxiliary Information (Valid Bit)} \\
 			\cline{0-1}
-			36 & 1  & \footnotesize \textit{ {Valid page in memory}}\\
+			36 & 1  \\
 			\cline{0-1}
-			311 & 0 & \footnotesize \textit{ {Disk Block No. is stored }}\\
+			311 & 0 \\
 			\cline{0-1}
-			54 &  1 & \footnotesize \textit{ {Valid page in memory}}\\
+			54 &  1 \\
 			\cline{0-1}
-			490 & 0 & \footnotesize \textit{ {Page in swap area in disk}}\\
+			490 & 0 \\
 			\cline{0-1}
 		\end{tabular}
 		\caption{Structure of Per-Process Page Table}
 		\label{fig:processfile table}
 	\end{figure}
+	
+	In the above example :
+\begin{itemize}
+	\item The 1st entry is a valid page in memory as the valid bit is 1.
+	\item The 2nd entry is invalid (valid bit is 0) and the disk block no corresponding to that entry is stored (311).
+	\item The 3rd entry is also a valid page (valid bit is 1).
+	\item The 4th entry is invalid and the disk block no stored is 490. This corresponds to a page in the swap area.
+\end{itemize}		
+	  
 	
 \section{Multiprogramming}
 \label{sec:multiprogramming}
