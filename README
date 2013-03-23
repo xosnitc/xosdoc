@@ -1,8 +1,34 @@
-Documentation for
+Documentation for the following components of the XOS project.
 
 1) Machine Specification (eXperimental String Machine - XSM)
-	machine/
-2) Operating System Specification (eXPerimental Operating System - XOS)
-	os/
-3) Roadmap to building operating system
-	roadmap/
+	xsm/
+2) Operating System Specification (eXperimental Operating System - XOS)
+	xos/
+3) File System Specification (eXperimental File System - XFS)
+	xfs/
+4) Usage Instructions
+	usage/
+5) System Programmers Language (SPL) Specification
+	spl/
+6) Application Programmers Language (APL) Specification
+	apl/
+
+ Authors
+---------------
+	Ajeet Kumar 
+	Albin Suresh 
+	Avinash 
+	Deepak Goyal 
+	Jeril K Goerge
+	K Dinesh 
+   	K Muralikrishnan
+	Mathew Kumpalamthanam 
+	Naseem Iqbal 
+	Nitish Kumar 
+	Ramnath Jayachandran 
+	Sathyam Doraswamy 
+	Shamil C M 
+	Sreeraj S 
+	Sumesh B 
+	Vivek Anand T Kallampally 
+	Yogesh Mishra
