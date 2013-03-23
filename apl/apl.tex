@@ -1,0 +1,410 @@
+\documentclass[11pt]{article}
+\usepackage{booktabs}
+\usepackage{fullpage}
+\usepackage{palatino}
+\usepackage{tabularx}
+\usepackage{listings}
+\usepackage{verbatim}
+\usepackage[bookmarks]{hyperref}
+
+\title{APL \\ \textit{Application Programmer's Language} \\ Specification \\ Version 1.0}
+\author{Dr. K. Muralikrishnan  \\ \texttt{kmurali@nitc.ac.in} \\ {NIT Calicut} }
+
+
+\hypersetup{
+colorlinks=false,
+urlcolor=cyan,
+pdfborder= 0 0 0
+}
+
+
+\begin{document}
+ \newcommand{\kw}[1]{\texttt{#1}}
+
+%.......................Title Page.................................>%
+\maketitle
+
+\pagebreak
+%......................Table of Contents............................%
+\thispagestyle{plain}
+
+\tableofcontents
+\pagebreak
+
+%...............................Introduction..........................%
+
+\section{Introduction}
+\paragraph{}
+\textit{APL} or \textit{Application Programmer's Language} is a simple and strongly typed programming language. The features and constructs of this language are minimal and mainly intended for testing an experimental operating system. The compiler of APL runs on XSM (\textit{eXperimental String Machine}) architecture.
+\paragraph{}
+This document describes briefly describe the programming constructs, syntax and semantics APL. The structure of APL is similar in some aspects to programming languages like C and Java. 
+
+A typical APL program is orgnaized in the following way. 
+
+\begin{verbatim}
+Global Declarations
+...
+Function Definitions
+...
+Main Function
+\end{verbatim}
+
+
+%-----------------------------Lexical Elements-------------------------%
+\section{Lexical Elements}
+
+
+
+
+%*********%
+\subsection{Comments and White Spaces}
+
+APL allows only line comments. Line comments start with the character sequence \textbf{//} and stop at the end of the line. 
+White spaces in the program including tabs, newline and horizontal spaces are ignored.
+
+
+
+
+%*********%
+\subsection{Keywords}
+The following are the reserved words in APL and it cannot be used as  identifiers.
+
+\begin{tabular}{c c c c c c }
+\kw{read} & \kw{print} & \kw{if} &   \kw{then} &   \kw{else} &   \kw{endif} \\
+\kw{while} &   \kw{do} &   \kw{endwhile} &  \kw{break} & \kw{continue} & \kw{integer} \\
+\kw{string} & \kw{main} & \kw{return} &    \kw{decl} &		\kw{enddecl}  &  \kw{Create}  \\
+\kw{Open} &   \kw{Write} & \kw{Seek}  & \kw{Read} & \kw{Close} &   \kw{Delete}    \\
+\kw{Fork} & \kw{Exec} & \kw{Exit} 
+\end{tabular}
+
+
+
+
+%*********%
+\subsection{Operators and Delimiters}
+
+The following are the operators and delimiters in APL   \\
+
+\begin{tabular}{c c c c c c c c c c c c c}
+( 		 & 		) 		& 		\{		 &		\} 		& 		[		&		 ]    &
+/		 & 		*		 & 		+ 		 & 		-  		& 		\% 		  \\
+\textgreater  & 	   \textless   &  \textgreater = 	 &  \textless =	&	    !=		&	==	  
+  & 		;	&	=  &  \&\&  	  &		$\Vert$	&	!	\\
+\end{tabular}
+
+
+
+
+%*********%
+\subsection{Indentifiers}
+
+Identifiers are names of variables and user-defined functions. Identifiers should start with an alphabet, and may contain both alphabets and digits. Special characters are not allowed in identifiers.
+\begin{verbatim}
+identifier -> (alphabet)(alphabet | digit)*
+\end{verbatim}
+
+
+
+
+%*********%
+\subsection{Literals}
+There are integer literals and string literals in APL. An integer literal is a sequence of digits representing an integer.
+Negative integers are represented with a negative sign preceding the sequence of digits. Any sequence of characters enclosed within double quotes (") are considered as string literals. However APL restricts string literals to size of atmost 16 characters including the '\textbackslash 0' character which is implicitly appended at the end of a string value. 
+\\
+\\
+Examples of literals are \texttt{
+ 19, -35, "Hello World"}
+
+
+%-----------------------------Data Types-------------------------%
+\section{Data Types}
+
+\subsection{Primitive Types}
+There are two primitive datatypes in APL. 
+\begin{enumerate}
+
+\item \textbf{Integer} : An integer value can range from -32767 to +32768. An integer type variable is declared using the keyword \kw {integer}
+\item \textbf{String}  
+A string type represents the set of string values. A string value can be atmost 16 characters long. String type variables is declared using the keyword \kw{string}.
+\end{enumerate}
+
+
+\subsection{Arrays}
+Arrays are  sequence of elements of a single type. Arrays can be of \textbf{integer} or \textbf{string} data types.
+APL allows the use of single-dimensional arrays only, i.e. linear arrays. Array elements are accessed by the array name followed an index value within square brackets ( e.g. arr[10] ).
+
+
+%-----------------------------Declarations and Scope-------------------------%%
+\section{Declarations and Scope}
+
+Declarations should be made for  variables and functions defined in the APL program.
+
+
+
+
+\subsection{Global Variables}
+Global variables are declared in the first section of the program within a \textbf{decl} ... \textbf{enddecl} block. Global variables can be accessed from any function in the program. Global variables can be of integer, string, integer array or string array datatypes. Global variables are declared with its datatype followed by the variable name. If the variable refers to an array the size of the array must be given in square brackets. The general form of declarations is as follows 
+
+\textit{type variable\_name;} 
+
+\textit{type variable\_name[size];}
+
+
+
+
+
+\subsection{Function Declaration}
+For every function except the \textbf{main()} function defined in a APL program, there must be a declaration. All functions have global scope and is declared in the first section within  \textbf{decl} ... \textbf{enddecl} block, along with the global variables.
+
+A function declaration should specify the name of the function, the name and type of each of its arguments and the return type of the function. A function can have integer/string arguments. Parameters may be passed by value or reference. Arrays cannot be passed as arguments. If a global variable name appears as an argument, then within the scope of the function, the new declaration will be valid and global variable declaration is suppressed. Different functions may have arguments of the same name. For arguments that are passed by reference, the argument name is preceded by an ampersand(\&) in the function declaration. The return type of a function must be either integer or string. The general form of declarations is as follows \\ 
+
+\textit{type function\_name (type1 argument1,argument2,...; type2 argument1,argument2,...;...);}
+\\
+\\
+Examples for global declarations
+\begin{lstlisting}
+decl
+	integer x,y,a[10],b[20];	
+	integer f1(integer a1,a2; string b1; integer &c1), f2(); 
+	string t, q[10], f3(integer x); 
+	integer swap(integer &x, &y);	 
+enddecl
+\end{lstlisting}
+
+
+
+
+
+\subsection{Local Variables}
+Local variables can be declared anywhere inside a function definition except in the body of \textbf{if} and \textbf{while}. Local variables will have a function scope, i.e. it can only be accessed in the function in which it is declared. Arguments of a function are treated as local variables. Local variables can be integer or string. Arrays cannot be declared locally. All globally declared variables are visible inside a function, unless suppressed by a re-declaration. The general form of declarations is as follows \\
+
+\textit{type variable\_name;} 
+
+
+
+
+
+%------------------__Function Definition----------------------_%
+
+\section{Function Definition and Main Function}
+
+Every APL program must have a \textbf{main()} function and zero or more user-defined functions. Every function other than the \textbf{main()} function must be declared within the \textbf{decl ... enddecl} block. The general form of a function definition is given below 
+\\
+\\
+\textit{
+type function\_name(ArgumentList) \\ \{ \\
+  Function Body \\
+\}
+}
+\\
+\\
+The function body must contain a return statement and the return value must be of the return type of the function. The arguments and return type of each function definition should match exactly with the corresponding declaration. Every declared function must have a definition. The signature of the function in the delcaration should match the definition of the function which includes the return type, and the names, passing mehtod and datatypes of the arguments. The language supports recursion and static scope rules apply.
+
+
+
+
+\subsection{main()}
+The \textbf{main()} function must be a zero argument function of type integer. Program execution begins from the body of the \textbf{main()} function. The \textbf{main()} function need not be declared. The \textbf{main()} function definition follows all user-defined function definitions.  The definition part of \textbf{main()} should be given in the same format as any other function.
+
+
+
+%----------------------------_Expressions-------------------------_%
+\section{Expressions}
+An expression specifies the computation of a value by applying operators and functions to operands. Function call in APL are treated as expressions, and the value of the expression is its return value. APL supports arithmetic and logical expressions
+
+
+
+\subsection{Arithmetic Expressions}
+
+Any integer value, variable, function returning an integer or 2 or more arithmetic expressions connected by arithmetic operators termed as arithmetic expressions. APL provides five arithmetic operators, viz., +, -, *, / (Integer Division) and \% (Modulo operator) through which arithmetic expressions may be combined. Expression syntax and semantics are similar to standard practice in programming languages and normal rules of precedence, associativity and paranthesization hold. APL is strongly typed, and hence the types of the oprands must match the operation. 
+
+
+\subsection{Logical Expressions}
+
+Logical expressions may be formed by combining arithmetic expressions using relational operators. The relational operators supported by APL are \begin{verbatim}  <, >, <=, >=, ==, !=
+\end{verbatim}
+Standard  meanings apply to these operators. The operators take two arithmetic expressions as operands and the result will be a boolean value, either of 1(true) or 0(false). Only realational operator that can be applied to two strings is == (to check equality). This also considered as a Logical expression. Logical expressions themselves may be combined using logical operators, \&\& (logical and) ,  $\Vert$ (logical or) and ! (not).
+
+\subsection{Function Call}
+
+All functions except the \textbf{main()} function can be invoked from any other function including itself. The general form of a function call is \\
+
+\textit{function\_name(value1,value1...);}
+\\
+
+Function calls are treated as expressions. The function takes in the values of its arguments and returns a value of type equal to the return type of the function. This value is treated as the evaluated result of the function call.
+
+
+
+
+%-----------------________Statements---------------------------_%
+\section{Statements}
+
+Statements control the execution of the program. All statements in APL are terminated with a semicolon ;
+
+
+
+
+
+\subsection{Assignment Statement}
+The APL assignment statement assigns the value of an expression to a variable, or an indexed array of the same type or a string value to a string variable. \textbf{=} is known as the assignment operator. Initialization during declaration is not allowed in APL. The general syntax is as follows \\
+\textit{ variable\_name = string\_value / array\_variable / expression }
+
+
+
+
+
+
+\subsection{If Statement}
+\textbf{If} statements specify the conditional execution of two branches according to the value of a boolean expression. If the expression evaluates to true, the \textbf{if} branch is executed, otherwise, if present, the \textbf{else}  branch is executed. The \textbf{else} part is optional. The general syntax is as follows  \\
+
+\textit{
+\textbf{if} (logical expression) \textbf{then}  \\
+ \indent \indent statements; \\
+\indent \textbf{else} \\
+\indent  \indent statements; \\
+\indent \textbf{endif;}  \\
+}
+
+
+
+\subsection{While Statement}
+\textbf{While} statement iteratively executes a set of statements based on a condition which is a logical expression.  The statements are iteratively executed as long as the logical expression evaluates to true.
+
+\textit{
+\textbf{while} (logical expression) \textbf{do}  \\
+ \indent \indent statements; \\
+\indent \textbf{endwhile;}  \\
+}
+
+\subsection{Break statement}
+\textbf{Break} statement is a statement which is used in a while loop block. This statement stops the execution of the loop in which it is used and passes the control of execution to the next statement after the loop. This statement cannot be used anywhere else other than while loop. The syntax is as follows\\
+
+\textit{\textbf{break} ;}
+
+\subsection{Continue statement}
+\textbf{Continue} statement is a statement which is also used only in a while loop block. This statement skips the current iteration of the loop and passes the control to the next iteration after checking the loop condition. The syntax is as follows\\
+
+\textit{\textbf{continue} ;}
+
+
+
+\subsection{Return statement}
+\textbf{Return} statement in a function passes the control from the callee to the caller function and returns a value to the caller function. All functions including the \textbf{main()} must have exactly one \textbf{return} statement and it should be the last statement in the funtion body. The return type of the function should match the type of the expression. The return type of main is integer. The syntax is as follows\\
+
+\textit{\textbf{return} expression;}
+
+
+\subsection{Read/Print statements}
+The standard input and output statements in APL are \textbf{read} and \textbf{print} respectively. The read statement reads an integer value from the standard input device into an integer variable or an indexed array variable or a string value into a string variable. The print statement outputs a string literal or the value of string variable or an arithmetic expression  into the standard output.\\
+
+\textit{\textbf{read} variable\_name;}
+
+\textit{\textbf{print} expression / string;}
+
+
+
+
+
+
+\section{System Calls}
+
+System Calls allow the programs written in APL to interact with the operating system running on the XSM architecture. 11 System Calls are supported by APL. 
+
+
+
+
+\subsection{Create}
+Creates a file with the specified filename in the filesystem. The return value of this system call is 0 in case of success and the appropriate error code in case of failure.
+\\
+
+\textit{integer \textbf{Create}(string filename);}
+
+
+
+
+
+
+\subsection{Open}
+Returns a file descriptor of the file in the filesystem with the specified filename. The file descriptor is an integer value. If the \textbf{Open} fails, an appropriate error code is returned.
+.\\
+
+\textit{integer \textbf{Open}(string fileName);}
+
+
+
+
+
+\subsection{Read}
+Reads one word(16 bytes) from a file which has the specified file descriptor, into a string/integer variable. The return value of this system call is 0, if it is a success. If the \textbf{Read} fails, an appropriate error code is returned.\\
+
+\textit{integer \textbf{Read}(integer fileDescriptor, string/integer variable);}
+
+
+
+
+
+\subsection{Write}
+Writes one word from a string/integer variable, to a file in the filesystem with the specified file descriptor. The return value of this system call is 0, if it is a success. If the \textbf{Write} fails, an appropriate error code is returned.\\
+
+\textit{integer \textbf{Write}(integer fileDescriptor, string/integer variable);}
+
+
+
+
+
+\subsection{Seek}
+
+\textbf{Seek} is used to change the read/write head position in a file. It moves the head to the specified number of words from the beginning of the file. The return value of this system call is 0 in case of success and the appropriate error code in case of failure.\\
+
+\textit{integer \textbf{Seek}(integer fileDescriptor, integer numWords);}
+ 
+ 
+ 
+ 
+ \subsection{Close}
+This system call is used to close an open file. The return value of this system call is 0 in case of success and the appropriate error code in case of failure.\\
+
+\textit{integer \textbf{Close}(integer fileDescriptor);}
+
+
+
+
+\subsection{Delete}
+This system call is used to delete the file from the file system whose name is specified in the
+argument. The return value of this system call is 0 in case of success and the appropriate error code in case
+of failure.\\
+
+\textit{integer \textbf{Delete}(string fileName);}
+
+
+
+\subsection{Fork}
+This system call is used to create a copy of the current process in the system. The return value of this system call is the PID of the child process for the parent, and 0 for the child.
+
+
+\textit{integer \textbf{Fork}();}
+
+
+
+
+\subsection{Exec}
+This system call is used to load the program, whose name is specified in the argument, in the
+memory space of the current process and start its execution. The return value of this system call is 1 in case of failure.
+\textit{integer \textbf{Exec}(string fileName);}
+
+
+
+
+\subsection{Exit}
+This system call is used to terminate the execution of the process which invoked it and remove it from the memory.
+
+\textit{void \textbf{Exit}();}
+
+
+\subsection{Halt}
+This system call is used to halt the machine.
+
+\textit{void \textbf{Halt}();}
+
+\end{document}
