@@ -33,3 +33,12 @@ spl/spl.out
 spl/spl.synctex.gz
 spl/spl.toc
 
+<<<<<<< HEAD
+=======
+usage/usage.aux
+usage/usage.dvi
+usage/usage.log
+usage/usage.out
+usage/usage.synctex.gz
+usage/usage.toc
+>>>>>>> eede9ceb0e3b7fdc7071b4c4f97916ced81f6800
