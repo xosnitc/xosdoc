@@ -5,12 +5,12 @@ xsm/xsm.out
 xsm/xsm.synctex.gz
 xsm/xsm.toc
 
-xos/xos.aux
-xos/xos.dvi
-xos/xos.log
-xos/xos.out
-xos/xos.synctex.gz
-xos/xos.toc
+xos/os.aux
+xos/os.dvi
+xos/os.log
+xos/os.out
+xos/os.synctex.gz
+xos/os.toc
 
 xfs/xfs.aux
 xfs/xfs.dvi
@@ -32,3 +32,4 @@ spl/spl.log
 spl/spl.out
 spl/spl.synctex.gz
 spl/spl.toc
+
