@@ -32,3 +32,10 @@ spl/spl.log
 spl/spl.out
 spl/spl.synctex.gz
 spl/spl.toc
+
+usage/usage.aux
+usage/usage.dvi
+usage/usage.log
+usage/usage.out
+usage/usage.synctex.gz
+usage/usage.toc
