@@ -29,4 +29,9 @@ B.~Pfaff, A.~Romano, and G.~Back.
 \newblock The pintos instructional operating system kernel.
 \newblock In {\em ACM SIGCSE Bulletin}, volume~41, pages 453--457. ACM, 2009.
 
+\bibitem{silberschatz}
+A.~Silberschatz, P.~B. Galvin, and G.~Gagne.
+\newblock {\em Operating system concepts}.
+\newblock J. Wiley \& Sons, 2009.
+
 \end{thebibliography}
