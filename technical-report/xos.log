@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2013.4.8)  9 APR 2013 21:01
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2013.4.8)  9 APR 2013 21:52
 entering extended mode
  %&-line parsing enabled.
 **xos.tex
@@ -234,7 +234,7 @@ Overfull \hbox (22.61433pt too wide) in paragraph at lines 142--142
 
 
 Overfull \hbox (20.79158pt too wide) in paragraph at lines 158--159
-\T1/aer/m/n/9 op-er-at-ing sys-tems like Na-chos[2], OS/161[3], Pin-tos[4], Gee
+\T1/aer/m/n/9 op-er-at-ing sys-tems like Na-chos[2], OS/161[4], Pin-tos[5], Gee
 kOS[1]
  []
 
@@ -255,12 +255,22 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 172--173
+Underfull \hbox (badness 10000) in paragraph at lines 163--164
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 174--175
+Underfull \hbox (badness 10000) in paragraph at lines 169--170
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 175--176
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 177--178
 
  []
 
@@ -270,51 +280,57 @@ Underfull \hbox (badness 10000) in paragraph at lines 179--180
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 184--185
+Underfull \hbox (badness 10000) in paragraph at lines 181--182
 
  []
 
 
-Overfull \hbox (1.84152pt too wide) in paragraph at lines 186--187
-\T1/aer/m/n/9 tine, memory-resident data struc-tures like ready list of PCBs,
+Underfull \hbox (badness 10000) in paragraph at lines 183--184
+
+ []
+
+
+Overfull \hbox (3.35677pt too wide) in paragraph at lines 188--188
+[]\secfnt EXPERIMENTAL OP-ER-AT-ING SYS-TEM 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 189--190
+
  []
 
 [2]
-LaTeX Font Info:    Try loading font information for T1+aett on input line 276.
+Underfull \hbox (badness 10000) in paragraph at lines 191--192
 
- (/usr/share/texmf-texlive/tex/latex/ae/t1aett.fd
-File: t1aett.fd 1997/11/16 Font definitions for T1/aett.
-)
+ []
 
-LaTeX Font Warning: Font shape `T1/aett/bx/n' undefined
-(Font)              using `T1/aett/m/n' instead on input line 295.
 
-(./xos.bbl) [3] [4] (./xos.aux)
+Overfull \hbox (10.85826pt too wide) in paragraph at lines 200--200
+[]\secfnt Application Pro-gram-mer's Lan-guage (APL) 
+ []
 
-LaTeX Font Warning: Some font shapes were not available, defaults substituted.
+(./xos.bbl) [3
 
- ) 
+] (./xos.aux) ) 
 Here is how much of TeX's memory you used:
- 2233 strings out of 493848
- 25154 string characters out of 1152824
- 84794 words of memory out of 3000000
- 5465 multiletter control sequences out of 15000+50000
- 56768 words of font info for 78 fonts, out of 3000000 for 9000
+ 2194 strings out of 493848
+ 24666 string characters out of 1152824
+ 84797 words of memory out of 3000000
+ 5441 multiletter control sequences out of 15000+50000
+ 49529 words of font info for 66 fonts, out of 3000000 for 9000
  714 hyphenation exceptions out of 8191
- 39i,10n,26p,2101b,278s stack positions out of 5000i,500n,10000p,200000b,50000s
-{/usr/share/texmf-texlive/fonts/enc/dvips/base/8r.enc}</usr/share/texmf-texli
-ve/fonts/type1/public/amsfonts/cm/cmbx9.pfb></usr/share/texmf-texlive/fonts/typ
-e1/public/amsfonts/cm/cmr6.pfb></usr/share/texmf-texlive/fonts/type1/public/ams
-fonts/cm/cmr9.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmti
-7.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmti9.pfb></usr/
-share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmtt9.pfb></usr/share/texmf-
-texlive/fonts/type1/urw/helvetic/uhvb8a.pfb></usr/share/texmf-texlive/fonts/typ
-e1/urw/helvetic/uhvr8a.pfb></usr/share/texmf-texlive/fonts/type1/urw/times/utmb
-8a.pfb></usr/share/texmf-texlive/fonts/type1/urw/times/utmr8a.pfb></usr/share/t
-exmf-texlive/fonts/type1/urw/times/utmri8a.pfb>
-Output written on xos.pdf (4 pages, 156821 bytes).
+ 39i,10n,26p,2101b,252s stack positions out of 5000i,500n,10000p,200000b,50000s
+{/usr/share/texmf-texlive/fonts/enc/dvips/base/8r.enc}</usr/shar
+e/texmf-texlive/fonts/type1/public/amsfonts/cm/cmbx9.pfb></usr/share/texmf-texl
+ive/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/share/texmf-texlive/fonts/typ
+e1/public/amsfonts/cm/cmti9.pfb></usr/share/texmf-texlive/fonts/type1/urw/helve
+tic/uhvb8a.pfb></usr/share/texmf-texlive/fonts/type1/urw/helvetic/uhvr8a.pfb></
+usr/share/texmf-texlive/fonts/type1/urw/times/utmb8a.pfb></usr/share/texmf-texl
+ive/fonts/type1/urw/times/utmr8a.pfb></usr/share/texmf-texlive/fonts/type1/urw/
+times/utmri8a.pfb>
+Output written on xos.pdf (3 pages, 117360 bytes).
 PDF statistics:
- 60 PDF objects out of 1000 (max. 8388607)
+ 45 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 

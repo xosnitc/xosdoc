@@ -2,51 +2,46 @@ This is BibTeX, Version 0.99c (TeX Live 2009/Debian)
 The top-level auxiliary file: xos.aux
 The style file: abbrv.bst
 Database file #1: xos.bib
-Warning--I didn't find a database entry for "anderson2005survey"
-Warning--I didn't find a database entry for "holland2002new"
-Warning--I didn't find a database entry for "pfaff2009pintos"
-Warning--I didn't find a database entry for "christopher1993nachos"
-Warning--I didn't find a database entry for "silberschatz2009operating"
 Warning--can't use both volume and number fields in Pintos
-You've used 4 entries,
+You've used 5 entries,
             2118 wiz_defined-function locations,
-            531 strings with 4512 characters,
-and the built_in function-call counts, 1657 in all, are:
-= -- 171
-> -- 67
+            531 strings with 4496 characters,
+and the built_in function-call counts, 1872 in all, are:
+= -- 190
+> -- 74
 < -- 3
-+ -- 30
-- -- 22
-* -- 121
-:= -- 260
-add.period$ -- 14
-call.type$ -- 4
-change.case$ -- 23
++ -- 33
+- -- 24
+* -- 129
+:= -- 298
+add.period$ -- 17
+call.type$ -- 5
+change.case$ -- 26
 chr.to.int$ -- 0
-cite$ -- 5
-duplicate$ -- 64
-empty$ -- 131
-format.name$ -- 22
-if$ -- 356
+cite$ -- 6
+duplicate$ -- 76
+empty$ -- 153
+format.name$ -- 24
+if$ -- 402
 int.to.chr$ -- 0
-int.to.str$ -- 4
-missing$ -- 4
-newline$ -- 23
-num.names$ -- 8
-pop$ -- 23
+int.to.str$ -- 5
+missing$ -- 6
+newline$ -- 28
+num.names$ -- 10
+pop$ -- 31
 preamble$ -- 1
-purify$ -- 19
+purify$ -- 22
 quote$ -- 0
-skip$ -- 46
+skip$ -- 52
 stack$ -- 0
-substring$ -- 122
-swap$ -- 22
+substring$ -- 127
+swap$ -- 23
 text.length$ -- 3
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 16
+type$ -- 18
 warning$ -- 1
-while$ -- 18
-width$ -- 5
-write$ -- 49
-(There were 6 warnings)
+while$ -- 20
+width$ -- 6
+write$ -- 59
+(There was 1 warning)

@@ -14,6 +14,11 @@ W.~A. Christopher, S.~J. Procter, and T.~E. Anderson.
   on USENIX Winter 1993 Conference Proceedings}, pages 4--4. USENIX
   Association, 1993.
 
+\bibitem{mips}
+J.~Heinrich.
+\newblock {\em MIPS R4000 Microprocessor User's Manual}.
+\newblock MIPS technologies, 1994.
+
 \bibitem{os161}
 D.~A. Holland, A.~T. Lim, and M.~I. Seltzer.
 \newblock A new instructional operating system.
