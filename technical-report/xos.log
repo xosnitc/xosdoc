@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2013.4.8)  9 APR 2013 02:43
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2013.4.8)  9 APR 2013 21:01
 entering extended mode
  %&-line parsing enabled.
 **xos.tex
@@ -255,40 +255,39 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
 ]
-LaTeX Font Info:    Try loading font information for T1+aett on input line 172.
+Underfull \hbox (badness 10000) in paragraph at lines 172--173
+
+ []
 
 
-(/usr/share/texmf-texlive/tex/latex/ae/t1aett.fd
+Underfull \hbox (badness 10000) in paragraph at lines 174--175
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 179--180
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 184--185
+
+ []
+
+
+Overfull \hbox (1.84152pt too wide) in paragraph at lines 186--187
+\T1/aer/m/n/9 tine, memory-resident data struc-tures like ready list of PCBs,
+ []
+
+[2]
+LaTeX Font Info:    Try loading font information for T1+aett on input line 276.
+
+ (/usr/share/texmf-texlive/tex/latex/ae/t1aett.fd
 File: t1aett.fd 1997/11/16 Font definitions for T1/aett.
 )
 
-LaTeX Warning: Citation `anderson2005survey' on page \thepage  undefined on inp
-ut line 207.
-
-
-LaTeX Warning: Citation `holland2002new' on page \thepage  undefined on input l
-ine 233.
-
-
-LaTeX Warning: Citation `pfaff2009pintos' on page \thepage  undefined on input 
-line 234.
-
-
-LaTeX Warning: Citation `christopher1993nachos' on page \thepage  undefined on 
-input line 235.
-
-
-LaTeX Warning: Citation `silberschatz2009operating' on page \thepage  undefined
- on input line 241.
-
-
-LaTeX Warning: Citation `pfaff2009pintos' on page \thepage  undefined on input 
-line 252.
-
-[2]
-
 LaTeX Font Warning: Font shape `T1/aett/bx/n' undefined
-(Font)              using `T1/aett/m/n' instead on input line 377.
+(Font)              using `T1/aett/m/n' instead on input line 295.
 
 (./xos.bbl) [3] [4] (./xos.aux)
 
@@ -296,30 +295,26 @@ LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
  ) 
 Here is how much of TeX's memory you used:
- 2238 strings out of 493848
- 25257 string characters out of 1152824
- 86794 words of memory out of 3000000
- 5470 multiletter control sequences out of 15000+50000
+ 2233 strings out of 493848
+ 25154 string characters out of 1152824
+ 84794 words of memory out of 3000000
+ 5465 multiletter control sequences out of 15000+50000
  56768 words of font info for 78 fonts, out of 3000000 for 9000
  714 hyphenation exceptions out of 8191
- 39i,10n,26p,1922b,252s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 39i,10n,26p,2101b,278s stack positions out of 5000i,500n,10000p,200000b,50000s
 {/usr/share/texmf-texlive/fonts/enc/dvips/base/8r.enc}</usr/share/texmf-texli
 ve/fonts/type1/public/amsfonts/cm/cmbx9.pfb></usr/share/texmf-texlive/fonts/typ
-e1/public/amsfonts/cmextra/cmex9.pfb></usr/share/texmf-texlive/fonts/type1/publ
-ic/amsfonts/cm/cmmi6.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/
-cm/cmmi9.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr6.pfb>
-</usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/share/t
-exmf-texlive/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/share/texmf-texlive
-/fonts/type1/public/amsfonts/cm/cmti7.pfb></usr/share/texmf-texlive/fonts/type1
-/public/amsfonts/cm/cmti9.pfb></usr/share/texmf-texlive/fonts/type1/public/amsf
-onts/cm/cmtt9.pfb></usr/share/texmf-texlive/fonts/type1/urw/helvetic/uhvb8a.pfb
-></usr/share/texmf-texlive/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/share/texm
-f-texlive/fonts/type1/urw/times/utmb8a.pfb></usr/share/texmf-texlive/fonts/type
-1/urw/times/utmr8a.pfb></usr/share/texmf-texlive/fonts/type1/urw/times/utmri8a.
-pfb>
-Output written on xos.pdf (4 pages, 195387 bytes).
+e1/public/amsfonts/cm/cmr6.pfb></usr/share/texmf-texlive/fonts/type1/public/ams
+fonts/cm/cmr9.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmti
+7.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmti9.pfb></usr/
+share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmtt9.pfb></usr/share/texmf-
+texlive/fonts/type1/urw/helvetic/uhvb8a.pfb></usr/share/texmf-texlive/fonts/typ
+e1/urw/helvetic/uhvr8a.pfb></usr/share/texmf-texlive/fonts/type1/urw/times/utmb
+8a.pfb></usr/share/texmf-texlive/fonts/type1/urw/times/utmr8a.pfb></usr/share/t
+exmf-texlive/fonts/type1/urw/times/utmri8a.pfb>
+Output written on xos.pdf (4 pages, 156821 bytes).
 PDF statistics:
- 76 PDF objects out of 1000 (max. 8388607)
+ 60 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 

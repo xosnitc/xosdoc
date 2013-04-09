@@ -155,10 +155,10 @@ In this paper, we introduce you to an operating system project that helps underg
 
 \section{Introduction}
 
-Teaching operating systems has been a challenge at undergraduate level. To tackle this problem several instructional operating systems like Nachos\cite{nachos}, OS/161\cite{os161}, Pintos\cite{Pintos}, GeekOS\cite{survey} etc. have been developed by various universities. Nachos\cite{nachos} has been one of the most popular of the instructional operating systems available and used in many institutes across the world \cite{survey}. Although Nachos implementation is fairly simple, it uses a mixed mode approach, where the operating system kernel is co-resident with the machine simulator and fused together as a single program, and does not provide an intuitive idea of the separation between these components. Moreover Nachos\cite{nachos} and OS/161\cite{os161} runs on top of MIPS machine simulator, host machines running on other platforms require cross compilers and separate tools. The authors of OS/161 has expressed plans of moving towards a different architecture due to lack of freely available tools \cite{os161}. XOS or Experimental Operating System, which we propose as a project for undergraduate operating systems laboratory courses, addresses these issues, by providing an original mahcine architecture known as XSM (Experimental String Machine) which has its own instruction set. This completely new and easy-to-understand instruction set helps avoid complexity associated with actual architecture and helps students to focus on the operating system aspects. The complete package including the high level languages for application as well as system programs, their cross-compilers to XSM machine architecture, simulator and debugger for XSM is provided for building XOS from scratch. In XOS, there is a clear differentiation between the machine and the operating system kernel like OS/161\cite{os161}, which is more realistic towards the actual scenario and has its own set of tools.\\
+Teaching operating systems has been a challenge at undergraduate level. To tackle this problem several instructional operating systems like Nachos\cite{nachos}, OS/161\cite{os161}, Pintos\cite{Pintos}, GeekOS\cite{survey} etc. have been developed by various universities. Nachos\cite{nachos} has been one of the most popular instructional operating systems available and is being used in many institutes across the world \cite{survey}. Although Nachos implementation is fairly simple, it uses a mixed mode approach, where the operating system kernel is co-resident with the machine simulator and fused together as a single program. This does not provide an intuitive idea of the separation between these components. Moreover Nachos\cite{nachos} and OS/161\cite{os161} runs on top of MIPS machine simulator. For these systems, a user's machine running on other platforms require cross compilers to MIPS. However there are few MIPS tools available for newer machine architectures, and hence there is a need for custom tools. Developing custom tools for MIPS is tedious. The authors of OS/161 has expressed plans of moving towards a different architecture due to lack of freely available tools \cite{os161}. XOS or Experimental Operating System, which we propose as a project for undergraduate operating systems laboratory courses, addresses these issues, by providing an original mahcine architecture known as XSM (Experimental String Machine) which has its own instruction set. This completely new and easy-to-understand instruction set helps avoid complexity associated with actual architecture and helps students to focus on the operating system aspects. The complete package including the high level languages for application as well as system programs, their cross-compilers to XSM machine architecture, simulator and debugger for XSM is provided for building XOS from scratch. In XOS, there is a clear differentiation between the machine and the operating system kernel like OS/161\cite{os161}, which is more realistic towards the actual scenario and has its own set of tools.\\
 
  
-Instructional operating systems like Minix and Xinu \cite{survey}, provide a functional operating system on which modifications are to be done by students. Almost every other instructional operating system provides a skeleton of an operating system. However in XOS, only the specification has been laid out, and students learn to implement XOS from ground up using the tools provided. Most instructional operating systems use C/C++ or Java for programming. Knowledge of a particular high level language becomes necessary for programming the operating system. In this project, a  simple high level language called APL (Application Programmer's Language) and its cross-compiler to XSM instruction set is provided to write user programs to test XOS, and an XSM machine dependant language called SPL(System Programmers Language and its cross-compiler is provided to program the OS itself. Most instructional operating systems use the UNIX filesystem for file management by the operating system. XOS is different from other instructional operating systems by providing its natve file system known as XFS (Experimental File System). An interface to between the UNIX filesystem and XFS filesystem is also provided.  \\
+Instructional operating systems like Minix and Xinu \cite{survey}, provide a functional operating system on which modifications are to be done by students. Almost every other instructional operating system provides a skeleton of an operating system. However in XOS, only the specification has been laid out, and students learn to implement XOS from ground up using the tools provided. Most instructional operating systems use C/C++ or Java for programming. Knowledge of a particular high level language becomes necessary for programming the operating system. In this project, a  simple high level language called APL (Application Programmer's Language) and its cross-compiler to XSM instruction set is provided to write user programs to test XOS, and an XSM machine dependant language called SPL(System Programmers Language) and its cross-compiler is provided to program the OS itself. Most instructional operating systems use the UNIX filesystem for file management by the operating system. XOS is different from other instructional operating systems by providing its natve file system known as XFS (Experimental File System). An interface to between the UNIX filesystem and XFS filesystem is also provided.  \\
 
 XOS has features like multiprogramming, process management, filesystem and virtual memory. A sequence of stages are provided in an instructive roadmap which helps students to build XOS sequentially. Although certain simplifications have been made in XOS, compared to real systems like absence of blocking system calls, device management and file caching, the elementary and fundamental aspects of operating systems and data structures have been retained. Process synchronization have been completely left out because, the it will turn out to be too much overwhelming for a student in a 16 week semester. The further sections describe in detail the various components of XOS.
 
@@ -166,95 +166,24 @@ XOS has features like multiprogramming, process management, filesystem and virtu
 \section{System Components}
 As explained in the previous section, an the primary components of the project include a simulated machine hardware (XSM), file system (XFS) and the operating system itself (XFS). Apart from the primary components, various tools have been provided as part of the development environement. They include languages like APL and SPL and their cross compilers to XSM instruction set is also provided, XSM debugger, and a UNIX-XFS interface to transfer files between a UNIX machine and XFS disk. The XFS disk is basically a file in UNIX machine which acts as a disk for XOS. 
 
-\subsection{Experimental File System (XFS)}
-We have already seen several typeface changes in this sample.  You
-can indicate italicized words or phrases in your text with
-the command \texttt{{\char'134}textit}; emboldening with the
-command \texttt{{\char'134}textbf}
-and typewriter-style (for instance, for computer code) with
-\texttt{{\char'134}texttt}.  But remember, you do not
-have to indicate typestyle changes when such changes are
-part of the \textit{structural} elements of your
-article; for instance, the heading of this subsection will
-be in a sans serif\footnote{A third footnote, here.
-Let's make this a rather short one to
-see how it looks.} typeface, but that is handled by the
-document class file. Take care with the use
-of\footnote{A fourth, and last, footnote.}
-the curly braces in typeface changes; they mark
-the beginning and end of
-the text that is to be in the different typeface.
 
-You can use whatever symbols, accented characters, or
-non-English characters you need anywhere in your document;
-you can find a complete list of what is
-available in the \textit{\LaTeX\
-User's Guide}.
 
 \subsection{Experimental String Machine (XSM)}
-You may want to display math equations in three distinct styles:
-inline, numbered or non-numbered display.  Each of
-the three are discussed in the next sections.
+XOS runs on a simulated machine hardware called XSM or Experimental String Machine. XSM uses an easy-to-understand native 2-address instruction set. The various components of the machine include registers, memory, timer and the disk. A UNIX file simulates the disk for XSM.\\
 
-\subsubsection{dasa}
-A formula that appears in the running text is called an
-inline or in-text formula.  It is produced by the
-\textbf{math} environment, which can be
-invoked with the usual \texttt{{\char'134}begin. . .{\char'134}end}
-construction or with the short form \texttt{\$. . .\$}. You
-can use any of the symbols and structures,
-from $\alpha$ to $\omega$, available in
-\LaTeX\cite{anderson2005survey}; this section will simply show a
-few examples of in-text equations in context. Notice how
-this equation: \begin{math}\lim_{n\rightarrow \infty}x=0\end{math},
-set here in in-line math style, looks slightly different when
-set in display style.  (See next section).
+XSM has a timer which triggers after fixed number of instructions as compared to a timer interval in real machines. An instruction triggered timer was preferred over a clock-triggered timer to ensure that the timer interrupt is not invoked in between the simulation of a single instruction. Thus, an instruction in XSM is always atomic. Instructions are executed one after the other in a non-pipelined manner.\\
 
-\subsubsection{Display Equations}
-A numbered display equation -- one set off by vertical space
-from the text and centered horizontally -- is produced
-by the \textbf{equation} environment. An unnumbered display
-equation is produced by the \textbf{displaymath} environment.
+XSM has a memory of 64 pages. Size of each page is 512 words. A word is the smallest addressable unit in XSM as compared to a byte in MIPS. XSM is a string machine, and each word is stored internally as strings of size 16 characters.  However, the XSM supports two data types, integer and strings and has instructions for both  the data types. There are two privilege modes in XSM, the user mode and kernel mode. Switching between modes is done by instructions.
 
-Again, in either environment, you can use any of the symbols
-and structures available in \LaTeX; this section will just
-give a couple of examples of display equations in context.
-First, consider the equation, shown as an inline equation above:
-\begin{equation}\lim_{n\rightarrow \infty}x=0\end{equation}
-Notice how it is formatted somewhat differently in
-the \textbf{displaymath}
-environment.  Now, we'll enter an unnumbered equation:
-\begin{displaymath}\sum_{i=0}^{\infty} x + 1\end{displaymath}
-and follow it with another numbered equation:
-\begin{equation}\sum_{i=0}^{\infty}x_i=\int_{0}^{\pi+2} f\end{equation}
-just to demonstrate \LaTeX's able handling of numbering.
+\subsection{Experimental File System (XFS)}
+The disk for XSM (which is a UNIX file) can be formatted using XFS or Experimental File System. XFS is the file system compatible with XOS. Since file system management is done by students building XOS, the disk organization must be easily understood and at the same time must give an insight on the data structures used in real file systems. Hence we chose to have a native file system for XOS.\\
+
+The disk is formatted with this file system using the interface provided as part of the development environment. XFS is a simple file system with no directory structure. The data is organized into blocks of size equal to the page size in XSM memory. There are 512 blocks in XFS which holds the file and disk data structures, OS routines, user programs and data files. The various data structures in XFS include the Disk Free List which maintains information about used and unused blocks on the disk and the FAT or the File Allocation Table stores details of the files in the disk.
 
 \subsection{Experimental Operating System (XOS)}
-Citations to articles \cite{holland2002new},
-conference proceedings \cite{pfaff2009pintos} or
-books \cite{christopher1993nachos} listed
-in the Bibliography section of your
-article will occur throughout the text of your article.
-You should use BibTeX to automatically produce this bibliography;
-you simply need to insert one of several citation commands with
-a key of the item \\
-d in the proper location in the \texttt{.tex} file \cite{silberschatz2009operating}.
-The key is a short reference you invent to uniquely
-identify each work; in this sample document, the key is
-the first author's surname and a
-word from the title.  This identifying key is included
-with each item in the \texttt{.bib} file for your article.
+The specification for an Experimental Operating System or XOS is laid out to the students. In this project, students will build XOS to meet the specification. XOS is a simulated operating system which runs on top of XSM which is a simulated machine hardware. The OS kernel unlike Nachos \cite{nachos} resides in the memory of the machine during runtime, and is not fused together with the simulated machine and compiled as a single program. The simulated disk formatted using XFS, permanently stores the OS routines and data structures like in real systems. The disk is simulated using a UNIX file. This system is close to real systems and the abstractions are easy to understand. \\
 
-The details of the construction of the \texttt{.bib} file
-are beyond the scope of this sample document, but more
-information can be found in the \textit{Author's Guide},
-and exhaustive details in the \textit{\LaTeX\ User's
-Guide}\cite{pfaff2009pintos}.
-
-This article shows only the plainest form
-of the citation command, using \texttt{{\char'134}cite}.
-This is what is stipulated in the SIGS style specifications.
-No other citation format is endorsed or supported.
+The various components of the operating system include routines like OS startup code, eight interrupt routines including the timer interrupt and the  exception handler routine, process data structures like ready list of PCBs, per-process page tables, the system wide-open file 
 
 \subsection{Development Tools}
 Because tables cannot be split across pages, the best
@@ -270,17 +199,6 @@ on \textbf{tabular} material
 is found in the \textit{\LaTeX\ User's Guide}.
 
 
-\begin{table}
-\centering
-\caption{Frequency of Special Characters}
-\begin{tabular}{|c|c|l|} \hline
-Non-English or Math&Frequency&Comments\\ \hline
-\O & 1 in 1,000& For Swedish names\\ \hline
-$\pi$ & 1 in 5& Common in math\\ \hline
-\$ & 4 in 5 & Used in business\\ \hline
-$\Psi^2_1$ & 1 in 40,000& Unexplained usage\\
-\hline\end{tabular}
-\end{table}
 
 \subsubsection{Application Programmer's Language (APL)}
 Immediately following this sentence is the point at which
