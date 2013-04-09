@@ -31,12 +31,14 @@ Version 1.0}
 
 
 \section{Introduction}
+\textbf{XFS} or \textit{Experimental File System} is a file system architecture designed for \textbf{XOS} (\textit{Experimental Operating System}). XFS is a simple filesystem which has no directory structure. \\
 
-XFS or Experimental File System is a file system architecture designed for XOS (Experimental Operating System). XFS is a simple filesystem which has no directory structure. \\
+XFS spans the entire disk in \textbf{XSM} (\textit{Experimental String Machine}). The disk consists of a linear sequence of 512 blocks. The basic unit of disk in XSM is a \textbf{\textit{block}}. The size of the block is equal to that of page in memory (512 words). The total capacity of the disk is 512 $\times$ 512 = \textbf{262144} words. \\
 
-XFS spans the entire disk in XSM (Experimental String Machine). The disk consists of a linear sequence of 512 blocks. The basic unit of disk in XSM is a \textbf{\textit{block}}. The size of the block is equal to that of page in memory (512 words). The total capacity of the disk is 512 $\times$ 512  = \textbf{262144} words. \\
+Any particular block in the disk is addressed by the corresponding number in the sequence 0 to 511 known as the \emph{block number}.
 
- Any particular block in the disk is addressed by the corresponding number in the sequence 0 to 511 known as the \emph{block number}. 
+
+
 
 
 \section{Disk Organization}
@@ -45,22 +47,25 @@ The disk is organized by the file system as shown below.
 
 \begin{figure}[htp!] \small
 	\centering
-	\begin{tabular}{|c|c|}
+	\begin{tabular}{|c|c|c|}
 	\toprule
-		\textbf{Block No} & \textbf{Contents} \\ \hline
+		\textbf{Block No} & \textbf{Contents} & \textbf{No. of Blocks}\\ \hline
 	\toprule
-		0 & OS Startup Code \\ \hline
-		1 & Page Fault Handler \\ \hline
-		2 & Timer Interrupt Routine \\ \hline
-		3 & Interrupt 1 Routine \\ \hline 
-		\vdots & \vdots \\ 
-		9 & Interrupt 7 Routine \\ \hline
-		10 & File Allocation Table (FAT) \\ \hline
-		11 & Disk Free List \\ \hline
-		12 & Unallocated  \\ \hline
-		13 -- 15 & INIT Code  \\ \hline
-		16 -- 447 & User Blocks  \\ \hline
-		448 -- 511 & Swap Area  \\ \hline					
+		0 & OS Startup Code & 1\\ \hline
+		1-2 & Exception Handler & 2\\ \hline
+		3-4 & Timer Interrupt Routine & 2\\ \hline
+		5-6 & Interrupt 1 Routine  & 2\\ \hline 
+		7-8 & Interrupt 2 Routine  & 2\\ \hline 
+		9-10 & Interrupt 3 Routine  & 2\\ \hline 
+		11-12 & Interrupt 4 Routine  & 2\\ \hline 
+		13-14 & Interrupt 5 Routine  & 2\\ \hline 
+		15-16 & Interrupt 6 Routine  & 2\\ \hline 
+		17-18 & Interrupt 7 Routine  & 2\\ \hline 
+		19 & File Allocation Table (FAT)  & 1\\ \hline
+		20 & Disk Free List  & 1\\ \hline
+		21-23 & INIT Code  & 3 \\ \hline
+		24 -- 447 & User Blocks  & 424\\ \hline
+		448 -- 511 & Swap Area  & 64\\ \hline					
 	\end{tabular}
 	\caption{Structure of the disk}
 	\label{fig:disk}
@@ -68,18 +73,18 @@ The disk is organized by the file system as shown below.
 
 \begin{itemize}
 \item \textbf{OS Startup Code}: Block 0 is the location of operating system code required during machine boot. 
-\item \textbf{Exception and Interrupt Handler}: Blocks from 1 - 9 is intended for ISR (Interrupt Service Routines) for interrupt and exception handling which is done by the Operating System.  
+\item \textbf{Exception and Interrupt Handler}: Blocks from 1 - 18 are intended for Interrupt Routines for interrupt and exception handling which is done by the Operating System.  
 \item \textbf{FAT} or File Allocation table contains details about the files stored on the disk. 
 \item \textbf{Disk Free List} has 512 entries, one entry for each block in the disk, indicating whether it is used or unused. 
-\item \textbf{INIT Code} It has the code for INIT process, which is the first user program run by the OS after startup. 
-\item \textbf{User Blocks}. Blocks from 16 to 447 are used to store user data files and user programs. 
-\item \textbf{Swap Area} The file system also provides a swap area for the operating system to implement demand paging. Swap Area is reserved exclusively for use by the operating system.
-
+\item \textbf{INIT Code}: It has the code for INIT process, which is the first user program run by the OS after startup. 
+\item \textbf{User Blocks}. Blocks from 24 to 447 are used to store user data files and user programs.
+\item \textbf{Swap Area}: The file system also provides a swap area for the operating system to implement demand paging. Swap Area is reserved exclusively for use by the operating system.
 \end{itemize}
 
 
 
 \section{File}
+
 A file \index{File} is a collection of blocks identified by a name. Every file in the disk has a \textit{Basic Block} and several \textit{Data Blocks}. They are defined as follows:
 \begin{itemize}
 	\item \textbf{Data Blocks :}  These blocks contain the actual data of a file. \index{File!Data Block}
@@ -103,32 +108,28 @@ A file \index{File} is a collection of blocks identified by a name. Every file i
 		\begin{itemize}
 			\item The block list consists of 256 entries.
 			\item Each entry is of size one word.
-			\item The value contained in an entry of the block list gives the block number of the corresponding data block in the disk. All invalid entries are marked with 0.
+			\item The value contained in an entry of the block list gives the block number of the corresponding data block in the disk. All invalid entries are marked with -1.
 		\end{itemize}
-		\item \textbf{Header :} The header contains the meta information relating to the file.
-The header fields is 256 words long. It can be used to store details like permissions, ownership etc related to a file, similar to inode in Linux and UNIX operating systems. However XOS does not use the header field.
-
+		\item \textbf{Header :} The header contains the meta information relating to the file. The header fields is 256 words long. It can be used to store details like permissions, ownership etc related to a file, similar to inode in Linux and UNIX operating systems. However XOS does not use the header field.
 	\end{itemize}
 \end{itemize}
 
-\begin{example}
+
 	\begin{figure}[h!]
 	\centering
 	\includegraphics[scale=0.50]{basic_block_example.png}
 	\caption{Example illustrating the basic block of a file}
 	\label{basic block example}
 	\end{figure}
+	
 
-	Consider the example illustrated by figure~\ref{basic block example}.
-	From the figure, we infer the following. 
+	From the figure~\ref{basic block example}, we infer the following. 
 	\begin{itemize}
-		\item  The zeroth data block of the file resides in the disk in block number 240. 
-		\item  The first data block of the file resides in the disk in block number 420.
-		\item  The second data block of the file resides in the disk in block number 101 
-		\item  The third data block of the file resides in the disk in block number 315
-		\item  There are no more data blocks for the file. So rest of the entries of the basic block are marked as 0
+		\item  The zeroth data block of the file resides in the disk in block number 240
+		\item  The first data block of the file resides in the disk in block number 420. The second data block of the file resides in the disk in block number 101. The third data block of the file resides in the disk in block number 315
+		\item  There are no more data blocks for the file. So rest of the entries of the basic block are marked as -1
 	\end{itemize}
-\end{example}
+
 
 \subsection{File Types} 
 \index{File!Types}
@@ -142,17 +143,17 @@ There are two types of files in the XSM architecture. They are:
 \index{File Allocation Table}
 \label{sec:fat}
 \label{lbl:fat}
-\emph{File allocation table} (FAT) is a table that has an entry for each file present in the disk.
+File allocation table (\textbf{FAT}) is a table that has an entry for each file present in the disk. FAT of the filesystem consists of 64 entries. Thus there can be a maximum of 64 files.
 
 \begin{itemize}
-	\item FAT of the filesystem consists of 64 entries. Thus there can be a maximum of 64 files. 
-	\item Each entry is of size 8 words.
-	\item Total size of the FAT is thus 512 words, which occupies 1 block.
-	\item It is a disk data structure and occupies block number 10 on the disk.
+\item Total size of the FAT is thus 512 words, which occupies 1 block.
+\item It is a disk data structure and occupies block number 19 on the disk.
+\end{itemize}
+
 
 \subsection{Structure of FAT}
 	\index{File Allocation Table!Location in disk}
-\end{itemize}
+
 
 The structure of a FAT entry is shown below 
 
@@ -162,7 +163,7 @@ The structure of a FAT entry is shown below
 		\hline
 		0 & 1 & 2 & 3 -- 7 \\
 		\hline
-		File Name & File Size & Block no: of basic block & \dots{} Free \dots \\
+		File Name & File Size & Block \# of basic block & \dots{} Free \dots \\
 		\hline
 	\end{tabular}
 	\caption{Structure of a FAT entry}
@@ -188,9 +189,9 @@ The Disk Free List is a data structure used for keeping tracking of unused block
 \begin{itemize}
 	\item  The Free List of the disk consists of 512 entries. Each entry is of size one word.
 	\item  The size of the free list is thus 1 block or 512 words.
-	\item  It is present in blocks 11 of the disk. Refer figure~\ref{fig:disk}. \index{Disk!Free List Location}
-	\item  For each block in the disk there is an entry in the Disk Free List which contains a value of either 0 or 1 indicating whether the corresponding block in the disk is free or used respectively. Each entry in the Disk Free List is of size one word.  
-	\item Blocks 0 to 12 are system reserved and are marked as 1 in the Disk Free List so that they cannot be used for saving user files. The file system also ensures that user files are not stored on the Swap Area.
+	\item  It is present in blocks 20 of the disk. Refer figure~\ref{fig:disk}. \index{Disk!Free List Location}
+	\item  For each block in the disk there is an entry in the Disk Free List which contains a value of either 0 or 1 indicating whether the corresponding block in the disk is free or used respectively. Each entry in the Disk Free List is of size one word. 
+	\item Blocks 0 to 20 are system reserved and are marked as 1 in the Disk Free List so that they cannot be used for saving user files. The file system also ensures that user files are not stored on the Swap Area.
 \end{itemize}
 
 
