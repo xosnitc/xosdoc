@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2013.4.8)  10 APR 2013 14:35
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2013.4.8)  10 APR 2013 22:28
 entering extended mode
  %&-line parsing enabled.
 **xos.tex
@@ -185,71 +185,211 @@ LaTeX Font Info:    Try loading font information for T1+aer on input line 100.
 
 (/usr/share/texmf-texlive/tex/latex/ae/t1aer.fd
 File: t1aer.fd 1997/11/16 Font definitions for T1/aer.
-))) (./xos.aux)
+)))
+(/usr/share/texmf-texlive/tex/latex/hyperref/hyperref.sty
+Package: hyperref 2009/10/09 v6.79a Hypertext links for LaTeX
+
+(/usr/share/texmf-texlive/tex/generic/oberdiek/ifpdf.sty
+Package: ifpdf 2009/04/10 v2.0 Provides the ifpdf switch (HO)
+Package ifpdf Info: pdfTeX in pdf mode detected.
+)
+(/usr/share/texmf-texlive/tex/generic/oberdiek/ifvtex.sty
+Package: ifvtex 2008/11/04 v1.4 Switches for detecting VTeX and its modes (HO)
+Package ifvtex Info: VTeX not detected.
+)
+(/usr/share/texmf-texlive/tex/generic/ifxetex/ifxetex.sty
+Package: ifxetex 2009/01/23 v0.5 Provides ifxetex conditional
+)
+(/usr/share/texmf-texlive/tex/latex/oberdiek/hycolor.sty
+Package: hycolor 2009/10/02 v1.5 Code for color options of hyperref/bookmark (H
+O)
+
+(/usr/share/texmf-texlive/tex/latex/oberdiek/xcolor-patch.sty
+Package: xcolor-patch 2009/10/02 xcolor patch
+))
+\@linkdim=\dimen123
+\Hy@linkcounter=\count109
+\Hy@pagecounter=\count110
+
+(/usr/share/texmf-texlive/tex/latex/hyperref/pd1enc.def
+File: pd1enc.def 2009/10/09 v6.79a Hyperref: PDFDocEncoding definition (HO)
+)
+(/usr/share/texmf-texlive/tex/generic/oberdiek/etexcmds.sty
+Package: etexcmds 2007/12/12 v1.2 Prefix for e-TeX command names (HO)
+
+(/usr/share/texmf-texlive/tex/generic/oberdiek/infwarerr.sty
+Package: infwarerr 2007/09/09 v1.2 Providing info/warning/message (HO)
+)
+Package etexcmds Info: Could not find \expanded.
+(etexcmds)             That can mean that you are not using pdfTeX 1.50 or
+(etexcmds)             that some package has redefined \expanded.
+(etexcmds)             In the latter case, load this package earlier.
+)
+
+Package hyperref Warning: Height of page (\paperheight) is invalid (0.0pt),
+(hyperref)                using 11in.
+
+(/usr/share/texmf-texlive/tex/latex/latexconfig/hyperref.cfg
+File: hyperref.cfg 2002/06/06 v1.2 hyperref configuration of TeXLive
+)
+(/usr/share/texmf-texlive/tex/latex/oberdiek/kvoptions.sty
+Package: kvoptions 2009/08/13 v3.4 Keyval support for LaTeX options (HO)
+
+(/usr/share/texmf-texlive/tex/generic/oberdiek/kvsetkeys.sty
+Package: kvsetkeys 2009/07/30 v1.5 Key value parser with default handler suppor
+t (HO)
+))
+Package hyperref Info: Hyper figures OFF on input line 2975.
+Package hyperref Info: Link nesting OFF on input line 2980.
+Package hyperref Info: Hyper index ON on input line 2983.
+Package hyperref Info: Plain pages OFF on input line 2990.
+Package hyperref Info: Backreferencing OFF on input line 2995.
+
+Implicit mode ON; LaTeX internals redefined
+Package hyperref Info: Bookmarks ON on input line 3191.
+(/usr/share/texmf-texlive/tex/latex/ltxmisc/url.sty
+\Urlmuskip=\muskip11
+Package: url 2006/04/12  ver 3.3  Verb mode for urls, etc.
+)
+LaTeX Info: Redefining \url on input line 3428.
+
+(/usr/share/texmf-texlive/tex/generic/oberdiek/bitset.sty
+Package: bitset 2007/09/28 v1.0 Data type bit set (HO)
+
+(/usr/share/texmf-texlive/tex/generic/oberdiek/intcalc.sty
+Package: intcalc 2007/09/27 v1.1 Expandable integer calculations (HO)
+)
+(/usr/share/texmf-texlive/tex/generic/oberdiek/bigintcalc.sty
+Package: bigintcalc 2007/11/11 v1.1 Expandable big integer calculations (HO)
+
+(/usr/share/texmf-texlive/tex/generic/oberdiek/pdftexcmds.sty
+Package: pdftexcmds 2009/09/23 v0.6 LuaTeX support for pdfTeX utility functions
+ (HO)
+
+(/usr/share/texmf-texlive/tex/generic/oberdiek/ifluatex.sty
+Package: ifluatex 2009/04/17 v1.2 Provides the ifluatex switch (HO)
+Package ifluatex Info: LuaTeX not detected.
+)
+(/usr/share/texmf-texlive/tex/generic/oberdiek/ltxcmds.sty
+Package: ltxcmds 2009/08/05 v1.0 Some LaTeX kernel commands for general use (HO
+)
+)
+Package pdftexcmds Info: LuaTeX not detected.
+Package pdftexcmds Info: \pdf@primitive is available.
+Package pdftexcmds Info: \pdf@ifprimitive is available.
+)))
+\Fld@menulength=\count111
+\Field@Width=\dimen124
+\Fld@charsize=\dimen125
+\Field@toks=\toks36
+Package hyperref Info: Hyper figures OFF on input line 4377.
+Package hyperref Info: Link nesting OFF on input line 4382.
+Package hyperref Info: Hyper index ON on input line 4385.
+Package hyperref Info: backreferencing OFF on input line 4392.
+Package hyperref Info: Link coloring OFF on input line 4397.
+Package hyperref Info: Link coloring with OCG OFF on input line 4402.
+Package hyperref Info: PDF/A mode OFF on input line 4407.
+
+(/usr/share/texmf-texlive/tex/generic/oberdiek/atbegshi.sty
+Package: atbegshi 2008/07/31 v1.9 At begin shipout hook (HO)
+)
+
+Package hyperref Warning: Option `pdfpagelabels' is turned off
+(hyperref)                because \thepage is undefined.
+
+\c@Item=\count112
+\c@Hfootnote=\count113
+)
+*hyperref using default driver hpdftex*
+(/usr/share/texmf-texlive/tex/latex/hyperref/hpdftex.def
+File: hpdftex.def 2009/10/09 v6.79a Hyperref driver for pdfTeX
+\Fld@listcount=\count114
+)
+Package hyperref Info: Option `colorlinks' set `false' on input line 54.
+ (./xos.aux)
 \openout1 = `xos.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 50.
-LaTeX Font Info:    ... okay on input line 50.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 50.
-LaTeX Font Info:    ... okay on input line 50.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 50.
-LaTeX Font Info:    ... okay on input line 50.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 50.
-LaTeX Font Info:    ... okay on input line 50.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 50.
-LaTeX Font Info:    ... okay on input line 50.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 50.
-LaTeX Font Info:    ... okay on input line 50.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 55.
+LaTeX Font Info:    ... okay on input line 55.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 55.
+LaTeX Font Info:    ... okay on input line 55.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 55.
+LaTeX Font Info:    ... okay on input line 55.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 55.
+LaTeX Font Info:    ... okay on input line 55.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 55.
+LaTeX Font Info:    ... okay on input line 55.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 55.
+LaTeX Font Info:    ... okay on input line 55.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 55.
+LaTeX Font Info:    ... okay on input line 55.
 
 (/usr/share/texmf-texlive/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count109
-\scratchdimen=\dimen123
+\scratchcounter=\count115
+\scratchdimen=\dimen126
 \scratchbox=\box30
-\nofMPsegments=\count110
-\nofMParguments=\count111
-\everyMPshowfont=\toks36
-\MPscratchCnt=\count112
-\MPscratchDim=\dimen124
-\MPnumerator=\count113
-\everyMPtoPDFconversion=\toks37
+\nofMPsegments=\count116
+\nofMParguments=\count117
+\everyMPshowfont=\toks37
+\MPscratchCnt=\count118
+\MPscratchDim=\dimen127
+\MPnumerator=\count119
+\everyMPtoPDFconversion=\toks38
 )
-LaTeX Font Info:    Try loading font information for U+msa on input line 142.
+Package hyperref Info: Link coloring OFF on input line 55.
+ (/usr/share/texmf-texlive/tex/latex/hyperref/nameref.sty
+Package: nameref 2007/05/29 v2.31 Cross-referencing by name of section
+
+(/usr/share/texmf-texlive/tex/latex/oberdiek/refcount.sty
+Package: refcount 2008/08/11 v3.1 Data extraction from references (HO)
+)
+\c@section@level=\count120
+)
+LaTeX Info: Redefining \ref on input line 55.
+LaTeX Info: Redefining \pageref on input line 55.
+ (./xos.out)
+(./xos.out)
+\@outlinefile=\write3
+\openout3 = `xos.out'.
+
+\AtBeginShipoutBox=\box31
+LaTeX Font Info:    Try loading font information for U+msa on input line 148.
  (/usr/share/texmf-texlive/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2009/06/22 v3.00 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 142.
+LaTeX Font Info:    Try loading font information for U+msb on input line 148.
 
 (/usr/share/texmf-texlive/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2009/06/22 v3.00 AMS symbols B
 )
-LaTeX Font Info:    Try loading font information for U+lasy on input line 142.
+LaTeX Font Info:    Try loading font information for U+lasy on input line 148.
 
 (/usr/share/texmf-texlive/tex/latex/base/ulasy.fd
 File: ulasy.fd 1998/08/17 v2.2e LaTeX symbol font definitions
 )
-Overfull \hbox (22.61433pt too wide) in paragraph at lines 142--142
+Overfull \hbox (22.61433pt too wide) in paragraph at lines 148--148
  []\eaddfnt vivekanand_bcs09@nitc.ac.in 
  []
 
 
-Overfull \hbox (1.24568pt too wide) in paragraph at lines 158--159
-\T1/aer/m/n/9 tional op-er-at-ing sys-tems like Na-chos[2], OS/161[4], Pin-tos[
-5], 
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 158--159
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 161--162
-
+Overfull \hbox (1.24568pt too wide) in paragraph at lines 163--164
+\T1/aer/m/n/9 tional op-er-at-ing sys-tems like Na-chos[[]2[]], OS/161[[]4[]], 
+Pin-tos[[]5[]], 
  []
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 163--164
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 166--167
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 168--169
 
  []
 
@@ -260,28 +400,15 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 165--166
+Underfull \hbox (badness 10000) in paragraph at lines 170--171
 
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 171--172
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 177--178
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 179--180
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 181--182
-
+<components.png, id=85, 597.73312pt x 590.95781pt>
+File: components.png Graphic file (type png)
+ <use components.png>
+Overfull \hbox (11.04619pt too wide) in paragraph at lines 176--177
+ [][] 
  []
 
 
@@ -290,13 +417,8 @@ Underfull \hbox (badness 10000) in paragraph at lines 183--184
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 185--186
+Underfull \hbox (badness 10000) in paragraph at lines 189--190
 
- []
-
-
-Overfull \hbox (3.35677pt too wide) in paragraph at lines 190--190
-[]\secfnt EXPERIMENTAL OP-ER-AT-ING SYS-TEM 
  []
 
 
@@ -304,7 +426,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 191--192
 
  []
 
-[2]
+
 Underfull \hbox (badness 10000) in paragraph at lines 193--194
 
  []
@@ -315,30 +437,112 @@ Underfull \hbox (badness 10000) in paragraph at lines 195--196
  []
 
 
-Overfull \hbox (10.85826pt too wide) in paragraph at lines 203--203
-[]\secfnt Application Pro-gram-mer's Lan-guage (APL) 
+Underfull \hbox (badness 10000) in paragraph at lines 197--198
+
  []
 
-(./xos.bbl) [3] (./xos.aux) ) 
+pdfTeX warning (ext4): destination with the same identifier (name{page.}) has b
+een already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.198 
+       [2 <./components.png>]
+Overfull \hbox (3.35677pt too wide) in paragraph at lines 202--202
+[]\secfnt EXPERIMENTAL OP-ER-AT-ING SYS-TEM 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 204--205
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 206--207
+
+ []
+
+<memdiskstructure.png, id=95, 915.42pt x 771.88374pt>
+File: memdiskstructure.png Graphic file (type png)
+
+<use memdiskstructure.png>
+Underfull \hbox (badness 10000) in paragraph at lines 214--215
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 216--217
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 228--229
+
+ []
+
+pdfTeX warning (ext4): destination with the same identifier (name{page.}) has b
+een already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.229 
+       [3 <./memdiskstructure.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 232--233
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 236--237
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 240--241
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 243--244
+
+ []
+
+
+Overfull \hbox (4.4287pt too wide) in paragraph at lines 251--252
+\T1/aer/m/n/9 Goyal, Jeril K George, K Di-nesh, Mathew Kumpalamthanam,
+ []
+
+
+Overfull \hbox (13.28642pt too wide) in paragraph at lines 251--252
+\T1/aer/m/n/9 Naseem Iqbal, Ni-tish Ku-mar, Ram-nath Jay-achan-dran, Sathyam
+ []
+
+LaTeX Font Info:    Try loading font information for T1+aett on input line 256.
+
+(/usr/share/texmf-texlive/tex/latex/ae/t1aett.fd
+File: t1aett.fd 1997/11/16 Font definitions for T1/aett.
+) (./xos.bbl)pdfTeX warning (ext4): destination with the same identifier (name{
+page.}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.270 \end{document}
+                     [4] (./xos.aux) ) 
 Here is how much of TeX's memory you used:
- 2195 strings out of 493848
- 24680 string characters out of 1152824
- 84800 words of memory out of 3000000
- 5442 multiletter control sequences out of 15000+50000
- 49529 words of font info for 66 fonts, out of 3000000 for 9000
+ 5431 strings out of 493848
+ 74021 string characters out of 1152824
+ 153708 words of memory out of 3000000
+ 8566 multiletter control sequences out of 15000+50000
+ 48881 words of font info for 67 fonts, out of 3000000 for 9000
  714 hyphenation exceptions out of 8191
- 39i,10n,26p,1253b,252s stack positions out of 5000i,500n,10000p,200000b,50000s
-{/usr/share/texmf-texlive/fonts/enc/dvips/base/8r.
-enc}</usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmbx9.pfb></usr/sh
-are/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/share/texmf-tex
-live/fonts/type1/public/amsfonts/cm/cmti9.pfb></usr/share/texmf-texlive/fonts/t
-ype1/urw/helvetic/uhvb8a.pfb></usr/share/texmf-texlive/fonts/type1/urw/helvetic
-/uhvr8a.pfb></usr/share/texmf-texlive/fonts/type1/urw/times/utmb8a.pfb></usr/sh
-are/texmf-texlive/fonts/type1/urw/times/utmr8a.pfb></usr/share/texmf-texlive/fo
-nts/type1/urw/times/utmri8a.pfb>
-Output written on xos.pdf (3 pages, 119087 bytes).
+ 39i,10n,37p,1263b,298s stack positions out of 5000i,500n,10000p,200000b,50000s
+{/usr/share/texmf-texlive/fonts/enc/dvips
+/base/8r.enc}</usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmbx9.pfb
+></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/share/
+texmf-texlive/fonts/type1/public/amsfonts/cm/cmti9.pfb></usr/share/texmf-texliv
+e/fonts/type1/public/amsfonts/cm/cmtt9.pfb></usr/share/texmf-texlive/fonts/type
+1/urw/helvetic/uhvb8a.pfb></usr/share/texmf-texlive/fonts/type1/urw/helvetic/uh
+vr8a.pfb></usr/share/texmf-texlive/fonts/type1/urw/times/utmb8a.pfb></usr/share
+/texmf-texlive/fonts/type1/urw/times/utmr8a.pfb>
+Output written on xos.pdf (4 pages, 235784 bytes).
 PDF statistics:
- 45 PDF objects out of 1000 (max. 8388607)
- 0 named destinations out of 1000 (max. 500000)
- 1 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 150 PDF objects out of 1000 (max. 8388607)
+ 29 named destinations out of 1000 (max. 500000)
+ 115 words of extra memory for PDF output out of 10000 (max. 10000000)
 

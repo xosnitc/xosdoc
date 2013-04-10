@@ -34,4 +34,9 @@ A.~Silberschatz, P.~B. Galvin, and G.~Gagne.
 \newblock {\em Operating system concepts}.
 \newblock J. Wiley \& Sons, 2009.
 
+\bibitem{gdb}
+R.~Stallman.
+\newblock {\em GDB manual: the GNU source-level debugger}, volume 675.
+\newblock Free Software Foundation, 1989.
+
 \end{thebibliography}
