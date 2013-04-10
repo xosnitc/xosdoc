@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2013.4.8)  10 APR 2013 00:31
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2013.4.8)  10 APR 2013 14:35
 entering extended mode
  %&-line parsing enabled.
 **xos.tex
@@ -310,7 +310,12 @@ Underfull \hbox (badness 10000) in paragraph at lines 193--194
  []
 
 
-Overfull \hbox (10.85826pt too wide) in paragraph at lines 201--201
+Underfull \hbox (badness 10000) in paragraph at lines 195--196
+
+ []
+
+
+Overfull \hbox (10.85826pt too wide) in paragraph at lines 203--203
 []\secfnt Application Pro-gram-mer's Lan-guage (APL) 
  []
 
@@ -331,7 +336,7 @@ ype1/urw/helvetic/uhvb8a.pfb></usr/share/texmf-texlive/fonts/type1/urw/helvetic
 /uhvr8a.pfb></usr/share/texmf-texlive/fonts/type1/urw/times/utmb8a.pfb></usr/sh
 are/texmf-texlive/fonts/type1/urw/times/utmr8a.pfb></usr/share/texmf-texlive/fo
 nts/type1/urw/times/utmri8a.pfb>
-Output written on xos.pdf (3 pages, 118591 bytes).
+Output written on xos.pdf (3 pages, 119087 bytes).
 PDF statistics:
  45 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
