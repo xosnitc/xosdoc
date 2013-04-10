@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2013.4.8)  10 APR 2013 22:28
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2013.4.8)  10 APR 2013 23:11
 entering extended mode
  %&-line parsing enabled.
 **xos.tex
@@ -404,7 +404,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 170--171
 
  []
 
-<components.png, id=85, 597.73312pt x 590.95781pt>
+<components.png, id=89, 597.73312pt x 590.95781pt>
 File: components.png Graphic file (type png)
  <use components.png>
 Overfull \hbox (11.04619pt too wide) in paragraph at lines 176--177
@@ -461,7 +461,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 206--207
 
  []
 
-<memdiskstructure.png, id=95, 915.42pt x 771.88374pt>
+<memdiskstructure.png, id=99, 915.42pt x 771.88374pt>
 File: memdiskstructure.png Graphic file (type png)
 
 <use memdiskstructure.png>
@@ -483,13 +483,17 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.}) has b
 een already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.229 
-       [3 <./memdiskstructure.png>]
+l.231 \subsection{System Programmer's Language}
+                                                [3 <./memdiskstructure.png>]
 Underfull \hbox (badness 10000) in paragraph at lines 232--233
 
  []
 
+LaTeX Font Info:    Try loading font information for T1+aett on input line 236.
 
+(/usr/share/texmf-texlive/tex/latex/ae/t1aett.fd
+File: t1aett.fd 1997/11/16 Font definitions for T1/aett.
+)
 Underfull \hbox (badness 10000) in paragraph at lines 236--237
 
  []
@@ -514,21 +518,17 @@ Overfull \hbox (13.28642pt too wide) in paragraph at lines 251--252
 \T1/aer/m/n/9 Naseem Iqbal, Ni-tish Ku-mar, Ram-nath Jay-achan-dran, Sathyam
  []
 
-LaTeX Font Info:    Try loading font information for T1+aett on input line 256.
-
-(/usr/share/texmf-texlive/tex/latex/ae/t1aett.fd
-File: t1aett.fd 1997/11/16 Font definitions for T1/aett.
-) (./xos.bbl)pdfTeX warning (ext4): destination with the same identifier (name{
-page.}) has been already used, duplicate ignored
+(./xos.bbl)pdfTeX warning (ext4): destination with the same identifier (name{pa
+ge.}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
 l.270 \end{document}
                      [4] (./xos.aux) ) 
 Here is how much of TeX's memory you used:
- 5431 strings out of 493848
- 74021 string characters out of 1152824
+ 5432 strings out of 493848
+ 74033 string characters out of 1152824
  153708 words of memory out of 3000000
- 8566 multiletter control sequences out of 15000+50000
+ 8567 multiletter control sequences out of 15000+50000
  48881 words of font info for 67 fonts, out of 3000000 for 9000
  714 hyphenation exceptions out of 8191
  39i,10n,37p,1263b,298s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -540,9 +540,9 @@ e/fonts/type1/public/amsfonts/cm/cmtt9.pfb></usr/share/texmf-texlive/fonts/type
 1/urw/helvetic/uhvb8a.pfb></usr/share/texmf-texlive/fonts/type1/urw/helvetic/uh
 vr8a.pfb></usr/share/texmf-texlive/fonts/type1/urw/times/utmb8a.pfb></usr/share
 /texmf-texlive/fonts/type1/urw/times/utmr8a.pfb>
-Output written on xos.pdf (4 pages, 235784 bytes).
+Output written on xos.pdf (4 pages, 236059 bytes).
 PDF statistics:
- 150 PDF objects out of 1000 (max. 8388607)
+ 153 PDF objects out of 1000 (max. 8388607)
  29 named destinations out of 1000 (max. 500000)
- 115 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 123 words of extra memory for PDF output out of 10000 (max. 10000000)
 
