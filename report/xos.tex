@@ -48,11 +48,55 @@
 \documentclass[10pt]{report}
 \usepackage{hyperref}
 \usepackage{graphicx}
+\usepackage[margin=1.2in]{geometry}
 \hypersetup{
     colorlinks=false,
     pdfborder={0 0 0},
 }
 \begin{document}
+
+
+
+% TITLE PAGE
+\begin{titlepage}
+
+\begin{center}
+
+\textup{\large Major Project}\\[1.0cm]
+
+% Title
+\uppercase{\Large \textbf {EXPERIMENTAL OPERATING SYSTEM}}\\[3.0cm]
+
+% Done by
+
+\begin{table}[h]
+\centering
+\begin{tabular}{lr}\hline \\
+B090084CS & Shamil CM \\
+B090066CS & Sreeraj S \\ 
+B090468CS & Vivek Anand T Kallampally \\ \\ \hline 
+\end{tabular}
+\end{table}
+
+\vspace{2cm}
+
+\large \textit{Under the guidance of} \\
+\large \textbf{Dr. K. Muralikrishnan}
+
+\vfill
+
+% Bottom of the page
+\includegraphics[width=0.20\textwidth]{./nitc-logo}\\[1cm]
+\large{DEPARTMENT OF COMPUTER SCIENCE AND ENGINEERING}\\
+\normalsize
+\textsc{National Institute of Technology Calicut}\\
+Calicut, Kerala 673 601 \\
+\vspace{0.5cm}
+
+
+\end{center}
+
+\end{titlepage}
 %
 % --- Author Metadata here ---
 
@@ -60,7 +104,7 @@
 %\crdata{0-12345-67-8/90/01}  % Allows default copyright data (0-89791-88-6/97/05) to be over-ridden - IF NEED BE.
 % --- End of Author Metadata ---
 
-\title{XOS : Experimental Operating System }
+%\title{XOS : Experimental Operating System }
 
 %
 % You need the command \numberofauthors to handle the 'placement
@@ -93,12 +137,57 @@
 % author on the opening page (as the 'third row') but we ask,
 % for aesthetic reasons that you place these 'additional authors'
 % in the \additional authors block, viz.
-\date{30 July 1999}
+%\date{30 July 1999}
 % Just remember to make sure that the TOTAL number of authors
 % is the number that will appear on the first page PLUS the
 % number that will appear in the \additionalauthors section.
 
-\maketitle
+%\maketitle
+
+%CERTIFICATE
+
+\newpage
+\thispagestyle{empty}
+
+\begin{center}
+
+\LARGE{Department of Computer Science and Engineering}\\
+\normalsize
+\textsc{National Institute of Technology Calicut}\\[2.0cm]
+
+\emph{\LARGE Certificate}\\[2.5cm]
+\end{center}
+\normalsize This is to certify that this is a bonafide record of the project presented by the students whose names are given below during Winter 2013 in partial fulfilment of the requirement of the course of B.Tech Computer Science and Engineering.\\[1.0cm]
+
+\begin{table}[h]
+\centering
+\begin{tabular}{lr}
+\hline
+\\
+B090084CS & Shamil CM \\ 
+B090066CS & Sreeraj S \\
+B090468CS & Vivek Anand T Kallampally \\
+\\
+\hline
+\end{tabular}
+\end{table}
+
+\vfill
+
+
+% Bottom of the page
+\begin{flushright}
+Faculty In-charge\\[1.5cm]
+Course Co-ordinator\\[1.0cm]
+\end{flushright}
+
+\begin{flushleft}
+Date:
+\end{flushleft}
+
+
+
+% ABSTRACT
 \begin{abstract}
 This paper introduces an operating system project that helps undergraduate computer science students acquire an elementary understanding of the practical aspects of an operating system. The specification of XOS (Experimental Operating System) has been laid out for students to build it from scratch in a bottom-up manner. XOS runs on a simulated machine hardware with a very simple  instruction set  and native filesystem. Unlike other common instructional operating systems, the complete development environment including custom programming languages, debugger, file system interface and a detailed implementation roadmap is provided. 
 
@@ -106,8 +195,32 @@ This paper introduces an operating system project that helps undergraduate compu
 
 % A category with the (minimum) three required fields
 
+\pagenumbering{roman} %numbering before main content starts
+\tableofcontents
+
+\newpage
+\pagenumbering{arabic}
 
 
+%ACKNOWLEDGEMENT
+\clearpage
+\addcontentsline{toc}{chapter}{Acknowledgements}
+\chapter*{Acknowledgments}
+\vspace{1.0in}
+We thank the past contributers of the earlier versions of this project, Ajeet Kumar, Albin Suresh, Avinash, Deepak Goyal, Jeril K George, K Dinesh, Mathew Kumpalamthanam, Naseem Iqbal, Nitish Kumar, Ramnath Jayachandran, Sathyam Doraswamy, Sumesh B and Yogesh Mishra. We also thank Govind Nharekat and Nithin Mohan who are undergraduate computer science students at our institute, who were actively involved in testing out the system and providing valuable feedback. 
+\\
+
+We would like to thank the Department of Computer Science and Engineering for providing and opportunity to work on this project as part of the course curriculum.
+\\
+\\ 
+\\
+ \\ 
+\\
+\\
+\newpage
+
+
+\chapter{Introduction}
 \section{Introduction}
 
 Teaching operating systems has been a challenge at the undergraduate level. To tackle this problem several instructional operating systems like Nachos\cite{nachos}, OS/161\cite{os161}, Pintos\cite{Pintos}, \\GeekOS \cite{survey} etc. have been developed by various universities. Nachos\cite{nachos} has been one of the most popular instructional operating systems available and is being used in many institutes across the world \cite{survey}. Implementing Nachos is simple and it uses a mixed mode approach, where the operating system kernel is co-resident with the machine simulator and fused together as a single program. Nachos\cite{nachos} and OS/161\cite{os161} runs on top of MIPS machine simulator. For these systems, a user's machine running on other platforms require cross compilers to MIPS. \\
@@ -128,6 +241,7 @@ The primary components of the project include a simulated machine hardware (XSM)
 \end{figure}
 
 
+\chapter{Components}
 
 \section{Experimental File System }
 The disk for XSM (which is a UNIX file) can be formatted using XFS or Experimental File System. XFS is the file system compatible with XOS. Since file system management is done by students building XOS, the disk organization must be easily understood and at the same time must give an insight on the data structures used in real file systems. Hence we chose to have a native file system for XOS.\\
@@ -170,35 +284,35 @@ No code base for XOS is presented to the student. However a detailed roadmap whi
 
 
 
-\section{Development Tools}
+\chapter{Development Tools}
 
 Various development tools are provided to the student for implementing XOS. 
 
-\subsection{Application Programmer's Language}
+\section{Application Programmer's Language}
 Application Programmer's Language (APL) is a high-level language which can be used to write application programs to run on top of XOS. Its cross-compiler to XSM instruction set is provided as part of the development tools to the student. APL is a simple language which supports local and global variables and function calls. Interfaces to XOS system calls are provided through a family of built-in functions. \\
 
 
-\subsection{System Programmer's Language}
+\section{System Programmer's Language}
 System Programmer's Language (SPL) is a XSM dependant language which is used to program XOS itself. Its cross-compiler to XSM instruction set is also provided as part of the development tools. SPL unlike APL, is close to the machine instruction set. SPL statements can access most of the machine registers and memory directly. SPL has predefined constants specific to XOS. The SPL programmer can redefine these constants or define new constants. Apart from this, XOS provides \textit{aliasing}, when registers can be assigned meaningful names for convenience.\\
 
 
-\subsection{Debugger}
+\section{Debugger}
 The XSM simulator can be run in the debug mode. In this mode, the machine will stop execution at predefined breakpoints in the XSM instructions loaded in the machine's memory. Breakpoints can be set through APL and SPL programs using the \texttt{breakpoint} instruction. From a breakpoint onwards, the execution can be single stepped, or continued to the next breakpoint in the debugger. Using the debugger, contents of registers, memory, XOS data structures etc, can be verified. The debugger has been modelled based on the GNU Debugger \cite{gdb}.\\
 
 
-\subsection{XFS Interface}
+\section{XFS Interface}
 The XFS disk is a UNIX file. XFS interface is a simple command-line interface that helps access this disk directly from your UNIX mahcine. XFS interface has functions to format the disk, display the contents of the disk, copy files from UNIX machine to the disk, view the disk free list etc. The OS routines and user programs are loaded to the disk before starting the OS using this interface.\\
 
-\section{Roadmap}
+\chapter{Roadmap}
 We felt the necessity for a roadmap to build XOS sequentially. A detailed roadmap divided into stages is provided on the onset to help students do the project. The first two stages help students get familiarized with the environment and devlopment tools. Then the students sequentially start running a kernel program and then a user program on top of it. The next big step in the roadmap is when the student starts to run multiple programs and implements the scheduler. The initial stages are explained in detail. The students will learn more than what they do in these stages. The later stages include implementing the system calls, and virtual memory management. The final stage of the roadmap includes making a console for XOS. The entire roadmap is designed so that the project can be completed in a 12 to 16 week term. \\
 
-\section{Conclusions}
+\chapter{Conclusions}
 The project is easier to implement compared to the existing instructional operating system due to the simplifications done, and the documentation. The project aims to be a better tool for basic undergraduate understanding of operating systems as it helps students get a feel of the elemntary practical aspects of operating systems. It acts as a tool which will aid students to better comprehend the textbooks on operating systems or move on to a complex operating system platform later.
 
 
-%ACKNOWLEDGMENTS are optional
-\section{Acknowledgments}
-We thank the past contributers of the earlier versions of this project, Ajeet Kumar, Albin Suresh, Avinash, Deepak Goyal, Jeril K George, K Dinesh, Mathew Kumpalamthanam, Naseem Iqbal, Nitish Kumar, Ramnath Jayachandran, Sathyam Doraswamy, Sumesh B and Yogesh Mishra. We also thank Govind Nharekat and Nithin Mohan who are undergraduate computer science students at our institute, who were actively involved in testing out the system and providing valuable feedback. 
+%%ACKNOWLEDGMENTS are optional
+%\section{Acknowledgments}
+%We thank the past contributers of the earlier versions of this project, Ajeet Kumar, Albin Suresh, Avinash, Deepak Goyal, Jeril K George, K Dinesh, Mathew Kumpalamthanam, Naseem Iqbal, Nitish Kumar, Ramnath Jayachandran, Sathyam Doraswamy, Sumesh B and Yogesh Mishra. We also thank Govind Nharekat and Nithin Mohan who are undergraduate computer science students at our institute, who were actively involved in testing out the system and providing valuable feedback. 
 
 
 %\end{document}  % This is where a 'short' article might terminate

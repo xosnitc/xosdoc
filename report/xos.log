@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2013.4.8)  15 APR 2013 23:11
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2013.4.8)  16 APR 2013 01:38
 entering extended mode
  %&-line parsing enabled.
 **xos.tex
@@ -167,25 +167,37 @@ File: pdftex.def 2010/03/12 v0.04p Graphics/color for pdfTeX
 \Gin@req@height=\dimen106
 \Gin@req@width=\dimen107
 )
-Package hyperref Info: Option `colorlinks' set `false' on input line 54.
+(/usr/share/texmf-texlive/tex/latex/geometry/geometry.sty
+Package: geometry 2008/12/21 v4.2 Page Geometry
+\Gm@cnth=\count96
+\Gm@cntv=\count97
+\c@Gm@tempcnt=\count98
+\Gm@bindingoffset=\dimen108
+\Gm@wd@mp=\dimen109
+\Gm@odd@mp=\dimen110
+\Gm@even@mp=\dimen111
+\Gm@dimlist=\toks16
+
+(/usr/share/texmf-texlive/tex/xelatex/xetexconfig/geometry.cfg))
+Package hyperref Info: Option `colorlinks' set `false' on input line 55.
  (./xos.aux)
 \openout1 = `xos.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 55.
-LaTeX Font Info:    ... okay on input line 55.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 55.
-LaTeX Font Info:    ... okay on input line 55.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 55.
-LaTeX Font Info:    ... okay on input line 55.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 55.
-LaTeX Font Info:    ... okay on input line 55.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 55.
-LaTeX Font Info:    ... okay on input line 55.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 55.
-LaTeX Font Info:    ... okay on input line 55.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 55.
-LaTeX Font Info:    ... okay on input line 55.
-Package hyperref Info: Link coloring OFF on input line 55.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 56.
+LaTeX Font Info:    ... okay on input line 56.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 56.
+LaTeX Font Info:    ... okay on input line 56.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 56.
+LaTeX Font Info:    ... okay on input line 56.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 56.
+LaTeX Font Info:    ... okay on input line 56.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 56.
+LaTeX Font Info:    ... okay on input line 56.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 56.
+LaTeX Font Info:    ... okay on input line 56.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 56.
+LaTeX Font Info:    ... okay on input line 56.
+Package hyperref Info: Link coloring OFF on input line 56.
 
 (/usr/share/texmf-texlive/tex/latex/hyperref/nameref.sty
 Package: nameref 2007/05/29 v2.31 Cross-referencing by name of section
@@ -193,10 +205,10 @@ Package: nameref 2007/05/29 v2.31 Cross-referencing by name of section
 (/usr/share/texmf-texlive/tex/latex/oberdiek/refcount.sty
 Package: refcount 2008/08/11 v3.1 Data extraction from references (HO)
 )
-\c@section@level=\count96
+\c@section@level=\count99
 )
-LaTeX Info: Redefining \ref on input line 55.
-LaTeX Info: Redefining \pageref on input line 55.
+LaTeX Info: Redefining \ref on input line 56.
+LaTeX Info: Redefining \pageref on input line 56.
  (./xos.out)
 (./xos.out)
 \@outlinefile=\write3
@@ -205,86 +217,70 @@ LaTeX Info: Redefining \pageref on input line 55.
 \AtBeginShipoutBox=\box26
  (/usr/share/texmf-texlive/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count97
-\scratchdimen=\dimen108
+\scratchcounter=\count100
+\scratchdimen=\dimen112
 \scratchbox=\box27
-\nofMPsegments=\count98
-\nofMParguments=\count99
-\everyMPshowfont=\toks16
-\MPscratchCnt=\count100
-\MPscratchDim=\dimen109
-\MPnumerator=\count101
-\everyMPtoPDFconversion=\toks17
+\nofMPsegments=\count101
+\nofMParguments=\count102
+\everyMPshowfont=\toks17
+\MPscratchCnt=\count103
+\MPscratchDim=\dimen113
+\MPnumerator=\count104
+\everyMPtoPDFconversion=\toks18
 )
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <12> on input line 102.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <8> on input line 102.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <6> on input line 102.
+*geometry auto-detecting driver*
+*geometry detected driver: pdftex*
+-------------------- Geometry parameters
+paper: class default
+landscape: --
+twocolumn: --
+twoside: --
+asymmetric: --
+h-parts: 86.72377pt, 440.84746pt, 86.72377pt
+v-parts: 86.72377pt, 621.52245pt, 86.72377pt
+hmarginratio: --
+vmarginratio: --
+lines: --
+heightrounded: --
+bindingoffset: 0.0pt
+truedimen: --
+includehead: --
+includefoot: --
+includemp: --
+driver: pdftex
+-------------------- Page layout dimensions and switches
+\paperwidth  614.295pt
+\paperheight 794.96999pt
+\textwidth  440.84746pt
+\textheight 621.52245pt
+\oddsidemargin  14.45378pt
+\evensidemargin 14.45378pt
+\topmargin  -22.54622pt
+\headheight 12.0pt
+\headsep    25.0pt
+\footskip   30.0pt
+\marginparwidth 65.0pt
+\marginparsep   11.0pt
+\columnsep  10.0pt
+\skip\footins  9.0pt plus 4.0pt minus 2.0pt
+\hoffset 0.0pt
+\voffset 0.0pt
+\mag 1000
 
-
-LaTeX Warning: No \author given.
-
+(1in=72.27pt, 1cm=28.45pt)
+-----------------------
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <7> on input line 74.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <5> on input line 74.
+<./nitc-logo.png, id=63, 680.5425pt x 808.01875pt>
+File: ./nitc-logo.png Graphic file (type png)
+ <use ./nitc-logo.png>
 [1
 
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]pdfTeX warning (ext4): dest
-ination with the same identifier (name{page.1}) has been already used, duplicat
-e ignored
-<to be read again> 
-                   \relax 
-l.105 \end{abstract}
-                     [1]
-
-LaTeX Warning: Citation `nachos' on page 1 undefined on input line 113.
-
-
-LaTeX Warning: Citation `os161' on page 1 undefined on input line 113.
-
-
-LaTeX Warning: Citation `Pintos' on page 1 undefined on input line 113.
-
-
-LaTeX Warning: Citation `survey' on page 1 undefined on input line 113.
-
-
-LaTeX Warning: Citation `nachos' on page 1 undefined on input line 113.
-
-
-LaTeX Warning: Citation `survey' on page 1 undefined on input line 113.
-
-
-LaTeX Warning: Citation `nachos' on page 1 undefined on input line 113.
-
-
-LaTeX Warning: Citation `os161' on page 1 undefined on input line 113.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 113--114
-
- []
-
-
-LaTeX Warning: Citation `survey' on page 1 undefined on input line 116.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 116--117
-
- []
-
-
-LaTeX Warning: Citation `survey' on page 1 undefined on input line 118.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 118--119
-
- []
-
-
-LaTeX Warning: Citation `silberschatz' on page 1 undefined on input line 120.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 120--121
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map} <./nitc-logo.png (PNG copy)
+>]
+Underfull \hbox (badness 10000) in paragraph at lines 160--161
 
  []
 
@@ -292,134 +288,257 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.121 
-       [1] <components.png, id=71, 597.73312pt x 590.95781pt>
+l.191 \begin{abstract}
+                       [1]pdfTeX warning (ext4): destination with the same iden
+tifier (name{page.1}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.194 \end{abstract}
+                     [1] (./xos.toc)
+\tf@toc=\write4
+\openout4 = `xos.toc'.
+
+ [1
+
+]
+Underfull \hbox (badness 10000) in paragraph at lines 210--212
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 213--220
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 213--220
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 213--220
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 213--220
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 213--220
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 213--220
+
+ []
+
+pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has 
+been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.220 \newpage
+               [1
+
+
+]
+Chapter 1.
+
+LaTeX Warning: Citation `nachos' on page 2 undefined on input line 226.
+
+
+LaTeX Warning: Citation `os161' on page 2 undefined on input line 226.
+
+
+LaTeX Warning: Citation `Pintos' on page 2 undefined on input line 226.
+
+
+LaTeX Warning: Citation `survey' on page 2 undefined on input line 226.
+
+
+LaTeX Warning: Citation `nachos' on page 2 undefined on input line 226.
+
+
+LaTeX Warning: Citation `survey' on page 2 undefined on input line 226.
+
+
+LaTeX Warning: Citation `nachos' on page 2 undefined on input line 226.
+
+
+LaTeX Warning: Citation `os161' on page 2 undefined on input line 226.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 226--227
+
+ []
+
+
+LaTeX Warning: Citation `survey' on page 2 undefined on input line 229.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 229--230
+
+ []
+
+
+LaTeX Warning: Citation `survey' on page 2 undefined on input line 231.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 231--232
+
+ []
+
+
+LaTeX Warning: Citation `silberschatz' on page 2 undefined on input line 233.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 233--234
+
+ []
+
+[2
+
+] <components.png, id=110, 597.73312pt x 590.95781pt>
 File: components.png Graphic file (type png)
+ <use components.png>
+[3 <./components.png>]
+Chapter 2.
 
-<use components.png> [2 <./components.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 133--134
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 139--140
+Underfull \hbox (badness 10000) in paragraph at lines 247--248
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 141--142
+Underfull \hbox (badness 10000) in paragraph at lines 253--254
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 143--144
+Underfull \hbox (badness 10000) in paragraph at lines 255--256
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 145--146
-
- []
-
-[3]
-
-LaTeX Warning: Citation `mips' on page 4 undefined on input line 147.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 147--148
+Underfull \hbox (badness 10000) in paragraph at lines 257--258
 
  []
 
 
-LaTeX Warning: Citation `nachos' on page 4 undefined on input line 154.
+Underfull \hbox (badness 10000) in paragraph at lines 259--260
+
+ []
+
+[4
+
+]
+
+LaTeX Warning: Citation `mips' on page 5 undefined on input line 261.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 154--155
+Underfull \hbox (badness 10000) in paragraph at lines 261--262
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 156--157
+LaTeX Warning: Citation `nachos' on page 5 undefined on input line 268.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 268--269
 
  []
 
-<memdiskstructure.png, id=83, 915.42pt x 771.88374pt>
+
+Underfull \hbox (badness 10000) in paragraph at lines 270--271
+
+ []
+
+<memdiskstructure.png, id=123, 915.42pt x 771.88374pt>
 File: memdiskstructure.png Graphic file (type png)
 
-<use memdiskstructure.png> [4]
+<use memdiskstructure.png>
 
-LaTeX Warning: Citation `silberschatz' on page 5 undefined on input line 164.
-
-
-LaTeX Warning: Citation `silberschatz' on page 5 undefined on input line 164.
+LaTeX Warning: Citation `silberschatz' on page 5 undefined on input line 278.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 164--165
+LaTeX Warning: Citation `silberschatz' on page 5 undefined on input line 278.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 278--279
+
+ []
+
+[5]
+Underfull \hbox (badness 10000) in paragraph at lines 280--281
+
+ []
+
+[6 <./memdiskstructure.png>]
+Chapter 3.
+
+Underfull \hbox (badness 10000) in paragraph at lines 292--293
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 166--167
-
- []
-
-[5 <./memdiskstructure.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 178--179
+Underfull \hbox (badness 10000) in paragraph at lines 296--297
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 182--183
+LaTeX Warning: Citation `gdb' on page 7 undefined on input line 300.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 300--301
 
  []
 
 
-LaTeX Warning: Citation `gdb' on page 6 undefined on input line 186.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 186--187
+Underfull \hbox (badness 10000) in paragraph at lines 304--305
 
  []
 
+[7
 
-Underfull \hbox (badness 10000) in paragraph at lines 190--191
+] [8]
+Chapter 4.
+
+Underfull \hbox (badness 10000) in paragraph at lines 307--308
 
  []
 
-[6]
-Underfull \hbox (badness 10000) in paragraph at lines 193--194
+[9
 
- []
-
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <7> on input line 206.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <5> on input line 206.
-[7]
+]
+Chapter 5.
 No file xos.bbl.
-[8] (./xos.aux)
+[10
+
+] (./xos.aux)
 
 LaTeX Warning: There were undefined references.
 
  ) 
 Here is how much of TeX's memory you used:
- 4205 strings out of 493848
- 61030 string characters out of 1152824
- 132360 words of memory out of 3000000
- 7424 multiletter control sequences out of 15000+50000
- 8409 words of font info for 30 fonts, out of 3000000 for 9000
+ 4560 strings out of 493848
+ 66338 string characters out of 1152824
+ 145092 words of memory out of 3000000
+ 7767 multiletter control sequences out of 15000+50000
+ 8178 words of font info for 29 fonts, out of 3000000 for 9000
  714 hyphenation exceptions out of 8191
- 38i,6n,36p,1260b,316s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 38i,7n,36p,1260b,307s stack positions out of 5000i,500n,10000p,200000b,50000s
 </usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/sha
 re/texmf-texlive/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texmf-te
-xlive/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texmf-texlive/fonts/
-type1/public/amsfonts/cm/cmr12.pfb></usr/share/texmf-texlive/fonts/type1/public
-/amsfonts/cm/cmr17.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm
-/cmti10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmtt10.pfb
->
-Output written on xos.pdf (10 pages, 216102 bytes).
+xlive/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></usr/share/texmf-texlive/font
+s/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texmf-texlive/fonts/type1/publ
+ic/amsfonts/cm/cmr12.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/
+cm/cmr17.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmti10.pf
+b></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/sha
+re/texmf-texlive/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
+Output written on xos.pdf (14 pages, 279656 bytes).
 PDF statistics:
- 143 PDF objects out of 1000 (max. 8388607)
- 24 named destinations out of 1000 (max. 500000)
- 115 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 194 PDF objects out of 1000 (max. 8388607)
+ 30 named destinations out of 1000 (max. 500000)
+ 136 words of extra memory for PDF output out of 10000 (max. 10000000)
 
