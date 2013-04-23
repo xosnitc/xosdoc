@@ -319,7 +319,7 @@ A \textbf{Breakpoint} statement is used to debug the program. The program when r
 
 \section{System Calls}
 
-System Calls allow the programs written in APL to interact with the operating system running on the XSM architecture. 10 System Calls are supported by APL.
+System Calls allow the programs written in APL to interact with the operating system running on the XSM architecture. The following system calls are supported by APL.
 
 
 
@@ -386,7 +386,7 @@ This system call is used to delete the file from the file system whose name is s
 
 
 \subsection{Fork}
-This system call is used to create a copy of the current process in the system. The return value of this system call is the PID of the child process for the parent, and 0 for the child.\\
+This system call is used to create a copy of the current process in the system. The return value of this system call is the PID of the child process for the parent, and an appropriate code for the child.\\
 
 \textit{integer \textbf{Fork}();}
 
@@ -394,7 +394,7 @@ This system call is used to create a copy of the current process in the system. 
 
 
 \subsection{Exec}
-This system call is used to load the program, whose name is specified in the argument, in the memory space of the current process (overwriting existing contents) and start its execution. The return value of this system call is 1 in case of failure. \\
+This system call is used to load the program, whose name is specified in the argument, in the memory space of the current process (overwriting existing contents) and start its execution. An appropriate error code is returned in case of failure.\\
 
 \textit{integer \textbf{Exec}(string fileName);}
 
@@ -404,8 +404,34 @@ This system call is used to load the program, whose name is specified in the arg
 \subsection{Exit}
 This system call is used to terminate the execution of the process which invoked it and remove it from the memory.\\
 
-
 \textit{void \textbf{Exit}();}
+
+
+
+\subsection{Getpid}
+This system call returns the processID or thbe PID of the current process on success and an appropriate error code is returned in case of failure. \\
+
+\textit{integer \textbf{Getpid}();}
+
+
+\subsection{Getppid}
+This system call returns the processId of the parent process of the current process and an appropriate error code is returned in case of failure.\\
+
+\textit{integer \textbf{Getppid}();}
+
+
+
+\subsection{Wait}
+This system call blocks the current process till the process with processID given as argument signals or exits.  The return value of this system call is 0 in case of success and the appropriate error code in case of failure. \\
+
+\textit{integer \textbf{Wait} (integer processID);}
+
+
+
+\subsection{Signal}
+This system call is used to resume execution of all process waiting for the current process.  The return value of this system call is 0 in case of success and the appropriate error code in case of failure.\\
+
+\textit{integer \textbf{Signal} ();}
 
 
 

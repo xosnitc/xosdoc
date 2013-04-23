@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2013.4.8)  24 APR 2013 01:08
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2013.4.8)  24 APR 2013 01:28
 entering extended mode
  %&-line parsing enabled.
 **report.tex
@@ -994,15 +994,19 @@ File: ../apl/apl.pdf Graphic file (type pdf)
 File: ../apl/apl.pdf Graphic file (type pdf)
 
 <use ../apl/apl.pdf, page 11> [69 <../apl/apl.pdf>]
+<../apl/apl.pdf, id=680, page=12, 614.295pt x 794.97pt>
+File: ../apl/apl.pdf Graphic file (type pdf)
+
+<use ../apl/apl.pdf, page 12>
+File: ../apl/apl.pdf Graphic file (type pdf)
+ <use ../apl/apl.pdf, page 12>
+File: ../apl/apl.pdf Graphic file (type pdf)
+
+<use ../apl/apl.pdf, page 12> [70 <../apl/apl.pdf>]
 Appendix E.
-[70
+[71
 
-] <../spl/spl.pdf, id=686, page=2, 614.295pt x 794.97pt>
-File: ../spl/spl.pdf Graphic file (type pdf)
-
-<use ../spl/spl.pdf, page 2>
-File: ../spl/spl.pdf Graphic file (type pdf)
- <use ../spl/spl.pdf, page 2>
+] <../spl/spl.pdf, id=691, page=2, 614.295pt x 794.97pt>
 File: ../spl/spl.pdf Graphic file (type pdf)
 
 <use ../spl/spl.pdf, page 2>
@@ -1010,8 +1014,13 @@ File: ../spl/spl.pdf Graphic file (type pdf)
  <use ../spl/spl.pdf, page 2>
 File: ../spl/spl.pdf Graphic file (type pdf)
 
-<use ../spl/spl.pdf, page 2> [71 <../spl/spl.pdf>]
-<../spl/spl.pdf, id=701, page=3, 614.295pt x 794.97pt>
+<use ../spl/spl.pdf, page 2>
+File: ../spl/spl.pdf Graphic file (type pdf)
+ <use ../spl/spl.pdf, page 2>
+File: ../spl/spl.pdf Graphic file (type pdf)
+
+<use ../spl/spl.pdf, page 2> [72 <../spl/spl.pdf>]
+<../spl/spl.pdf, id=706, page=3, 614.295pt x 794.97pt>
 File: ../spl/spl.pdf Graphic file (type pdf)
 
 <use ../spl/spl.pdf, page 3>
@@ -1019,8 +1028,8 @@ File: ../spl/spl.pdf Graphic file (type pdf)
  <use ../spl/spl.pdf, page 3>
 File: ../spl/spl.pdf Graphic file (type pdf)
 
-<use ../spl/spl.pdf, page 3> [72 <../spl/spl.pdf>]
-<../spl/spl.pdf, id=718, page=4, 614.295pt x 794.97pt>
+<use ../spl/spl.pdf, page 3> [73 <../spl/spl.pdf>]
+<../spl/spl.pdf, id=723, page=4, 614.295pt x 794.97pt>
 File: ../spl/spl.pdf Graphic file (type pdf)
 
 <use ../spl/spl.pdf, page 4>
@@ -1028,8 +1037,8 @@ File: ../spl/spl.pdf Graphic file (type pdf)
  <use ../spl/spl.pdf, page 4>
 File: ../spl/spl.pdf Graphic file (type pdf)
 
-<use ../spl/spl.pdf, page 4> [73 <../spl/spl.pdf>]
-<../spl/spl.pdf, id=723, page=5, 614.295pt x 794.97pt>
+<use ../spl/spl.pdf, page 4> [74 <../spl/spl.pdf>]
+<../spl/spl.pdf, id=728, page=5, 614.295pt x 794.97pt>
 File: ../spl/spl.pdf Graphic file (type pdf)
 
 <use ../spl/spl.pdf, page 5>
@@ -1037,8 +1046,8 @@ File: ../spl/spl.pdf Graphic file (type pdf)
  <use ../spl/spl.pdf, page 5>
 File: ../spl/spl.pdf Graphic file (type pdf)
 
-<use ../spl/spl.pdf, page 5> [74 <../spl/spl.pdf>]
-<../spl/spl.pdf, id=728, page=6, 614.295pt x 794.97pt>
+<use ../spl/spl.pdf, page 5> [75 <../spl/spl.pdf>]
+<../spl/spl.pdf, id=734, page=6, 614.295pt x 794.97pt>
 File: ../spl/spl.pdf Graphic file (type pdf)
 
 <use ../spl/spl.pdf, page 6>
@@ -1046,8 +1055,8 @@ File: ../spl/spl.pdf Graphic file (type pdf)
  <use ../spl/spl.pdf, page 6>
 File: ../spl/spl.pdf Graphic file (type pdf)
 
-<use ../spl/spl.pdf, page 6> [75 <../spl/spl.pdf>]
-<../spl/spl.pdf, id=734, page=7, 614.295pt x 794.97pt>
+<use ../spl/spl.pdf, page 6> [76 <../spl/spl.pdf>]
+<../spl/spl.pdf, id=739, page=7, 614.295pt x 794.97pt>
 File: ../spl/spl.pdf Graphic file (type pdf)
 
 <use ../spl/spl.pdf, page 7>
@@ -1055,8 +1064,8 @@ File: ../spl/spl.pdf Graphic file (type pdf)
  <use ../spl/spl.pdf, page 7>
 File: ../spl/spl.pdf Graphic file (type pdf)
 
-<use ../spl/spl.pdf, page 7> [76 <../spl/spl.pdf>]
-<../spl/spl.pdf, id=742, page=8, 614.295pt x 794.97pt>
+<use ../spl/spl.pdf, page 7> [77 <../spl/spl.pdf>]
+<../spl/spl.pdf, id=747, page=8, 614.295pt x 794.97pt>
 File: ../spl/spl.pdf Graphic file (type pdf)
 
 <use ../spl/spl.pdf, page 8>
@@ -1064,8 +1073,8 @@ File: ../spl/spl.pdf Graphic file (type pdf)
  <use ../spl/spl.pdf, page 8>
 File: ../spl/spl.pdf Graphic file (type pdf)
 
-<use ../spl/spl.pdf, page 8> [77 <../spl/spl.pdf>]
-<../spl/spl.pdf, id=747, page=9, 614.295pt x 794.97pt>
+<use ../spl/spl.pdf, page 8> [78 <../spl/spl.pdf>]
+<../spl/spl.pdf, id=752, page=9, 614.295pt x 794.97pt>
 File: ../spl/spl.pdf Graphic file (type pdf)
 
 <use ../spl/spl.pdf, page 9>
@@ -1073,8 +1082,8 @@ File: ../spl/spl.pdf Graphic file (type pdf)
  <use ../spl/spl.pdf, page 9>
 File: ../spl/spl.pdf Graphic file (type pdf)
 
-<use ../spl/spl.pdf, page 9> [78 <../spl/spl.pdf>]
-<../spl/spl.pdf, id=752, page=10, 614.295pt x 794.97pt>
+<use ../spl/spl.pdf, page 9> [79 <../spl/spl.pdf>]
+<../spl/spl.pdf, id=757, page=10, 614.295pt x 794.97pt>
 File: ../spl/spl.pdf Graphic file (type pdf)
 
 <use ../spl/spl.pdf, page 10>
@@ -1082,44 +1091,40 @@ File: ../spl/spl.pdf Graphic file (type pdf)
  <use ../spl/spl.pdf, page 10>
 File: ../spl/spl.pdf Graphic file (type pdf)
 
-<use ../spl/spl.pdf, page 10> [79 <../spl/spl.pdf>] (./report.aux)
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
- ) 
+<use ../spl/spl.pdf, page 10> [80 <../spl/spl.pdf>] (./report.aux) ) 
 Here is how much of TeX's memory you used:
- 5674 strings out of 493848
- 83965 string characters out of 1152824
+ 5678 strings out of 493848
+ 84039 string characters out of 1152824
  159966 words of memory out of 3000000
- 8751 multiletter control sequences out of 15000+50000
+ 8754 multiletter control sequences out of 15000+50000
  8178 words of font info for 29 fonts, out of 3000000 for 9000
  714 hyphenation exceptions out of 8191
  38i,16n,37p,1395b,468s stack positions out of 5000i,500n,10000p,200000b,50000s
-</usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/sha
-re/texmf-texlive/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texmf-te
-xlive/fonts/type1/public/amsfonts/cm/cmbx9.pfb></usr/share/texmf-texlive/fonts/
-type1/public/amsfonts/cm/cmbxti10.pfb></usr/share/texmf-texlive/fonts/type1/pub
-lic/amsfonts/cm/cmcsc10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfon
-ts/cm/cmex10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmitt
-10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmmi10.pfb></us
-r/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texm
-f-texlive/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texmf-texlive/fo
-nts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texmf-texlive/fonts/type1/pu
-blic/amsfonts/cm/cmr12.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfont
-s/cm/cmr17.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr8.pf
-b></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/share
-/texmf-texlive/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf-texl
-ive/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/share/texmf-texlive/fonts/ty
-pe1/public/amsfonts/cm/cmti10.pfb></usr/share/texmf-texlive/fonts/type1/public/
-amsfonts/cm/cmti12.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm
-/cmtt10.pfb></usr/share/texmf-texlive/fonts/type1/urw/courier/ucrr8a.pfb></usr/
-share/texmf-texlive/fonts/type1/urw/palatino/uplb8a.pfb></usr/share/texmf-texli
-ve/fonts/type1/urw/palatino/uplbi8a.pfb></usr/share/texmf-texlive/fonts/type1/u
-rw/palatino/uplr8a.pfb></usr/share/texmf-texlive/fonts/type1/urw/palatino/uplri
-8a.pfb>
-Output written on report.pdf (83 pages, 809047 bytes).
+</usr/share
+/texmf-texlive/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texmf-texl
+ive/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texmf-texlive/fonts/t
+ype1/public/amsfonts/cm/cmbx9.pfb></usr/share/texmf-texlive/fonts/type1/public/
+amsfonts/cm/cmbxti10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/
+cm/cmcsc10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmex10.
+pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmitt10.pfb></usr/
+share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texmf
+-texlive/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texmf-texlive/fon
+ts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texmf-texlive/fonts/type1/pub
+lic/amsfonts/cm/cmr10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts
+/cm/cmr12.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr17.pf
+b></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share
+/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/share/texmf-texliv
+e/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf-texlive/fonts/typ
+e1/public/amsfonts/cm/cmsy9.pfb></usr/share/texmf-texlive/fonts/type1/public/am
+sfonts/cm/cmti10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/c
+mti12.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmtt10.pfb><
+/usr/share/texmf-texlive/fonts/type1/urw/courier/ucrr8a.pfb></usr/share/texmf-t
+exlive/fonts/type1/urw/palatino/uplb8a.pfb></usr/share/texmf-texlive/fonts/type
+1/urw/palatino/uplbi8a.pfb></usr/share/texmf-texlive/fonts/type1/urw/palatino/u
+plr8a.pfb></usr/share/texmf-texlive/fonts/type1/urw/palatino/uplri8a.pfb>
+Output written on report.pdf (84 pages, 811383 bytes).
 PDF statistics:
- 826 PDF objects out of 1000 (max. 8388607)
- 113 named destinations out of 1000 (max. 500000)
- 546 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 831 PDF objects out of 1000 (max. 8388607)
+ 114 named destinations out of 1000 (max. 500000)
+ 551 words of extra memory for PDF output out of 10000 (max. 10000000)
 
