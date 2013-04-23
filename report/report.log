@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2013.4.8)  24 APR 2013 00:47
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2013.4.8)  24 APR 2013 01:08
 entering extended mode
  %&-line parsing enabled.
 **report.tex
@@ -167,65 +167,112 @@ File: pdftex.def 2010/03/12 v0.04p Graphics/color for pdfTeX
 \Gin@req@height=\dimen106
 \Gin@req@width=\dimen107
 )
+(/usr/share/texmf-texlive/tex/latex/pdfpages/pdfpages.sty
+Package: pdfpages 2009/02/07 v0.4g Insert pages of external PDF documents (AM)
+
+(/usr/share/texmf-texlive/tex/latex/base/ifthen.sty
+Package: ifthen 2001/05/26 v1.1c Standard LaTeX ifthen package (DPC)
+)
+(/usr/share/texmf-texlive/tex/latex/tools/calc.sty
+Package: calc 2007/08/22 v4.3 Infix arithmetic (KKT,FJ)
+\calc@Acount=\count96
+\calc@Bcount=\count97
+\calc@Adimen=\dimen108
+\calc@Bdimen=\dimen109
+\calc@Askip=\skip43
+\calc@Bskip=\skip44
+LaTeX Info: Redefining \setlength on input line 76.
+LaTeX Info: Redefining \addtolength on input line 77.
+\calc@Ccount=\count98
+\calc@Cskip=\skip45
+)
+(/usr/share/texmf-texlive/tex/latex/eso-pic/eso-pic.sty
+Package: eso-pic 2006/07/14 v1.1d eso-pic (RN)
+
+(/usr/share/texmf-texlive/tex/latex/ms/everyshi.sty
+Package: everyshi 2001/05/15 v3.00 EveryShipout Package (MS)
+))
+(/usr/share/texmf-texlive/tex/latex/pdfpages/pppdftex.def
+File: pppdftex.def 2009/02/07 v0.4g Pdfpages driver for pdfTeX (AM)
+)
+\AM@pagebox=\box26
+\AM@toc@title=\toks16
+\c@AM@survey=\count99
+\AM@templatesizebox=\box27
+)
+(/usr/share/texmf-texlive/tex/latex/appendix/appendix.sty
+Package: appendix 2009/09/02 v1.2b extra appendix facilities
+\c@@pps=\count100
+\c@@ppsavesec=\count101
+\c@@ppsaveapp=\count102
+)
 (/usr/share/texmf-texlive/tex/latex/geometry/geometry.sty
 Package: geometry 2008/12/21 v4.2 Page Geometry
-\Gm@cnth=\count96
-\Gm@cntv=\count97
-\c@Gm@tempcnt=\count98
-\Gm@bindingoffset=\dimen108
-\Gm@wd@mp=\dimen109
-\Gm@odd@mp=\dimen110
-\Gm@even@mp=\dimen111
-\Gm@dimlist=\toks16
+\Gm@cnth=\count103
+\Gm@cntv=\count104
+\c@Gm@tempcnt=\count105
+\Gm@bindingoffset=\dimen110
+\Gm@wd@mp=\dimen111
+\Gm@odd@mp=\dimen112
+\Gm@even@mp=\dimen113
+\Gm@dimlist=\toks17
 
 (/usr/share/texmf-texlive/tex/xelatex/xetexconfig/geometry.cfg))
-Package hyperref Info: Option `colorlinks' set `false' on input line 55.
+Package hyperref Info: Option `colorlinks' set `false' on input line 58.
  (./report.aux)
 \openout1 = `report.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 56.
-LaTeX Font Info:    ... okay on input line 56.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 56.
-LaTeX Font Info:    ... okay on input line 56.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 56.
-LaTeX Font Info:    ... okay on input line 56.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 56.
-LaTeX Font Info:    ... okay on input line 56.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 56.
-LaTeX Font Info:    ... okay on input line 56.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 56.
-LaTeX Font Info:    ... okay on input line 56.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 56.
-LaTeX Font Info:    ... okay on input line 56.
-Package hyperref Info: Link coloring OFF on input line 56.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 59.
+LaTeX Font Info:    ... okay on input line 59.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 59.
+LaTeX Font Info:    ... okay on input line 59.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 59.
+LaTeX Font Info:    ... okay on input line 59.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 59.
+LaTeX Font Info:    ... okay on input line 59.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 59.
+LaTeX Font Info:    ... okay on input line 59.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 59.
+LaTeX Font Info:    ... okay on input line 59.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 59.
+LaTeX Font Info:    ... okay on input line 59.
+Package hyperref Info: Link coloring OFF on input line 59.
 (/usr/share/texmf-texlive/tex/latex/hyperref/nameref.sty
 Package: nameref 2007/05/29 v2.31 Cross-referencing by name of section
 
 (/usr/share/texmf-texlive/tex/latex/oberdiek/refcount.sty
 Package: refcount 2008/08/11 v3.1 Data extraction from references (HO)
 )
-\c@section@level=\count99
+\c@section@level=\count106
 )
-LaTeX Info: Redefining \ref on input line 56.
-LaTeX Info: Redefining \pageref on input line 56.
+LaTeX Info: Redefining \ref on input line 59.
+LaTeX Info: Redefining \pageref on input line 59.
  (./report.out)
 (./report.out)
 \@outlinefile=\write3
 \openout3 = `report.out'.
 
-\AtBeginShipoutBox=\box26
+\AtBeginShipoutBox=\box28
  (/usr/share/texmf-texlive/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count100
-\scratchdimen=\dimen112
-\scratchbox=\box27
-\nofMPsegments=\count101
-\nofMParguments=\count102
-\everyMPshowfont=\toks17
-\MPscratchCnt=\count103
-\MPscratchDim=\dimen113
-\MPnumerator=\count104
-\everyMPtoPDFconversion=\toks18
+\scratchcounter=\count107
+\scratchdimen=\dimen114
+\scratchbox=\box29
+\nofMPsegments=\count108
+\nofMParguments=\count109
+\everyMPshowfont=\toks18
+\MPscratchCnt=\count110
+\MPscratchDim=\dimen115
+\MPnumerator=\count111
+\everyMPtoPDFconversion=\toks19
+) ABD: EveryShipout initializing macros
+(/usr/share/texmf-texlive/tex/latex/graphics/color.sty
+Package: color 2005/11/14 v1.0j Standard LaTeX Color (DPC)
+
+(/etc/texmf/tex/latex/config/color.cfg
+File: color.cfg 2007/01/18 v1.5 color configuration of teTeX/TeXLive
+)
+Package color Info: Driver file: pdftex.def on input line 130.
 )
 *geometry auto-detecting driver*
 *geometry detected driver: pdftex*
@@ -269,17 +316,17 @@ driver: pdftex
 (1in=72.27pt, 1cm=28.45pt)
 -----------------------
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <7> on input line 74.
+(Font)              <7> on input line 77.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <5> on input line 74.
-<./nitc-logo.png, id=63, 680.5425pt x 808.01875pt>
+(Font)              <5> on input line 77.
+<./nitc-logo.png, id=83, 680.5425pt x 808.01875pt>
 File: ./nitc-logo.png Graphic file (type png)
  <use ./nitc-logo.png>
 [1
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map} <./nitc-logo.png (PNG copy)
 >]
-Underfull \hbox (badness 10000) in paragraph at lines 160--161
+Underfull \hbox (badness 10000) in paragraph at lines 163--164
 
  []
 
@@ -287,12 +334,12 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.191 \begin{abstract}
+l.194 \begin{abstract}
                        [1]pdfTeX warning (ext4): destination with the same iden
 tifier (name{page.1}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.194 \end{abstract}
+l.197 \end{abstract}
                      [1] (./report.toc)
 \tf@toc=\write4
 \openout4 = `report.toc'.
@@ -300,37 +347,24 @@ l.194 \end{abstract}
  [1
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 210--212
+Chapter 1.
+
+Underfull \hbox (badness 10000) in paragraph at lines 212--213
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 213--220
+Underfull \hbox (badness 10000) in paragraph at lines 215--216
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 213--220
+Underfull \hbox (badness 10000) in paragraph at lines 217--218
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 213--220
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 213--220
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 213--220
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 213--220
+Underfull \hbox (badness 10000) in paragraph at lines 219--220
 
  []
 
@@ -338,210 +372,754 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.220 \newpage
-               [1
+l.220 
+       [1
 
-
-]
-Chapter 1.
-
-LaTeX Warning: Citation `nachos' on page 2 undefined on input line 225.
-
-
-LaTeX Warning: Citation `os161' on page 2 undefined on input line 225.
-
-
-LaTeX Warning: Citation `Pintos' on page 2 undefined on input line 225.
-
-
-LaTeX Warning: Citation `survey' on page 2 undefined on input line 225.
-
-
-LaTeX Warning: Citation `nachos' on page 2 undefined on input line 225.
-
-
-LaTeX Warning: Citation `survey' on page 2 undefined on input line 225.
-
-
-LaTeX Warning: Citation `nachos' on page 2 undefined on input line 225.
-
-
-LaTeX Warning: Citation `os161' on page 2 undefined on input line 225.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 225--226
-
- []
-
-
-LaTeX Warning: Citation `survey' on page 2 undefined on input line 228.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 228--229
-
- []
-
-
-LaTeX Warning: Reference `sec:roadmap' on page 2 undefined on input line 230.
-
-
-LaTeX Warning: Citation `survey' on page 2 undefined on input line 230.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 230--231
-
- []
-
-
-LaTeX Warning: Citation `silberschatz' on page 2 undefined on input line 232.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 232--233
-
- []
-
-[2
-
-] [3]
+] [2]
 Chapter 2.
-<components.png, id=115, 597.73312pt x 590.95781pt>
+<components.png, id=152, 597.73312pt x 590.95781pt>
 File: components.png Graphic file (type png)
  <use components.png>
+Underfull \hbox (badness 10000) in paragraph at lines 238--239
+
+ []
+
+[3
+
+ <./components.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 245--246
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 247--248
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 249--250
+
+ []
+
+
 Underfull \hbox (badness 10000) in paragraph at lines 251--252
 
  []
 
-[4
 
- <./components.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 258--259
+Underfull \hbox (badness 10000) in paragraph at lines 253--254
 
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 260--261
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 262--263
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 264--265
-
- []
-
-
-LaTeX Warning: Citation `mips' on page 5 undefined on input line 266.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 266--267
-
- []
-
-[5]
-
-LaTeX Warning: Citation `nachos' on page 6 undefined on input line 275.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 275--276
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 277--278
-
- []
-
-<memdiskstructure.png, id=127, 915.42pt x 771.88374pt>
+[4] <memdiskstructure.png, id=167, 915.42pt x 771.88374pt>
 File: memdiskstructure.png Graphic file (type png)
 
 <use memdiskstructure.png>
-
-LaTeX Warning: Citation `silberschatz' on page 6 undefined on input line 285.
-
-
-LaTeX Warning: Citation `silberschatz' on page 6 undefined on input line 285.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 285--286
+Underfull \hbox (badness 10000) in paragraph at lines 268--269
 
  []
 
-<xosstructure.png, id=128, 357.335pt x 463.7325pt>
+
+Underfull \hbox (badness 10000) in paragraph at lines 270--271
+
+ []
+
+<xosstructure.png, id=169, 357.335pt x 463.7325pt>
 File: xosstructure.png Graphic file (type png)
  <use xosstructure.png>
-Underfull \hbox (badness 10000) in paragraph at lines 293--294
+Underfull \hbox (badness 10000) in paragraph at lines 280--281
 
  []
 
-[6] [7 <./memdiskstructure.png>] [8 <./xosstructure.png>]
+[5 <./memdiskstructure.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 282--283
+
+ []
+
+[6 <./xosstructure.png>]
 Chapter 3.
 
-Underfull \hbox (badness 10000) in paragraph at lines 305--306
+Underfull \hbox (badness 10000) in paragraph at lines 295--296
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 309--310
+Underfull \hbox (badness 10000) in paragraph at lines 299--300
 
  []
 
 
-LaTeX Warning: Citation `gdb' on page 9 undefined on input line 313.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 313--314
+Underfull \hbox (badness 10000) in paragraph at lines 303--304
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 317--318
+Underfull \hbox (badness 10000) in paragraph at lines 307--308
+
+ []
+
+[7
+
+] [8]
+Chapter 4.
+
+Underfull \hbox (badness 10000) in paragraph at lines 311--312
 
  []
 
 [9
 
-] [10]
-Chapter 4.
-
-Underfull \hbox (badness 10000) in paragraph at lines 320--321
-
- []
-
-[11
-
 ]
 Chapter 5.
-No file report.bbl.
+(./report.bbl [10
+
+]) [11
+
+]
+Appendix A.
 [12
 
-] (./report.aux)
+] <../xos/os.pdf, id=220, page=2, 614.295pt x 794.97pt>
+File: ../xos/os.pdf Graphic file (type pdf)
 
-LaTeX Warning: There were undefined references.
+<use ../xos/os.pdf, page 2>
+File: ../xos/os.pdf Graphic file (type pdf)
+ <use ../xos/os.pdf, page 2>
+File: ../xos/os.pdf Graphic file (type pdf)
+
+<use ../xos/os.pdf, page 2>
+File: ../xos/os.pdf Graphic file (type pdf)
+ <use ../xos/os.pdf, page 2>
+File: ../xos/os.pdf Graphic file (type pdf)
+
+<use ../xos/os.pdf, page 2> [13 <../xos/os.pdf>]
+<../xos/os.pdf, id=241, page=3, 614.295pt x 794.97pt>
+File: ../xos/os.pdf Graphic file (type pdf)
+
+<use ../xos/os.pdf, page 3>
+File: ../xos/os.pdf Graphic file (type pdf)
+ <use ../xos/os.pdf, page 3>
+File: ../xos/os.pdf Graphic file (type pdf)
+
+<use ../xos/os.pdf, page 3> [14 <../xos/os.pdf>]
+<../xos/os.pdf, id=246, page=4, 614.295pt x 794.97pt>
+File: ../xos/os.pdf Graphic file (type pdf)
+
+<use ../xos/os.pdf, page 4>
+File: ../xos/os.pdf Graphic file (type pdf)
+ <use ../xos/os.pdf, page 4>
+File: ../xos/os.pdf Graphic file (type pdf)
+
+<use ../xos/os.pdf, page 4> [15 <../xos/os.pdf>]
+<../xos/os.pdf, id=262, page=5, 614.295pt x 794.97pt>
+File: ../xos/os.pdf Graphic file (type pdf)
+
+<use ../xos/os.pdf, page 5>
+File: ../xos/os.pdf Graphic file (type pdf)
+ <use ../xos/os.pdf, page 5>
+File: ../xos/os.pdf Graphic file (type pdf)
+
+<use ../xos/os.pdf, page 5> [16 <../xos/os.pdf>]
+<../xos/os.pdf, id=282, page=6, 614.295pt x 794.97pt>
+File: ../xos/os.pdf Graphic file (type pdf)
+
+<use ../xos/os.pdf, page 6>
+File: ../xos/os.pdf Graphic file (type pdf)
+ <use ../xos/os.pdf, page 6>
+File: ../xos/os.pdf Graphic file (type pdf)
+
+<use ../xos/os.pdf, page 6> [17 <../xos/os.pdf>]
+<../xos/os.pdf, id=287, page=7, 614.295pt x 794.97pt>
+File: ../xos/os.pdf Graphic file (type pdf)
+
+<use ../xos/os.pdf, page 7>
+File: ../xos/os.pdf Graphic file (type pdf)
+ <use ../xos/os.pdf, page 7>
+File: ../xos/os.pdf Graphic file (type pdf)
+
+<use ../xos/os.pdf, page 7> [18 <../xos/os.pdf>]
+<../xos/os.pdf, id=292, page=8, 614.295pt x 794.97pt>
+File: ../xos/os.pdf Graphic file (type pdf)
+
+<use ../xos/os.pdf, page 8>
+File: ../xos/os.pdf Graphic file (type pdf)
+ <use ../xos/os.pdf, page 8>
+File: ../xos/os.pdf Graphic file (type pdf)
+
+<use ../xos/os.pdf, page 8> [19 <../xos/os.pdf>]
+<../xos/os.pdf, id=307, page=9, 614.295pt x 794.97pt>
+File: ../xos/os.pdf Graphic file (type pdf)
+
+<use ../xos/os.pdf, page 9>
+File: ../xos/os.pdf Graphic file (type pdf)
+ <use ../xos/os.pdf, page 9>
+File: ../xos/os.pdf Graphic file (type pdf)
+
+<use ../xos/os.pdf, page 9> [20 <../xos/os.pdf>]
+<../xos/os.pdf, id=312, page=10, 614.295pt x 794.97pt>
+File: ../xos/os.pdf Graphic file (type pdf)
+
+<use ../xos/os.pdf, page 10>
+File: ../xos/os.pdf Graphic file (type pdf)
+ <use ../xos/os.pdf, page 10>
+File: ../xos/os.pdf Graphic file (type pdf)
+
+<use ../xos/os.pdf, page 10> [21 <../xos/os.pdf>]
+<../xos/os.pdf, id=318, page=11, 614.295pt x 794.97pt>
+File: ../xos/os.pdf Graphic file (type pdf)
+
+<use ../xos/os.pdf, page 11>
+File: ../xos/os.pdf Graphic file (type pdf)
+ <use ../xos/os.pdf, page 11>
+File: ../xos/os.pdf Graphic file (type pdf)
+
+<use ../xos/os.pdf, page 11> [22 <../xos/os.pdf>]
+<../xos/os.pdf, id=323, page=12, 614.295pt x 794.97pt>
+File: ../xos/os.pdf Graphic file (type pdf)
+
+<use ../xos/os.pdf, page 12>
+File: ../xos/os.pdf Graphic file (type pdf)
+ <use ../xos/os.pdf, page 12>
+File: ../xos/os.pdf Graphic file (type pdf)
+
+<use ../xos/os.pdf, page 12> [23 <../xos/os.pdf>]
+<../xos/os.pdf, id=328, page=13, 614.295pt x 794.97pt>
+File: ../xos/os.pdf Graphic file (type pdf)
+
+<use ../xos/os.pdf, page 13>
+File: ../xos/os.pdf Graphic file (type pdf)
+ <use ../xos/os.pdf, page 13>
+File: ../xos/os.pdf Graphic file (type pdf)
+
+<use ../xos/os.pdf, page 13> [24 <../xos/os.pdf>]
+<../xos/os.pdf, id=338, page=14, 614.295pt x 794.97pt>
+File: ../xos/os.pdf Graphic file (type pdf)
+
+<use ../xos/os.pdf, page 14>
+File: ../xos/os.pdf Graphic file (type pdf)
+ <use ../xos/os.pdf, page 14>
+File: ../xos/os.pdf Graphic file (type pdf)
+
+<use ../xos/os.pdf, page 14> [25 <../xos/os.pdf>]
+<../xos/os.pdf, id=343, page=15, 614.295pt x 794.97pt>
+File: ../xos/os.pdf Graphic file (type pdf)
+
+<use ../xos/os.pdf, page 15>
+File: ../xos/os.pdf Graphic file (type pdf)
+ <use ../xos/os.pdf, page 15>
+File: ../xos/os.pdf Graphic file (type pdf)
+
+<use ../xos/os.pdf, page 15> [26 <../xos/os.pdf>]
+<../xos/os.pdf, id=348, page=16, 614.295pt x 794.97pt>
+File: ../xos/os.pdf Graphic file (type pdf)
+
+<use ../xos/os.pdf, page 16>
+File: ../xos/os.pdf Graphic file (type pdf)
+ <use ../xos/os.pdf, page 16>
+File: ../xos/os.pdf Graphic file (type pdf)
+
+<use ../xos/os.pdf, page 16> [27 <../xos/os.pdf>]
+<../xos/os.pdf, id=354, page=17, 614.295pt x 794.97pt>
+File: ../xos/os.pdf Graphic file (type pdf)
+
+<use ../xos/os.pdf, page 17>
+File: ../xos/os.pdf Graphic file (type pdf)
+ <use ../xos/os.pdf, page 17>
+File: ../xos/os.pdf Graphic file (type pdf)
+
+<use ../xos/os.pdf, page 17> [28 <../xos/os.pdf>]
+<../xos/os.pdf, id=359, page=18, 614.295pt x 794.97pt>
+File: ../xos/os.pdf Graphic file (type pdf)
+
+<use ../xos/os.pdf, page 18>
+File: ../xos/os.pdf Graphic file (type pdf)
+ <use ../xos/os.pdf, page 18>
+File: ../xos/os.pdf Graphic file (type pdf)
+
+<use ../xos/os.pdf, page 18> [29 <../xos/os.pdf>]
+<../xos/os.pdf, id=364, page=19, 614.295pt x 794.97pt>
+File: ../xos/os.pdf Graphic file (type pdf)
+
+<use ../xos/os.pdf, page 19>
+File: ../xos/os.pdf Graphic file (type pdf)
+ <use ../xos/os.pdf, page 19>
+File: ../xos/os.pdf Graphic file (type pdf)
+
+<use ../xos/os.pdf, page 19> [30 <../xos/os.pdf>]
+<../xos/os.pdf, id=369, page=20, 614.295pt x 794.97pt>
+File: ../xos/os.pdf Graphic file (type pdf)
+
+<use ../xos/os.pdf, page 20>
+File: ../xos/os.pdf Graphic file (type pdf)
+ <use ../xos/os.pdf, page 20>
+File: ../xos/os.pdf Graphic file (type pdf)
+
+<use ../xos/os.pdf, page 20> [31 <../xos/os.pdf>]
+<../xos/os.pdf, id=374, page=21, 614.295pt x 794.97pt>
+File: ../xos/os.pdf Graphic file (type pdf)
+
+<use ../xos/os.pdf, page 21>
+File: ../xos/os.pdf Graphic file (type pdf)
+ <use ../xos/os.pdf, page 21>
+File: ../xos/os.pdf Graphic file (type pdf)
+
+<use ../xos/os.pdf, page 21> [32 <../xos/os.pdf>]
+Appendix B.
+[33
+
+] <../xsm/xsm.pdf, id=386, page=2, 614.295pt x 794.97pt>
+File: ../xsm/xsm.pdf Graphic file (type pdf)
+
+<use ../xsm/xsm.pdf, page 2>
+File: ../xsm/xsm.pdf Graphic file (type pdf)
+ <use ../xsm/xsm.pdf, page 2>
+File: ../xsm/xsm.pdf Graphic file (type pdf)
+
+<use ../xsm/xsm.pdf, page 2>
+File: ../xsm/xsm.pdf Graphic file (type pdf)
+ <use ../xsm/xsm.pdf, page 2>
+File: ../xsm/xsm.pdf Graphic file (type pdf)
+
+<use ../xsm/xsm.pdf, page 2> [34 <../xsm/xsm.pdf>]
+<../xsm/xsm.pdf, id=401, page=3, 614.295pt x 794.97pt>
+File: ../xsm/xsm.pdf Graphic file (type pdf)
+
+<use ../xsm/xsm.pdf, page 3>
+File: ../xsm/xsm.pdf Graphic file (type pdf)
+ <use ../xsm/xsm.pdf, page 3>
+File: ../xsm/xsm.pdf Graphic file (type pdf)
+
+<use ../xsm/xsm.pdf, page 3> [35 <../xsm/xsm.pdf>]
+<../xsm/xsm.pdf, id=413, page=4, 614.295pt x 794.97pt>
+File: ../xsm/xsm.pdf Graphic file (type pdf)
+
+<use ../xsm/xsm.pdf, page 4>
+File: ../xsm/xsm.pdf Graphic file (type pdf)
+ <use ../xsm/xsm.pdf, page 4>
+File: ../xsm/xsm.pdf Graphic file (type pdf)
+
+<use ../xsm/xsm.pdf, page 4> [36 <../xsm/xsm.pdf>]
+<../xsm/xsm.pdf, id=421, page=5, 614.295pt x 794.97pt>
+File: ../xsm/xsm.pdf Graphic file (type pdf)
+
+<use ../xsm/xsm.pdf, page 5>
+File: ../xsm/xsm.pdf Graphic file (type pdf)
+ <use ../xsm/xsm.pdf, page 5>
+File: ../xsm/xsm.pdf Graphic file (type pdf)
+
+<use ../xsm/xsm.pdf, page 5> [37 <../xsm/xsm.pdf>]
+<../xsm/xsm.pdf, id=429, page=6, 614.295pt x 794.97pt>
+File: ../xsm/xsm.pdf Graphic file (type pdf)
+
+<use ../xsm/xsm.pdf, page 6>
+File: ../xsm/xsm.pdf Graphic file (type pdf)
+ <use ../xsm/xsm.pdf, page 6>
+File: ../xsm/xsm.pdf Graphic file (type pdf)
+
+<use ../xsm/xsm.pdf, page 6> [38 <../xsm/xsm.pdf>]
+<../xsm/xsm.pdf, id=444, page=7, 614.295pt x 794.97pt>
+File: ../xsm/xsm.pdf Graphic file (type pdf)
+
+<use ../xsm/xsm.pdf, page 7>
+File: ../xsm/xsm.pdf Graphic file (type pdf)
+ <use ../xsm/xsm.pdf, page 7>
+File: ../xsm/xsm.pdf Graphic file (type pdf)
+
+<use ../xsm/xsm.pdf, page 7> [39 <../xsm/xsm.pdf>]
+<../xsm/xsm.pdf, id=450, page=8, 614.295pt x 794.97pt>
+File: ../xsm/xsm.pdf Graphic file (type pdf)
+
+<use ../xsm/xsm.pdf, page 8>
+File: ../xsm/xsm.pdf Graphic file (type pdf)
+ <use ../xsm/xsm.pdf, page 8>
+File: ../xsm/xsm.pdf Graphic file (type pdf)
+
+<use ../xsm/xsm.pdf, page 8> [40 <../xsm/xsm.pdf>]
+<../xsm/xsm.pdf, id=466, page=9, 614.295pt x 794.97pt>
+File: ../xsm/xsm.pdf Graphic file (type pdf)
+
+<use ../xsm/xsm.pdf, page 9>
+File: ../xsm/xsm.pdf Graphic file (type pdf)
+ <use ../xsm/xsm.pdf, page 9>
+File: ../xsm/xsm.pdf Graphic file (type pdf)
+
+<use ../xsm/xsm.pdf, page 9> [41 <../xsm/xsm.pdf>]
+<../xsm/xsm.pdf, id=471, page=10, 614.295pt x 794.97pt>
+File: ../xsm/xsm.pdf Graphic file (type pdf)
+
+<use ../xsm/xsm.pdf, page 10>
+File: ../xsm/xsm.pdf Graphic file (type pdf)
+ <use ../xsm/xsm.pdf, page 10>
+File: ../xsm/xsm.pdf Graphic file (type pdf)
+
+<use ../xsm/xsm.pdf, page 10> [42 <../xsm/xsm.pdf>]
+<../xsm/xsm.pdf, id=476, page=11, 614.295pt x 794.97pt>
+File: ../xsm/xsm.pdf Graphic file (type pdf)
+
+<use ../xsm/xsm.pdf, page 11>
+File: ../xsm/xsm.pdf Graphic file (type pdf)
+ <use ../xsm/xsm.pdf, page 11>
+File: ../xsm/xsm.pdf Graphic file (type pdf)
+
+<use ../xsm/xsm.pdf, page 11> [43 <../xsm/xsm.pdf>]
+<../xsm/xsm.pdf, id=481, page=12, 614.295pt x 794.97pt>
+File: ../xsm/xsm.pdf Graphic file (type pdf)
+
+<use ../xsm/xsm.pdf, page 12>
+File: ../xsm/xsm.pdf Graphic file (type pdf)
+ <use ../xsm/xsm.pdf, page 12>
+File: ../xsm/xsm.pdf Graphic file (type pdf)
+
+<use ../xsm/xsm.pdf, page 12> [44 <../xsm/xsm.pdf>]
+<../xsm/xsm.pdf, id=486, page=13, 614.295pt x 794.97pt>
+File: ../xsm/xsm.pdf Graphic file (type pdf)
+
+<use ../xsm/xsm.pdf, page 13>
+File: ../xsm/xsm.pdf Graphic file (type pdf)
+ <use ../xsm/xsm.pdf, page 13>
+File: ../xsm/xsm.pdf Graphic file (type pdf)
+
+<use ../xsm/xsm.pdf, page 13> [45 <../xsm/xsm.pdf>]
+<../xsm/xsm.pdf, id=492, page=14, 614.295pt x 794.97pt>
+File: ../xsm/xsm.pdf Graphic file (type pdf)
+
+<use ../xsm/xsm.pdf, page 14>
+File: ../xsm/xsm.pdf Graphic file (type pdf)
+ <use ../xsm/xsm.pdf, page 14>
+File: ../xsm/xsm.pdf Graphic file (type pdf)
+
+<use ../xsm/xsm.pdf, page 14> [46 <../xsm/xsm.pdf>]
+<../xsm/xsm.pdf, id=502, page=15, 614.295pt x 794.97pt>
+File: ../xsm/xsm.pdf Graphic file (type pdf)
+
+<use ../xsm/xsm.pdf, page 15>
+File: ../xsm/xsm.pdf Graphic file (type pdf)
+ <use ../xsm/xsm.pdf, page 15>
+File: ../xsm/xsm.pdf Graphic file (type pdf)
+
+<use ../xsm/xsm.pdf, page 15> [47 <../xsm/xsm.pdf>]
+<../xsm/xsm.pdf, id=507, page=16, 614.295pt x 794.97pt>
+File: ../xsm/xsm.pdf Graphic file (type pdf)
+
+<use ../xsm/xsm.pdf, page 16>
+File: ../xsm/xsm.pdf Graphic file (type pdf)
+ <use ../xsm/xsm.pdf, page 16>
+File: ../xsm/xsm.pdf Graphic file (type pdf)
+
+<use ../xsm/xsm.pdf, page 16> [48 <../xsm/xsm.pdf>]
+<../xsm/xsm.pdf, id=512, page=17, 614.295pt x 794.97pt>
+File: ../xsm/xsm.pdf Graphic file (type pdf)
+
+<use ../xsm/xsm.pdf, page 17>
+File: ../xsm/xsm.pdf Graphic file (type pdf)
+ <use ../xsm/xsm.pdf, page 17>
+File: ../xsm/xsm.pdf Graphic file (type pdf)
+
+<use ../xsm/xsm.pdf, page 17> [49 <../xsm/xsm.pdf>]
+<../xsm/xsm.pdf, id=517, page=18, 614.295pt x 794.97pt>
+File: ../xsm/xsm.pdf Graphic file (type pdf)
+
+<use ../xsm/xsm.pdf, page 18>
+File: ../xsm/xsm.pdf Graphic file (type pdf)
+ <use ../xsm/xsm.pdf, page 18>
+File: ../xsm/xsm.pdf Graphic file (type pdf)
+
+<use ../xsm/xsm.pdf, page 18> [50 <../xsm/xsm.pdf>]
+<../xsm/xsm.pdf, id=522, page=19, 614.295pt x 794.97pt>
+File: ../xsm/xsm.pdf Graphic file (type pdf)
+
+<use ../xsm/xsm.pdf, page 19>
+File: ../xsm/xsm.pdf Graphic file (type pdf)
+ <use ../xsm/xsm.pdf, page 19>
+File: ../xsm/xsm.pdf Graphic file (type pdf)
+
+<use ../xsm/xsm.pdf, page 19> [51 <../xsm/xsm.pdf>]
+Appendix C.
+[52
+
+] <../xfs/xfs.pdf, id=534, page=2, 614.295pt x 794.97pt>
+File: ../xfs/xfs.pdf Graphic file (type pdf)
+
+<use ../xfs/xfs.pdf, page 2>
+File: ../xfs/xfs.pdf Graphic file (type pdf)
+ <use ../xfs/xfs.pdf, page 2>
+File: ../xfs/xfs.pdf Graphic file (type pdf)
+
+<use ../xfs/xfs.pdf, page 2>
+File: ../xfs/xfs.pdf Graphic file (type pdf)
+ <use ../xfs/xfs.pdf, page 2>
+File: ../xfs/xfs.pdf Graphic file (type pdf)
+
+<use ../xfs/xfs.pdf, page 2> [53 <../xfs/xfs.pdf>]
+<../xfs/xfs.pdf, id=549, page=3, 614.295pt x 794.97pt>
+File: ../xfs/xfs.pdf Graphic file (type pdf)
+
+<use ../xfs/xfs.pdf, page 3>
+File: ../xfs/xfs.pdf Graphic file (type pdf)
+ <use ../xfs/xfs.pdf, page 3>
+File: ../xfs/xfs.pdf Graphic file (type pdf)
+
+<use ../xfs/xfs.pdf, page 3> [54 <../xfs/xfs.pdf>]
+<../xfs/xfs.pdf, id=563, page=4, 614.295pt x 794.97pt>
+File: ../xfs/xfs.pdf Graphic file (type pdf)
+
+<use ../xfs/xfs.pdf, page 4>
+File: ../xfs/xfs.pdf Graphic file (type pdf)
+ <use ../xfs/xfs.pdf, page 4>
+File: ../xfs/xfs.pdf Graphic file (type pdf)
+
+<use ../xfs/xfs.pdf, page 4> [55 <../xfs/xfs.pdf>]
+<../xfs/xfs.pdf, id=568, page=5, 614.295pt x 794.97pt>
+File: ../xfs/xfs.pdf Graphic file (type pdf)
+
+<use ../xfs/xfs.pdf, page 5>
+File: ../xfs/xfs.pdf Graphic file (type pdf)
+ <use ../xfs/xfs.pdf, page 5>
+File: ../xfs/xfs.pdf Graphic file (type pdf)
+
+<use ../xfs/xfs.pdf, page 5> [56 <../xfs/xfs.pdf>]
+<../xfs/xfs.pdf, id=576, page=6, 614.295pt x 794.97pt>
+File: ../xfs/xfs.pdf Graphic file (type pdf)
+
+<use ../xfs/xfs.pdf, page 6>
+File: ../xfs/xfs.pdf Graphic file (type pdf)
+ <use ../xfs/xfs.pdf, page 6>
+File: ../xfs/xfs.pdf Graphic file (type pdf)
+
+<use ../xfs/xfs.pdf, page 6> [57 <../xfs/xfs.pdf>]
+<../xfs/xfs.pdf, id=585, page=7, 614.295pt x 794.97pt>
+File: ../xfs/xfs.pdf Graphic file (type pdf)
+
+<use ../xfs/xfs.pdf, page 7>
+File: ../xfs/xfs.pdf Graphic file (type pdf)
+ <use ../xfs/xfs.pdf, page 7>
+File: ../xfs/xfs.pdf Graphic file (type pdf)
+
+<use ../xfs/xfs.pdf, page 7> [58 <../xfs/xfs.pdf>]
+Appendix D.
+[59
+
+] <../apl/apl.pdf, id=596, page=2, 614.295pt x 794.97pt>
+File: ../apl/apl.pdf Graphic file (type pdf)
+
+<use ../apl/apl.pdf, page 2>
+File: ../apl/apl.pdf Graphic file (type pdf)
+ <use ../apl/apl.pdf, page 2>
+File: ../apl/apl.pdf Graphic file (type pdf)
+
+<use ../apl/apl.pdf, page 2>
+File: ../apl/apl.pdf Graphic file (type pdf)
+ <use ../apl/apl.pdf, page 2>
+File: ../apl/apl.pdf Graphic file (type pdf)
+
+<use ../apl/apl.pdf, page 2> [60 <../apl/apl.pdf>]
+<../apl/apl.pdf, id=612, page=3, 614.295pt x 794.97pt>
+File: ../apl/apl.pdf Graphic file (type pdf)
+
+<use ../apl/apl.pdf, page 3>
+File: ../apl/apl.pdf Graphic file (type pdf)
+ <use ../apl/apl.pdf, page 3>
+File: ../apl/apl.pdf Graphic file (type pdf)
+
+<use ../apl/apl.pdf, page 3> [61 <../apl/apl.pdf>]
+<../apl/apl.pdf, id=617, page=4, 614.295pt x 794.97pt>
+File: ../apl/apl.pdf Graphic file (type pdf)
+
+<use ../apl/apl.pdf, page 4>
+File: ../apl/apl.pdf Graphic file (type pdf)
+ <use ../apl/apl.pdf, page 4>
+File: ../apl/apl.pdf Graphic file (type pdf)
+
+<use ../apl/apl.pdf, page 4> [62 <../apl/apl.pdf>]
+<../apl/apl.pdf, id=638, page=5, 614.295pt x 794.97pt>
+File: ../apl/apl.pdf Graphic file (type pdf)
+
+<use ../apl/apl.pdf, page 5>
+File: ../apl/apl.pdf Graphic file (type pdf)
+ <use ../apl/apl.pdf, page 5>
+File: ../apl/apl.pdf Graphic file (type pdf)
+
+<use ../apl/apl.pdf, page 5> [63 <../apl/apl.pdf>]
+<../apl/apl.pdf, id=644, page=6, 614.295pt x 794.97pt>
+File: ../apl/apl.pdf Graphic file (type pdf)
+
+<use ../apl/apl.pdf, page 6>
+File: ../apl/apl.pdf Graphic file (type pdf)
+ <use ../apl/apl.pdf, page 6>
+File: ../apl/apl.pdf Graphic file (type pdf)
+
+<use ../apl/apl.pdf, page 6> [64 <../apl/apl.pdf>]
+<../apl/apl.pdf, id=649, page=7, 614.295pt x 794.97pt>
+File: ../apl/apl.pdf Graphic file (type pdf)
+
+<use ../apl/apl.pdf, page 7>
+File: ../apl/apl.pdf Graphic file (type pdf)
+ <use ../apl/apl.pdf, page 7>
+File: ../apl/apl.pdf Graphic file (type pdf)
+
+<use ../apl/apl.pdf, page 7> [65 <../apl/apl.pdf>]
+<../apl/apl.pdf, id=654, page=8, 614.295pt x 794.97pt>
+File: ../apl/apl.pdf Graphic file (type pdf)
+
+<use ../apl/apl.pdf, page 8>
+File: ../apl/apl.pdf Graphic file (type pdf)
+ <use ../apl/apl.pdf, page 8>
+File: ../apl/apl.pdf Graphic file (type pdf)
+
+<use ../apl/apl.pdf, page 8> [66 <../apl/apl.pdf>]
+<../apl/apl.pdf, id=664, page=9, 614.295pt x 794.97pt>
+File: ../apl/apl.pdf Graphic file (type pdf)
+
+<use ../apl/apl.pdf, page 9>
+File: ../apl/apl.pdf Graphic file (type pdf)
+ <use ../apl/apl.pdf, page 9>
+File: ../apl/apl.pdf Graphic file (type pdf)
+
+<use ../apl/apl.pdf, page 9> [67 <../apl/apl.pdf>]
+<../apl/apl.pdf, id=669, page=10, 614.295pt x 794.97pt>
+File: ../apl/apl.pdf Graphic file (type pdf)
+
+<use ../apl/apl.pdf, page 10>
+File: ../apl/apl.pdf Graphic file (type pdf)
+ <use ../apl/apl.pdf, page 10>
+File: ../apl/apl.pdf Graphic file (type pdf)
+
+<use ../apl/apl.pdf, page 10> [68 <../apl/apl.pdf>]
+<../apl/apl.pdf, id=674, page=11, 614.295pt x 794.97pt>
+File: ../apl/apl.pdf Graphic file (type pdf)
+
+<use ../apl/apl.pdf, page 11>
+File: ../apl/apl.pdf Graphic file (type pdf)
+ <use ../apl/apl.pdf, page 11>
+File: ../apl/apl.pdf Graphic file (type pdf)
+
+<use ../apl/apl.pdf, page 11> [69 <../apl/apl.pdf>]
+Appendix E.
+[70
+
+] <../spl/spl.pdf, id=686, page=2, 614.295pt x 794.97pt>
+File: ../spl/spl.pdf Graphic file (type pdf)
+
+<use ../spl/spl.pdf, page 2>
+File: ../spl/spl.pdf Graphic file (type pdf)
+ <use ../spl/spl.pdf, page 2>
+File: ../spl/spl.pdf Graphic file (type pdf)
+
+<use ../spl/spl.pdf, page 2>
+File: ../spl/spl.pdf Graphic file (type pdf)
+ <use ../spl/spl.pdf, page 2>
+File: ../spl/spl.pdf Graphic file (type pdf)
+
+<use ../spl/spl.pdf, page 2> [71 <../spl/spl.pdf>]
+<../spl/spl.pdf, id=701, page=3, 614.295pt x 794.97pt>
+File: ../spl/spl.pdf Graphic file (type pdf)
+
+<use ../spl/spl.pdf, page 3>
+File: ../spl/spl.pdf Graphic file (type pdf)
+ <use ../spl/spl.pdf, page 3>
+File: ../spl/spl.pdf Graphic file (type pdf)
+
+<use ../spl/spl.pdf, page 3> [72 <../spl/spl.pdf>]
+<../spl/spl.pdf, id=718, page=4, 614.295pt x 794.97pt>
+File: ../spl/spl.pdf Graphic file (type pdf)
+
+<use ../spl/spl.pdf, page 4>
+File: ../spl/spl.pdf Graphic file (type pdf)
+ <use ../spl/spl.pdf, page 4>
+File: ../spl/spl.pdf Graphic file (type pdf)
+
+<use ../spl/spl.pdf, page 4> [73 <../spl/spl.pdf>]
+<../spl/spl.pdf, id=723, page=5, 614.295pt x 794.97pt>
+File: ../spl/spl.pdf Graphic file (type pdf)
+
+<use ../spl/spl.pdf, page 5>
+File: ../spl/spl.pdf Graphic file (type pdf)
+ <use ../spl/spl.pdf, page 5>
+File: ../spl/spl.pdf Graphic file (type pdf)
+
+<use ../spl/spl.pdf, page 5> [74 <../spl/spl.pdf>]
+<../spl/spl.pdf, id=728, page=6, 614.295pt x 794.97pt>
+File: ../spl/spl.pdf Graphic file (type pdf)
+
+<use ../spl/spl.pdf, page 6>
+File: ../spl/spl.pdf Graphic file (type pdf)
+ <use ../spl/spl.pdf, page 6>
+File: ../spl/spl.pdf Graphic file (type pdf)
+
+<use ../spl/spl.pdf, page 6> [75 <../spl/spl.pdf>]
+<../spl/spl.pdf, id=734, page=7, 614.295pt x 794.97pt>
+File: ../spl/spl.pdf Graphic file (type pdf)
+
+<use ../spl/spl.pdf, page 7>
+File: ../spl/spl.pdf Graphic file (type pdf)
+ <use ../spl/spl.pdf, page 7>
+File: ../spl/spl.pdf Graphic file (type pdf)
+
+<use ../spl/spl.pdf, page 7> [76 <../spl/spl.pdf>]
+<../spl/spl.pdf, id=742, page=8, 614.295pt x 794.97pt>
+File: ../spl/spl.pdf Graphic file (type pdf)
+
+<use ../spl/spl.pdf, page 8>
+File: ../spl/spl.pdf Graphic file (type pdf)
+ <use ../spl/spl.pdf, page 8>
+File: ../spl/spl.pdf Graphic file (type pdf)
+
+<use ../spl/spl.pdf, page 8> [77 <../spl/spl.pdf>]
+<../spl/spl.pdf, id=747, page=9, 614.295pt x 794.97pt>
+File: ../spl/spl.pdf Graphic file (type pdf)
+
+<use ../spl/spl.pdf, page 9>
+File: ../spl/spl.pdf Graphic file (type pdf)
+ <use ../spl/spl.pdf, page 9>
+File: ../spl/spl.pdf Graphic file (type pdf)
+
+<use ../spl/spl.pdf, page 9> [78 <../spl/spl.pdf>]
+<../spl/spl.pdf, id=752, page=10, 614.295pt x 794.97pt>
+File: ../spl/spl.pdf Graphic file (type pdf)
+
+<use ../spl/spl.pdf, page 10>
+File: ../spl/spl.pdf Graphic file (type pdf)
+ <use ../spl/spl.pdf, page 10>
+File: ../spl/spl.pdf Graphic file (type pdf)
+
+<use ../spl/spl.pdf, page 10> [79 <../spl/spl.pdf>] (./report.aux)
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 
  ) 
 Here is how much of TeX's memory you used:
- 4568 strings out of 493848
- 66513 string characters out of 1152824
- 145092 words of memory out of 3000000
- 7772 multiletter control sequences out of 15000+50000
+ 5674 strings out of 493848
+ 83965 string characters out of 1152824
+ 159966 words of memory out of 3000000
+ 8751 multiletter control sequences out of 15000+50000
  8178 words of font info for 29 fonts, out of 3000000 for 9000
  714 hyphenation exceptions out of 8191
- 38i,7n,36p,1393b,307s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 38i,16n,37p,1395b,468s stack positions out of 5000i,500n,10000p,200000b,50000s
 </usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/sha
 re/texmf-texlive/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texmf-te
-xlive/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></usr/share/texmf-texlive/font
-s/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texmf-texlive/fonts/type1/publ
-ic/amsfonts/cm/cmr12.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/
-cm/cmr17.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmti10.pf
-b></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/sha
-re/texmf-texlive/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
-Output written on report.pdf (16 pages, 299437 bytes).
+xlive/fonts/type1/public/amsfonts/cm/cmbx9.pfb></usr/share/texmf-texlive/fonts/
+type1/public/amsfonts/cm/cmbxti10.pfb></usr/share/texmf-texlive/fonts/type1/pub
+lic/amsfonts/cm/cmcsc10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfon
+ts/cm/cmex10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmitt
+10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmmi10.pfb></us
+r/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texm
+f-texlive/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texmf-texlive/fo
+nts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texmf-texlive/fonts/type1/pu
+blic/amsfonts/cm/cmr12.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfont
+s/cm/cmr17.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr8.pf
+b></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/share
+/texmf-texlive/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf-texl
+ive/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/share/texmf-texlive/fonts/ty
+pe1/public/amsfonts/cm/cmti10.pfb></usr/share/texmf-texlive/fonts/type1/public/
+amsfonts/cm/cmti12.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm
+/cmtt10.pfb></usr/share/texmf-texlive/fonts/type1/urw/courier/ucrr8a.pfb></usr/
+share/texmf-texlive/fonts/type1/urw/palatino/uplb8a.pfb></usr/share/texmf-texli
+ve/fonts/type1/urw/palatino/uplbi8a.pfb></usr/share/texmf-texlive/fonts/type1/u
+rw/palatino/uplr8a.pfb></usr/share/texmf-texlive/fonts/type1/urw/palatino/uplri
+8a.pfb>
+Output written on report.pdf (83 pages, 809047 bytes).
 PDF statistics:
- 206 PDF objects out of 1000 (max. 8388607)
- 33 named destinations out of 1000 (max. 500000)
- 141 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 826 PDF objects out of 1000 (max. 8388607)
+ 113 named destinations out of 1000 (max. 500000)
+ 546 words of extra memory for PDF output out of 10000 (max. 10000000)
 

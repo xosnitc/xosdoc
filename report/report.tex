@@ -48,6 +48,9 @@
 \documentclass[10pt]{report}
 \usepackage{hyperref}
 \usepackage{graphicx}
+\usepackage{pdfpages}
+\usepackage{appendix}
+
 \usepackage[margin=1.2in]{geometry}
 \hypersetup{
     colorlinks=false,
@@ -202,22 +205,6 @@ This paper introduces an operating system project that helps undergraduate compu
 \pagenumbering{arabic}
 
 
-%ACKNOWLEDGEMENT
-\clearpage
-\addcontentsline{toc}{chapter}{Acknowledgements}
-\chapter*{Acknowledgments}
-\vspace{1.0in}
-We thank the past contributers of the earlier versions of this project, Ajeet Kumar, Albin Suresh, Avinash, Deepak Goyal, Jeril K George, K Dinesh, Mathew Kumpalamthanam, Naseem Iqbal, Nitish Kumar, Ramnath Jayachandran, Sathyam Doraswamy, Sumesh B and Yogesh Mishra. We also thank Govind Nharekat and Nithin Mohan who are undergraduate computer science students at our institute, who were actively involved in testing out the system and providing valuable feedback. 
-\\
-
-We would like to thank the Department of Computer Science and Engineering for providing and opportunity to work on this project as part of the course curriculum.
-\\
-\\ 
-\\
- \\ 
-\\
-\\
-\newpage
 
 
 \chapter{Introduction}
@@ -272,23 +259,25 @@ XSM machine has capability of running an operating system capable of multiprogra
 
 \section{Experimental Operating System }
 
+\begin{figure}[hbtp]
+\centering
+\includegraphics[scale=0.35]{memdiskstructure.png}
+\caption{OS View of memory and disk}
+\end{figure}
+
 The specification for an Experimental Operating System or XOS is provided to the students. In this project, students will build XOS to meet the specification. XOS is a simulated operating system which runs on top of XSM which is a simulated machine hardware. The OS kernel unlike Nachos \cite{nachos} resides in the memory of the simulated machine. The disk for XOS, which is a UNIX file,  is formatted with the XFS filesystem. The disk permanently stores the OS routines and data structures as in real systems.  \\
 
 The various components of the operating system include routines like OS startup code, eight interrupt routines including the timer interrupt, the exception handler routine, and data structures like ready list of PCBs, per-process page tables, the system wide-open file table, memory free list, memory copy of disk data structures including FAT and the disk free list. The OS routines are to be programmed by the student building XOS and is loaded to the disk. The OS startup code which is also programmed by the student is responsible for loading all the other routines from disk to memory on OS startup. The OS startup code must be loaded in the first block of the XFS disk. When the system boots the bootstrap loader or the ROM code will copy this disk block to memory and pass control to it. The ROM code is hardcoded in the part of the machine memory which acts as the ROM. The OS routines will modify the memory-resident data structures, and make changes in the disk as and when required. \\
 
-\begin{figure}[hbtp]
-\centering
-\includegraphics[scale=0.4]{memdiskstructure.png}
-\caption{OS View of memory and disk}
-\end{figure}
-
-TThe various functionalities of XOS are process management, memory management and system calls. Process management includes scheduling and dispatching processes to the CPU. XOS is capable of multiprogramming (the ability to run more than one process simultaneously). Memory Management involves allocating memory for processes, demand paging (loading memory pages from the disk as and when required). The system calls provided by XOS include file system calls like Create, Delete, Open, Close, Read, Write, Seek and process system calls like Fork, Exec and Exit. Limited support for process synchronization has been suggested in the form of enhancements to XOS, through the implementation of system calls like Wait, Signal, Getpid, and Getppid. These system calls are mapped to 7 interrupt routines provided by the machine. The scheduler should be programmed and loaded into the timer interrupt routine. By specification, the scheduler of XOS follows a round-robin scheduling technique \cite{silberschatz}. The page fault handler resides in the exception handler routine. For exceptions other than the page fault, XOS will exit the process. On a page fault exception, the exception handler must be programmed to implement a page replacement algorithm. The page replacement algorithm in XOS specification is the \textit{second chance algorithm}\cite{silberschatz} \\
 
 \begin{figure}[hbtp]
 \centering
-\includegraphics[scale=0.59]{xosstructure.png}
+\includegraphics[scale=0.55]{xosstructure.png}
 \caption{Components and their interaction}
 \end{figure}
+
+
+The various functionalities of XOS are process management, memory management and system calls. Process management includes scheduling and dispatching processes to the CPU. XOS is capable of multiprogramming (the ability to run more than one process simultaneously). Memory Management involves allocating memory for processes, demand paging (loading memory pages from the disk as and when required). The system calls provided by XOS include file system calls like Create, Delete, Open, Close, Read, Write, Seek and process system calls like Fork, Exec and Exit. Limited support for process synchronization has been suggested in the form of enhancements to XOS, through the implementation of system calls like Wait, Signal, Getpid, and Getppid. These system calls are mapped to 7 interrupt routines provided by the machine. The scheduler should be programmed and loaded into the timer interrupt routine. By specification, the scheduler of XOS follows a round-robin scheduling technique \cite{silberschatz}. The page fault handler resides in the exception handler routine. For exceptions other than the page fault, XOS will exit the process. On a page fault exception, the exception handler must be programmed to implement a page replacement algorithm. The page replacement algorithm in XOS specification is the \textit{second chance algorithm}\cite{silberschatz} \\
 
 XOS maintains a ready list of PCBs in memory. XOS limits the number of processes that can be run concurrently to 32. Each process has a per-process page table in memory. For each process the stack is of size 1 page and is present in the memory always. A process can have a maximum of 4 memory pages. Even though space for 32 processes to reside simultaneously in memory is not available, with pure demand paging, and swapping out of pages by the page replacement algorithm, this constraint can be overcome. The stack is never swapped out to the disk. When a OS routine returns back to the user program,  the stack of the user process is used for passing the return address. \\
 
@@ -299,43 +288,43 @@ No code base for XOS is presented to the student. However a detailed roadmap whi
 
 \chapter{Development Tools}
 
-Various development tools are provided to the student for implementing XOS. 
+Various development tools are provided to the student for implementing XOS. Each of these tools and their purpose is described in the following sections. 
+
 
 \section{Application Programmer's Language}
 Application Programmer's Language (APL) is a high-level language which can be used to write application programs to run on top of XOS. Its cross-compiler to XSM instruction set is provided as part of the development tools to the student. APL is a simple language which supports local and global variables and function calls. Interfaces to XOS system calls are provided through a family of built-in functions. \\
 
 
 \section{System Programmer's Language}
-System Programmer's Language (SPL) is a XSM dependant language which is used to program XOS itself. Its cross-compiler to XSM instruction set is also provided as part of the development tools. SPL unlike APL, is close to the machine instruction set. SPL statements can access most of the machine registers and memory directly. SPL has predefined constants specific to XOS. The SPL programmer can redefine these constants or define new constants. Apart from this, XOS provides \textit{aliasing}, when registers can be assigned meaningful names for convenience.\\
+System Programmer's Language (SPL) is a XSM dependent language which is used to program XOS itself. Its cross-compiler to XSM instruction set is also provided as part of the development tools. SPL unlike APL, is close to the machine instruction set. SPL statements can access most of the machine registers and memory directly. SPL has predefined constants specific to XOS. The SPL programmer can redefine these constants or define new constants. Apart from this, XOS provides \textit{aliasing}, when registers can be assigned meaningful names for convenience.\\
 
 
 \section{Debugger}
-The XSM simulator can be run in the debug mode. In this mode, the machine will stop execution at predefined breakpoints in the XSM instructions loaded in the machine's memory. Breakpoints can be set through APL and SPL programs using the \texttt{breakpoint} instruction. From a breakpoint onwards, the execution can be single stepped, or continued to the next breakpoint in the debugger. Using the debugger, contents of registers, memory, XOS data structures etc, can be verified. The debugger has been modelled based on the GNU Debugger \cite{gdb}.\\
+The XSM simulator can be run in the debug mode. In this mode, the machine will stop execution at predefined breakpoints in the XSM instructions loaded in the machine's memory. Breakpoints can be set through APL and SPL programs using the \texttt{breakpoint} instruction. From a breakpoint onwards, the execution can be single stepped, or continued to the next breakpoint in the debugger. Using the debugger, contents of registers, memory, XOS data structures etc, can be verified. The debugger has been modeled based on the GNU Debugger \cite{gdb}.\\
 
 
 \section{XFS Interface}
-The XFS disk is a UNIX file. XFS interface is a simple command-line interface that helps access this disk directly from your UNIX mahcine. XFS interface has functions to format the disk, display the contents of the disk, copy files from UNIX machine to the disk, view the disk free list etc. The OS routines and user programs are loaded to the disk before starting the OS using this interface.\\
+The XFS disk is a UNIX file. XFS interface is a simple command-line interface that helps access this disk directly from your UNIX machine. XFS interface has functions to format the disk, display the contents of the disk, copy files from UNIX machine to the disk, view the disk free list etc. The OS routines and user programs are loaded to the disk before starting the OS using this interface.\\
 
 \chapter{Roadmap}
-We felt the necessity for a roadmap to build XOS sequentially. A detailed roadmap divided into stages is provided on the onset to help students do the project. The first two stages help students get familiarized with the environment and devlopment tools. Then the students sequentially start running a kernel program and then a user program on top of it. The next big step in the roadmap is when the student starts to run multiple programs and implements the scheduler. The initial stages are explained in detail. The students will learn more than what they do in these stages. The later stages include implementing the system calls, and virtual memory management. The final stage of the roadmap includes making a console for XOS. The entire roadmap is designed so that the project can be completed in a 12 to 16 week term. \\
+\label{sec:roadmap}
+We felt the necessity for a roadmap to build XOS sequentially. A detailed roadmap divided into stages is provided on the onset to help students do the project. The first two stages help students get familiarized with the environment and development tools. Then the students sequentially start running a kernel program and then a user program on top of it. The next big step in the roadmap is when the student starts to run multiple programs and implements the scheduler. The initial stages are explained in detail. The students will learn more than what they do in these stages. The later stages include implementing the system calls, and virtual memory management. The final stage of the roadmap includes making a console for XOS. The entire roadmap is designed so that the project can be completed in a 12 to 16 week term. Moreover, instructions to implement enhancements to XOS which include system calls like Wait, Signal, Getpid, and Getppid and making a console for XOS are provided at the end of the roadmap. These system calls provide limited support for implementing process synchronization. \\
 
 \chapter{Conclusions}
-The project is easier to implement compared to the existing instructional operating system due to the simplifications done, and the documentation. The project aims to be a better tool for basic undergraduate understanding of operating systems as it helps students get a feel of the elemntary practical aspects of operating systems. It acts as a tool which will aid students to better comprehend the textbooks on operating systems or move on to a complex operating system platform later.
+The project is easier to implement compared to the existing instructional operating system due to the simplifications done, and the documentation. The project aims to be a better tool for basic undergraduate understanding of operating systems as it helps students get a feel of the elementary practical aspects of operating systems. It acts as a tool which will aid students to better comprehend the textbooks on operating systems or move on to a complex operating system platform later.
 
 
 %%ACKNOWLEDGMENTS are optional
-%\section{Acknowledgments}
-%We thank the past contributers of the earlier versions of this project, Ajeet Kumar, Albin Suresh, Avinash, Deepak Goyal, Jeril K George, K Dinesh, Mathew Kumpalamthanam, Naseem Iqbal, Nitish Kumar, Ramnath Jayachandran, Sathyam Doraswamy, Sumesh B and Yogesh Mishra. We also thank Govind Nharekat and Nithin Mohan who are undergraduate computer science students at our institute, who were actively involved in testing out the system and providing valuable feedback. 
+\section{Acknowledgments}
+We thank the past contributers of the earlier versions of this project, Ajeet Kumar, Albin Suresh, Avinash, Deepak Goyal, Jeril K George, K Dinesh, Mathew Kumpalamthanam, Naseem Iqbal, Nitish Kumar, Ramnath Jayachandran, Sathyam Doraswamy, Sumesh B and Yogesh Mishra. We also thank Govind Nharekat and Nithin Mohan who are undergraduate computer science students at our institute, who were actively involved in testing out the system and providing valuable feedback. 
 
 
-%\end{document}  % This is where a 'short' article might terminate
 \section{Availability}
-The complete set of development tools, specification documents and roadmap is available at \url{xosnitc.github.com}. The entire source code is hosted at \url{http://github.com/xosnic}. Students doing XOS project can join the mailing list \url{xos-users@googlegroups.com} and post queries.
-
+The complete set of development tools, specification documents and roadmap is available at \url{xosnitc.github.com}. The entire source code is hosted at \url{http://github.com/xosnitc}. Students doing XOS project can join the mailing list \url{xos-users@googlegroups.com} and post queries.
 
 
 \bibliographystyle{abbrv}
-\bibliography{xos}  % sigproc.bib is the name of the Bibliography in this case
+\bibliography{report}  % sigproc.bib is the name of the Bibliography in this case
 % You must have a proper ".bib" file
 %  and remember to run:
 % latex bibtex latex latex
@@ -343,5 +332,21 @@ The complete set of development tools, specification documents and roadmap is av
 %
 % ACM needs 'a single self-contained file'!
 %
+
+\begin{appendices}
+\chapter{Operating System (XOS) Specification }
+\includepdf[pages={2-}]{../xos/os.pdf}
+\chapter{Machine (XSM) Specification }
+\includepdf[pages={2-}]{../xsm/xsm.pdf}
+\chapter{Filesystem (XFS) Specification }
+\includepdf[pages={2-}]{../xfs/xfs.pdf}
+\chapter{Application Programmer's Language (APL) Specification}
+\includepdf[pages={2-}]{../apl/apl.pdf}
+\chapter{System Programmer's Language (SPL) Specification}
+\includepdf[pages={2-}]{../spl/spl.pdf}
+\end{appendices}
+
+
+
 
 \end{document}

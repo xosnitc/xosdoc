@@ -1,0 +1,42 @@
+\begin{thebibliography}{1}
+
+\bibitem{survey}
+C.~L. Anderson and M.~Nguyen.
+\newblock A survey of contemporary instructional operating systems for use in
+  undergraduate courses.
+\newblock {\em Journal of Computing Sciences in Colleges}, 21(1):183--190,
+  2005.
+
+\bibitem{nachos}
+W.~A. Christopher, S.~J. Procter, and T.~E. Anderson.
+\newblock The nachos instructional operating system.
+\newblock In {\em Proceedings of the USENIX Winter 1993 Conference Proceedings
+  on USENIX Winter 1993 Conference Proceedings}, pages 4--4. USENIX
+  Association, 1993.
+
+\bibitem{mips}
+J.~Heinrich.
+\newblock {\em MIPS R4000 Microprocessor User's Manual}.
+\newblock MIPS technologies, 1994.
+
+\bibitem{os161}
+D.~A. Holland, A.~T. Lim, and M.~I. Seltzer.
+\newblock A new instructional operating system.
+\newblock {\em ACM SIGCSE Bulletin}, 34(1):111--115, 2002.
+
+\bibitem{Pintos}
+B.~Pfaff, A.~Romano, and G.~Back.
+\newblock The pintos instructional operating system kernel.
+\newblock In {\em ACM SIGCSE Bulletin}, volume~41, pages 453--457. ACM, 2009.
+
+\bibitem{silberschatz}
+A.~Silberschatz, P.~B. Galvin, and G.~Gagne.
+\newblock {\em Operating system concepts}.
+\newblock J. Wiley \& Sons, 2009.
+
+\bibitem{gdb}
+R.~Stallman.
+\newblock {\em GDB manual: the GNU source-level debugger}, volume 675.
+\newblock Free Software Foundation, 1989.
+
+\end{thebibliography}
