@@ -1,11 +1,11 @@
 This is BibTeX, Version 0.99c (TeX Live 2009/Debian)
-The top-level auxiliary file: xos.aux
+The top-level auxiliary file: xos-report.aux
 The style file: abbrv.bst
-Database file #1: xos.bib
+Database file #1: xos-report.bib
 Warning--can't use both volume and number fields in Pintos
 You've used 7 entries,
             2118 wiz_defined-function locations,
-            541 strings with 4698 characters,
+            541 strings with 4712 characters,
 and the built_in function-call counts, 2380 in all, are:
 = -- 234
 > -- 99

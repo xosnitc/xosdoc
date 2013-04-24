@@ -1,8 +1,8 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2013.4.8)  24 APR 2013 00:39
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2013.4.23)  24 APR 2013 14:00
 entering extended mode
  %&-line parsing enabled.
-**xos.tex
-(./xos.tex
+**xos-report.tex
+(./xos-report.tex
 LaTeX2e <2009/09/24>
 Babel <v3.8l> and hyphenation patterns for english, usenglishmax, dumylang, noh
 yphenation, farsi, arabic, croatian, bulgarian, ukrainian, russian, czech, slov
@@ -11,7 +11,7 @@ ak, danish, dutch, finnish, french, basque, ngerman, german, german-x-2009-06-1
 skrit, italian, latin, latvian, lithuanian, mongolian2a, mongolian, bokmal, nyn
 orsk, romanian, irish, coptic, serbian, turkish, welsh, esperanto, uppersorbian
 , estonian, indonesian, interlingua, icelandic, kurmanji, slovenian, polish, po
-rtuguese, spanish, galician, catalan, swedish, ukenglish, pinyin, loaded.
+rtuguese, spanish, galician, catalan, swedish, ukenglish, loaded.
 (./sig-alternate.cls (/usr/share/texmf-texlive/tex/latex/graphics/epsfig.sty
 Package: epsfig 1999/02/16 v1.7a (e)psfig emulation (SPQR)
 
@@ -306,8 +306,8 @@ File: hpdftex.def 2009/10/09 v6.79a Hyperref driver for pdfTeX
 \Fld@listcount=\count114
 )
 Package hyperref Info: Option `colorlinks' set `false' on input line 54.
- (./xos.aux)
-\openout1 = `xos.aux'.
+ (./xos-report.aux)
+\openout1 = `xos-report.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 55.
 LaTeX Font Info:    ... okay on input line 55.
@@ -348,10 +348,10 @@ Package: refcount 2008/08/11 v3.1 Data extraction from references (HO)
 )
 LaTeX Info: Redefining \ref on input line 55.
 LaTeX Info: Redefining \pageref on input line 55.
- (./xos.out)
-(./xos.out)
+ (./xos-report.out)
+(./xos-report.out)
 \@outlinefile=\write3
-\openout3 = `xos.out'.
+\openout3 = `xos-report.out'.
 
 \AtBeginShipoutBox=\box31
 LaTeX Font Info:    Try loading font information for U+msa on input line 148.
@@ -373,9 +373,40 @@ Overfull \hbox (22.61433pt too wide) in paragraph at lines 148--148
  []
 
 
-Overfull \hbox (1.24568pt too wide) in paragraph at lines 163--164
-\T1/aer/m/n/9 tional op-er-at-ing sys-tems like Na-chos[[]2[]], OS/161[[]4[]], 
-Pin-tos[[]5[]], 
+LaTeX Warning: Citation `nachos' on page \thepage  undefined on input line 163.
+
+
+
+LaTeX Warning: Citation `os161' on page \thepage  undefined on input line 163.
+
+
+LaTeX Warning: Citation `Pintos' on page \thepage  undefined on input line 163.
+
+
+
+LaTeX Warning: Citation `survey' on page \thepage  undefined on input line 163.
+
+
+
+LaTeX Warning: Citation `nachos' on page \thepage  undefined on input line 163.
+
+
+
+LaTeX Warning: Citation `survey' on page \thepage  undefined on input line 163.
+
+
+
+LaTeX Warning: Citation `nachos' on page \thepage  undefined on input line 163.
+
+
+
+LaTeX Warning: Citation `os161' on page \thepage  undefined on input line 163.
+
+
+Overfull \hbox (2.46077pt too wide) in paragraph at lines 163--164
+\T1/aer/m/n/9 tional op-er-at-ing sys-tems like Na-chos[\T1/aer/bx/n/9 ?\T1/aer
+/m/n/9 ], OS/161[\T1/aer/bx/n/9 ?\T1/aer/m/n/9 ], Pin-tos[\T1/aer/bx/n/9 ?\T1/a
+er/m/n/9 ], 
  []
 
 
@@ -384,9 +415,17 @@ Underfull \hbox (badness 10000) in paragraph at lines 163--164
  []
 
 
+LaTeX Warning: Citation `survey' on page \thepage  undefined on input line 166.
+
+
+
 Underfull \hbox (badness 10000) in paragraph at lines 166--167
 
  []
+
+
+LaTeX Warning: Citation `survey' on page \thepage  undefined on input line 168.
+
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 168--169
@@ -400,19 +439,21 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
 ]
+
+LaTeX Warning: Citation `silberschatz' on page \thepage  undefined on input lin
+e 170.
+
+
 Underfull \hbox (badness 10000) in paragraph at lines 170--171
 
  []
 
-<components.png, id=90, 597.73312pt x 590.95781pt>
+<components.png, id=75, 597.73312pt x 590.95781pt>
 File: components.png Graphic file (type png)
  <use components.png>
 Overfull \hbox (11.04619pt too wide) in paragraph at lines 176--177
  [][] 
  []
-
-
-Underfull \vbox (badness 5064) has occurred while \output is active []
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 183--184
@@ -440,6 +481,9 @@ Underfull \hbox (badness 10000) in paragraph at lines 195--196
  []
 
 
+LaTeX Warning: Citation `mips' on page \thepage  undefined on input line 197.
+
+
 Underfull \hbox (badness 10000) in paragraph at lines 197--198
 
  []
@@ -455,6 +499,10 @@ Overfull \hbox (3.35677pt too wide) in paragraph at lines 202--202
  []
 
 
+LaTeX Warning: Citation `nachos' on page \thepage  undefined on input line 204.
+
+
+
 Underfull \hbox (badness 10000) in paragraph at lines 204--205
 
  []
@@ -464,15 +512,24 @@ Underfull \hbox (badness 10000) in paragraph at lines 206--207
 
  []
 
-<memdiskstructure.png, id=100, 915.42pt x 771.88374pt>
+<memdiskstructure.png, id=82, 915.42pt x 771.88374pt>
 File: memdiskstructure.png Graphic file (type png)
 
 <use memdiskstructure.png>
+
+LaTeX Warning: Citation `silberschatz' on page \thepage  undefined on input lin
+e 214.
+
+
+LaTeX Warning: Citation `silberschatz' on page \thepage  undefined on input lin
+e 214.
+
+
 Underfull \hbox (badness 10000) in paragraph at lines 214--215
 
  []
 
-<xosstructure.png, id=103, 357.335pt x 463.7325pt>
+<xosstructure.png, id=83, 357.335pt x 463.7325pt>
 File: xosstructure.png Graphic file (type png)
  <use xosstructure.png>
 Underfull \hbox (badness 10000) in paragraph at lines 223--224
@@ -502,6 +559,10 @@ LaTeX Font Info:    Try loading font information for T1+aett on input line 243.
 (/usr/share/texmf-texlive/tex/latex/ae/t1aett.fd
 File: t1aett.fd 1997/11/16 Font definitions for T1/aett.
 )
+
+LaTeX Warning: Citation `gdb' on page \thepage  undefined on input line 243.
+
+
 Underfull \hbox (badness 10000) in paragraph at lines 243--244
 
  []
@@ -521,7 +582,7 @@ Overfull \hbox (13.28642pt too wide) in paragraph at lines 260--261
 \T1/aer/m/n/9 Naseem Iqbal, Ni-tish Ku-mar, Ram-nath Jay-achan-dran, Sathyam
  []
 
-(./xos.bbl
+(./xos-report.bbl
 Underfull \vbox (badness 4391) has occurred while \output is active []
 
 pdfTeX warning (ext4): destination with the same identifier (name{page.}) has b
@@ -536,26 +597,30 @@ same identifier (name{page.}) has been already used, duplicate ignored
 l.279 \end{document}
                      [5
 
-] (./xos.aux) ) 
+] (./xos-report.aux)
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+ ) 
 Here is how much of TeX's memory you used:
- 5439 strings out of 493848
- 74153 string characters out of 1152824
- 154739 words of memory out of 3000000
- 8572 multiletter control sequences out of 15000+50000
+ 5439 strings out of 493857
+ 74258 string characters out of 1153305
+ 154546 words of memory out of 3000000
+ 8571 multiletter control sequences out of 15000+50000
  48881 words of font info for 67 fonts, out of 3000000 for 9000
  714 hyphenation exceptions out of 8191
- 39i,10n,37p,1392b,304s stack positions out of 5000i,500n,10000p,200000b,50000s
-{/usr/share/texmf-texlive/fonts/enc/dvips/base/8r.enc}</usr/shar
-e/texmf-texlive/fonts/type1/public/amsfonts/cm/cmbx9.pfb></usr/share/texmf-texl
-ive/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/share/texmf-texlive/fonts/typ
-e1/public/amsfonts/cm/cmti9.pfb></usr/share/texmf-texlive/fonts/type1/public/am
-sfonts/cm/cmtt9.pfb></usr/share/texmf-texlive/fonts/type1/urw/helvetic/uhvb8a.p
-fb></usr/share/texmf-texlive/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/share/te
-xmf-texlive/fonts/type1/urw/times/utmb8a.pfb></usr/share/texmf-texlive/fonts/ty
-pe1/urw/times/utmr8a.pfb>
-Output written on xos.pdf (5 pages, 256200 bytes).
+ 39i,10n,37p,1395b,304s stack positions out of 5000i,500n,10000p,200000b,50000s
+{/usr/share/texmf-texlive/fonts/enc/dvips/base/8r.enc}</usr/share/texmf-texli
+ve/fonts/type1/public/amsfonts/cm/cmbx9.pfb></usr/share/texmf-texlive/fonts/typ
+e1/public/amsfonts/cm/cmr9.pfb></usr/share/texmf-texlive/fonts/type1/public/ams
+fonts/cm/cmti9.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmt
+t9.pfb></usr/share/texmf-texlive/fonts/type1/urw/helvetic/uhvb8a.pfb></usr/shar
+e/texmf-texlive/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/share/texmf-texlive/f
+onts/type1/urw/times/utmb8a.pfb></usr/share/texmf-texlive/fonts/type1/urw/times
+/utmr8a.pfb>
+Output written on xos-report.pdf (5 pages, 253696 bytes).
 PDF statistics:
- 160 PDF objects out of 1000 (max. 8388607)
+ 144 PDF objects out of 1000 (max. 8388607)
  30 named destinations out of 1000 (max. 500000)
  128 words of extra memory for PDF output out of 10000 (max. 10000000)
 
