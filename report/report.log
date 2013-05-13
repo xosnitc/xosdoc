@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2013.4.26)  26 APR 2013 19:33
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2013.4.23)  14 MAY 2013 00:27
 entering extended mode
  %&-line parsing enabled.
 **report.tex
@@ -11,7 +11,7 @@ ak, danish, dutch, finnish, french, basque, ngerman, german, german-x-2009-06-1
 skrit, italian, latin, latvian, lithuanian, mongolian2a, mongolian, bokmal, nyn
 orsk, romanian, irish, coptic, serbian, turkish, welsh, esperanto, uppersorbian
 , estonian, indonesian, interlingua, icelandic, kurmanji, slovenian, polish, po
-rtuguese, spanish, galician, catalan, swedish, ukenglish, pinyin, loaded.
+rtuguese, spanish, galician, catalan, swedish, ukenglish, loaded.
 (/usr/share/texmf-texlive/tex/latex/base/report.cls
 Document Class: report 2007/10/19 v1.4h Standard LaTeX document class
 (/usr/share/texmf-texlive/tex/latex/base/size10.clo
@@ -851,7 +851,7 @@ File: ../xfs/xfs.pdf Graphic file (type pdf)
 File: ../xfs/xfs.pdf Graphic file (type pdf)
 
 <use ../xfs/xfs.pdf, page 2> [53 <../xfs/xfs.pdf>]
-<../xfs/xfs.pdf, id=549, page=3, 614.295pt x 794.97pt>
+<../xfs/xfs.pdf, id=546, page=3, 614.295pt x 794.97pt>
 File: ../xfs/xfs.pdf Graphic file (type pdf)
 
 <use ../xfs/xfs.pdf, page 3>
@@ -1093,10 +1093,10 @@ File: ../spl/spl.pdf Graphic file (type pdf)
 
 <use ../spl/spl.pdf, page 10> [80 <../spl/spl.pdf>] (./report.aux) ) 
 Here is how much of TeX's memory you used:
- 5678 strings out of 493848
- 84102 string characters out of 1152823
- 159966 words of memory out of 3000000
- 8754 multiletter control sequences out of 15000+50000
+ 5678 strings out of 493857
+ 84102 string characters out of 1153305
+ 159961 words of memory out of 3000000
+ 8753 multiletter control sequences out of 15000+50000
  8178 words of font info for 29 fonts, out of 3000000 for 9000
  714 hyphenation exceptions out of 8191
  38i,16n,37p,1395b,468s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -1122,7 +1122,7 @@ mti12.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmtt10.pfb><
 exlive/fonts/type1/urw/palatino/uplb8a.pfb></usr/share/texmf-texlive/fonts/type
 1/urw/palatino/uplbi8a.pfb></usr/share/texmf-texlive/fonts/type1/urw/palatino/u
 plr8a.pfb></usr/share/texmf-texlive/fonts/type1/urw/palatino/uplri8a.pfb>
-Output written on report.pdf (84 pages, 811404 bytes).
+Output written on report.pdf (84 pages, 810900 bytes).
 PDF statistics:
  831 PDF objects out of 1000 (max. 8388607)
  114 named destinations out of 1000 (max. 500000)
