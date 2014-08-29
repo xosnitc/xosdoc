@@ -1,13 +1,10 @@
 
 \documentclass[11pt]{report}
-
-
 \usepackage[pdftex]{graphicx}
 \usepackage{url} 
-\usepackage[dvips, bookmarks, colorlinks=false, pdfborder={0 0 0}, pdftitle={<pdf title here>}, pdfauthor={<author's name here>}, pdfsubject={<subject here>}, pdfkeywords={<keywords here>}]{hyperref} 
+\usepackage[ bookmarks, colorlinks=false, pdfborder={0 0 0}, pdftitle={<pdf title here>}, pdfauthor={<author's name here>}, pdfsubject={<subject here>}, pdfkeywords={<keywords here>}]{hyperref} 
 \usepackage[final]{pdfpages}
 \usepackage{multirow}
-\usepackage[table]{xcolor} 
 
 \title{XSM \\ eXperimental String Machine \\
 Version 1.0}
@@ -405,7 +402,7 @@ The process saves its current state before starting execution of the handler, an
 
 \section{Exceptions}
 \label{excpetion}
-Exceptions are anomalous situations which changes the normal flow of execution. There is a flag associated with each exception and the details corresponding to the exception that occured is stored in \texttt{EFR} (Exception Flag Register). If an exception occurs in User Mode, the machine transfers control of execution, i.e. changes the value of IP to \textit{page number} 23 (address = 11776) where the Exception Handler Routine resides. However in Kernel Mode, the machine halts when it encounters an exception.\\
+Exceptions are anomalous situations which changes the normal flow of execution. There is a flag associated with each exception and the details corresponding to the exception that occured is stored in \texttt{EFR} (Exception Flag Register). If an exception occurs in User Mode, the machine transfers control of execution, i.e. changes the value of IP to \textit{page number} 7 (address = 3584) where the Exception Handler Routine resides. However in Kernel Mode, the machine halts when it encounters an exception.\\
 
 
 The structure of \texttt{EFR} is given below
@@ -480,23 +477,14 @@ Brief memory outline for XSM is given below.
 \hline 0 & ROM Code &  0 -- 511 & 512 \\ 
 1 & OS Startup Code & 512 -- 1023 & 512 \\ 
 2 -- 6 & OS Structures  &  1024 -- 3583 & 2560 \\ 
- \rowcolor{gray!15}
 \hline 7 -- 8 & Exception Handler  &  3584 -- 4607 & 1024 \\ 
- \rowcolor{gray!15}
  9 -- 10 & Timer Interrupt Routine  &  4608 -- 5631 & 1024 \\ 
- \rowcolor{gray!15}
  11 -- 12 & Interrupt 1  &  5632 -- 6655 & 1024 \\ 
- \rowcolor{gray!15}
 13 -- 14 & Interrupt 2  &  6656 -- 7679 & 1024 \\ 
- \rowcolor{gray!15}
  15 -- 16 & Interrupt 3  &  7680 -- 8703 & 1024 \\ 
- \rowcolor{gray!15}
  17 -- 18 & Interrupt 4  &  8704 -- 9727 & 1024 \\ 
- \rowcolor{gray!15}
  19 -- 20 & Interrupt 5  &  9728 -- 10751 & 1024 \\ 
- \rowcolor{gray!15}
  21 -- 22 & Interrupt 6  &  10752 -- 11775 & 1024 \\
- \rowcolor{gray!15} 
  23 -- 24 & Interrupt 7  &  11776 -- 12799 & 1024 \\ 
 \hline 25 -- 63 & User Programs & 12800 -- 32767 & 19968 \\
 \hline

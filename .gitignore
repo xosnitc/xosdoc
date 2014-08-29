@@ -5,12 +5,12 @@ xsm/xsm.out
 xsm/xsm.synctex.gz
 xsm/xsm.toc
 
-xos/os.aux
-xos/os.dvi
-xos/os.log
-xos/os.out
-xos/os.synctex.gz
-xos/os.toc
+xos/xos.aux
+xos/xos.dvi
+xos/xos.log
+xos/xos.out
+xos/xos.synctex.gz
+xos/xos.toc
 
 xfs/xfs.aux
 xfs/xfs.dvi
@@ -33,12 +33,15 @@ spl/spl.out
 spl/spl.synctex.gz
 spl/spl.toc
 
-<<<<<<< HEAD
-=======
 usage/usage.aux
 usage/usage.dvi
 usage/usage.log
 usage/usage.out
 usage/usage.synctex.gz
 usage/usage.toc
->>>>>>> eede9ceb0e3b7fdc7071b4c4f97916ced81f6800
+
+technical-report/xos-report.aux
+technical-report/xos-report.log
+technical-report/xos-report.out
+technical-report/xos-report.synctex.gz
+technical-report/xos-report.toc
